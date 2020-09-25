@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<main>
+    <!-- Container displaying every column -->
+    <div class="container-fluid d-flex h-100 flex-column">
+      <div class="row">
+        <div class="col-12">
+          <!-- The name will change based on the user -->
+          <h1>Your Watchlist</h1>
+        </div>          
+      </div>
+
+      <!-- Search box for the items in watchlist -->
+      <div class="row">
+        <div class="col-12 wrapper">
+          <div class="input-group">
+            <label for="watchlistInput" button-type="" class="control-label"><i id="filtersubmit" class="fa fa-search"></i></label>
+            <input class="form-control" type="text" name="watchlistInput" id="watchlistInput" onkeyup="myFunction()" placeholder="Search..." />
+          </div>
+        </div>
+      </div>
+
+      <!-- Table containing items in watchlist -->
+      <div class="row">
+        <div class="col-12">
+          <div class="table-responsive-sm">
+            <table id="watchlistTable">
+              <tr class="header">
+                <th style="width:29%;">Item Name</th>
+                <th style="width:28%;">Bidding Status</th>
+                <th style="width:28%">Date Added</th>
+                <th style="width:15%">Remove?</th>
+              </tr>
+              <tr>
+                <td>Nvidia 2080ti</td>
+                <td>Open - $1000</td>
+                <td>31/08/2020</td>
+                <td>
+                  <div class="text-center">
+                    <button type="button" class="btn btn-light">X</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>MSI B450 Tomohawk</td>
+                <td>Closed - $300</td>
+                <td>3/09/2020</td>
+                <td>
+                  <div class="text-center">
+                    <button type="button" class="btn btn-light">X</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Corsair LL120 RGB Cooling Fans</td>
+                <td>Closed - $200</td>
+                <td>6/09/2020</td>
+                <td>
+                  <div class="text-center">
+                    <button type="button" class="btn btn-light">X</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Intel i9 9900k</td>
+                <td>Open - $2000</td>
+                <td>7/09/2020</td>
+                <td>
+                  <div class="text-center">
+                    <button type="button" class="btn btn-light">X</button>
+                  </div>
+                </td>
+              </tr>
+            </table><br>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <a href="Index.html">Click here to add more items to your Watchlist!</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("watchlistInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("watchlistTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }
+        }
+      }
+    </script>
+  </main>
+  {% endblock %}
