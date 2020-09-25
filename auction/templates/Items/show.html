@@ -1,0 +1,338 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<main>
+
+    <!-- Container displaying every column -->
+      <div class="container-fluid d-flex h-100 flex-column">
+        <div class="row">
+          <div class="col-xl-5 col-xl">
+
+            <!-- The manually controlled carousel displaying images of item -->
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img class="carouselImg d-block w-100" src="img/Nvidia-2080-ti.jpg" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                  <img class="carouselImg d-block w-100" src="img/Nvidia-2080-ti-2.png" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                  <img class="carouselImg d-block w-100" src="img/Nvidia-2080-ti-3.png" alt="Third slide">
+                </div>
+                <div class="carousel-item">
+                  <img class="carouselImg d-block w-100" src="img/Nvidia-2080-ti-4.png" alt="Fourth slide">
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+          
+          <!--Information about item listed -->
+
+          <!-- Name of item -->
+          <div class="col-xl-7 col-lg-12">
+            <h1>Nvidia Geforce GTX 2080ti</h1><br>
+            <div class="row">
+
+              <!-- Item condition -->
+              <div class="col-sm-4 col-xs-12">
+                <h2>Condition: Brand New</h2><br>
+              </div>
+              <div class="col-sm-3 col-xs-12"></div>
+
+              <!-- Add to watchlist button -->
+              <div class="col-sm-4 col-xs-12">
+                <button class="btn btn-primary btn-dark" type="button" value="Input">Add to Watchlist</button>
+              </div>
+            </div><br>
+
+            <div class="row">
+
+              <!-- Item's current bidding price -->
+              <div class="col-sm-4 col-xs-12">
+                <h2>Bidding Price: AU$1000</h2><br>
+              </div>
+              <div class="col-sm-3 col-xs-12"></div>
+
+              <!-- Addition postal cost (added ontop of price user pays once auction closes) -->
+              <div class="col-sm-4 col-xs-12">
+                <h2>Postage Price: AU$200</h2>
+              </div>
+            </div><br>
+
+            <!-- Row where user clicks modal to place bid -->
+            <div class="row">
+              <div class="col-sm-4 col-xs-12">
+                <h2>Place Bid:</h2>
+              </div>
+              <div class="col-sm-3 col-xs-12"></div>
+              <div class="col-sm-4 col-xs-12">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary btn-dark" data-toggle="modal" data-target="#exampleModalCenter">
+                  Place Bid
+                </button>
+
+                <!-- Modal (to place bid) -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Place Bid</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Bidding Amount</label>
+                            <input type="number" min="0" step="any" class="form-control" id="validationTooltip04" placeholder="0">
+                            <small id="emailHelp" class="form-text text-muted">
+                              Amount must be greater than 0 and the current bid.
+                            </small>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Dismiss</button>
+                        <button type="button" class="btn btn-primary">Place Bid</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+
+              <!-- Item's current bidding price -->
+              <div class="col-sm-4 col-xs-12"><br>
+                <h2>Bidding Ends:<br>15/09/2020</h2><br>
+              </div>
+              <div class="col-sm-3 col-xs-12"></div>
+
+              <!-- Addition postal cost (added ontop of price user pays once auction closes) -->
+              <div class="col-sm-4 col-xs-12"><br>
+                <h2>Estimated Posting Date:<br>21/09/2020</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row displaying additional information about product (user inputs this when listing item) -->
+        <div class="row">
+          <div class="col-12">
+            <div class="card border-additionalInfo">
+              <div class="card-header align-center">
+                <h2 class="h2">Additional Information:</h2>
+              </div>
+              <blockquote class="blockquote mb-0 card-body">
+                <p class="p1">NVIDIA’s newest flagship graphics card is a revolution in gaming realism and performance. Its powerful NVIDIA Turing™ GPU architecture, breakthrough technologies, and 11 GB of next-gen, ultra-fast GDDR6 memory make it the world’s ultimate gaming GPU. </p>
+              </blockquote>
+            </div>
+          </div> 
+        </div><br>
+
+        <!-- Row displaying items similar to the currently displayed item -->
+        <div class="row">
+          <div class="col-12">
+            <h2>Similar Items:</h2>
+          </div>
+        </div>
+
+        <!-- Cards containing images of items, name, price and the average customer review -->
+        <div class="row">
+          <div class="col-xl-2 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+              <div class="card-head">
+                <a href="ItemDetails.html"><img src="img/amd-sapphire.jpg" alt="..."></a>
+              </div>
+              <div class="card-body">
+                <a href="ItemDetails.html">
+                  <h5 class="card-title">Sapphire Radeon RX 5700 XT NITRO+ 8GB</h5>
+                  <p>AU $750</p><br>
+                  <small class="text-muted">
+                    Free Shipping<br><br>
+                    Review: 3/5
+                  </small>
+                </a>
+              </div>
+              <div class="dimmer"></div>
+            </div> 
+          </div>   
+
+          <div class="col-xl-2 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+              <div class="card-head">
+                <a href="ItemDetails.html"><img src="img/msi-nvidia-980ti.png" alt="..."></a>
+              </div>
+              <div class="card-body">
+                  <a href="ItemDetails.html">
+                    <h5 class="card-title">GeForce GTX 980ti</h5>
+                    <p>AU $700</p><br>
+                    <small class="text-muted">
+                      Free Shipping<br><br>
+                      Review: 4/5
+                    </small>
+                  </a>
+              </div>
+              <div class="dimmer"></div>
+            </div> 
+          </div>
+
+          <div class="col-xl-2 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+              <div class="card-head">
+                <a href="ItemDetails.html"><img src="img/Nvidia-Geforce-1080.png" alt="..."></a>
+              </div>
+              <div class="card-body">
+                <a href="ItemDetails.html">
+                  <h5 class="card-title"> Geforce GTX 1080 Aero 8G</h5>
+                  <p>AU $910</p><br>
+                  <small class="text-muted">
+                    Free Shipping<br><br>
+                    Review: 4.5/5
+                  </small>
+                </a>
+              </div>
+              <div class="dimmer"></div>
+            </div> 
+          </div>
+
+          <div class="col-xl-2 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+              <div class="card-head">
+                <a href="ItemDetails.html"><img src="img/nvidia-1070.jpg" alt="..."></a>
+              </div>
+              <div class="card-body">
+                <a href="ItemDetails.html">
+                  <h5 class="card-title">Nvidia GeForce GTX 1070 Founders Edition</h5>
+                  <p>AU $800</p><br>
+                  <small class="text-muted">
+                    Free Shipping<br><br>
+                    Review: 3/5
+                  </small>
+                </a>
+              </div>
+              <div class="dimmer"></div>
+            </div>
+          </div>
+
+          <div class="col-xl-2 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+              <div class="card-head">
+                <a href="ItemDetails.html"><img src="img/nvidia-gtx-titan.jpg" alt="..."></a>
+              </div>
+              <div class="card-body">
+                <a href="ItemDetails.html">
+                  <h5 class="card-title"> Nvidia GTX Titan</h5>
+                  <p>AU $820</p><br>
+                  <small class="text-muted">
+                    Free Shipping<br><br>
+                    Review: 3.5/5
+                  </small>
+                </a>
+              </div>
+              <div class="dimmer"></div>
+            </div> 
+          </div>
+
+          <div class="col-xl-2 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+              <div class="card-head">
+                <a href="ItemDetails.html"><img src="img/amd-7990.jpg" alt="..."></a>
+              </div>
+              <div class="card-body">
+                <a href="ItemDetails.html">
+                  <h5 class="card-title">AMD Radeon HD 7990 Dual-GPU Videocard</h5>
+                  <p>AU $750</p><br>
+                  <small class="text-muted">
+                    Free Shipping<br><br>
+                    Review: 3/5
+                  </small>
+                </a>
+              </div>
+              <div class="dimmer"></div>
+            </div>
+          </div>
+        </div><br><br>
+
+          <!-- Listed reviews on this item -->
+          <div class="row">
+            <div class="col-12">
+              <h2>Reviews:</h2><br>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h4>Karol</h4>
+              <h5>Score: 4/5</h5>
+              <p>Using it for less than one week so let me share my experience so far with this very nice but overpriced by NVIDIA product:
+
+                Pros:
+                1. In my case performance looks better than expected, measured core boost clock stays around 1950 to 2050 MHz, without doing any heavy overclocking (except switching to built-in OC mode in GIGABYTE AOURUS software).
+                2. Runs most recent games without problem in 4K maxed settings in between stable 55 to 65 fps, older games might need triple buffering enabled with VSync enabled to achieve better frame rates in 4K.
+                3. Delivered in less than one week.
+                
+                Cons:
+                1. Without air conditioning turned on - it goes very quickly to 81-82*C under load. No thermal throttling observed at the moment, but make sure your case have proper air flow. With AC on - average temperature is around 72* in my case, the card needs very good airflow - please see my updated comment at the end of this review.
+                2. Unfortunately, the GIGABYTE AOURUS software for overclocking and fan control is just rubbish, I can barely read it on WQHD resolution. Makes Windows boot slower, FAN control sometimes doesn't work at all, sometimes it hangs OS. Use MSI afterburner (beta for RTX) instead - works faster, more stable and supports higher resolutions than Full HD.
+                3. Under no load, when core temp is below 40*C - the fans sometimes are just spinning and stopping every second. I'm not sure whether this is some bug in bios or faulty fan controller (I need to do more testing and perhaps raise this issue directly to GIGABYTE, since for this price - everything should be perfect). At the moment I have set MSI afterburner to override FAN control and set fans to always rotate, so spinning and stopping issue is no longer happening. Also I have increased FAN speed at higher temperatures, but it doesn't really help to make core cooler.
+                
+                Update: after testing this one week more with improved airflow - the cooling actually gets the job done. Under heavy load in OC mode and slightly increased power limit - the core temperature doesn't exceed 73*C where ambient temperature is 30 *C (I'm currently living in hot tropical climate country), so this is very good result, comparable with other much larger full three slot cooling solutions that won't fit in my case. So as I mentioned before - ensure that your case have optimal airflow with cold air flowing as close as possible to the fans of this GPU.</p>
+                <br>
+              <h4>YUAN</h4>
+              <h5>Score: 1/5</h5>
+              <p>I got sent an Nvidia 2080ti graphic card in white! No back plate! Mismatched SN on card and box! Dirty fingerprint can be clearly seen even with the unopened bag! I am applying the return now. Disappointed!</p>
+              <br>
+              <h4>Kevin M.</h4>
+              <h5>Score: 5/5</h5>
+              <p>This is based off 4-5 hours of straight gaming with various games, manufacturer applied OC settings (nothing tweaked, fully stock settings).
+
+                Games tested:
+                
+                Rage 2 - Ultra settings 3440x1440
+                Mordhau - Ultra settings 3440x1440
+                Borderlands 2 - Maxed out settings 3440x1440
+                Dying Light - Ultra settings 3440x1440
+                Mad Max - Ultra settings 3440x1440
+                Apex Legends - Maxed out settings 3440x1440
+                
+                Monitor: BenQ EX3501R 35" HDR Gaming Curved Monitor, UWQHD, 100Hz, FreeSync, 4ms, Port HDMI USB-C.
+                
+                Zero lag, buttery smooth gameplay, quiet under full game load and stays cool in a Rosewill Cullinan ATX Mid Tower Gaming PC Computer Case with Blue LED Fans.
+                
+                Keep in mind with this case, you'll need to mount the video card 1st before you mount your CPU cooler, I had a hard time with the CPU cooler in 1st when trying to mount the video card.
+                
+                Can't say anything about Tech Support since there's no problems, yet.
+                
+                Will update the review later after extended use and will post pictures.</p>
+            </div>
+          </div><br><br>
+
+        <!-- Form where user can input a review on this item -->
+        <div class="row">
+          <div class="col-12">
+            <h5> Do you have something to say? Post it now!</h5>
+            <form>
+              <div class="form-group">
+                <label for="ReviewText"><p>Review:</p></label>
+                
+                <!-- <input type="text" class="form-control" id="ReviewText" placeholder="Review"> -->
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Review"></textarea>
+              </div>
+              <button type="submit" class="btn btn-dark">Submit</button>
+            </form>
+          </div>
+        </div><br><br>
+      </div>
+    </main>
+    {% endblock %}

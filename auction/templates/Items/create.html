@@ -1,0 +1,287 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<main>
+    <div class="container-fluid d-flex h-100 flex-column">
+      <div class="row">
+        <div class="col-12">
+
+          <!-- Start of the form  -->
+          <form class="needs-validation" novalidate>
+
+            <!-- Where user inputs Item Name -->
+            <div class="form-row">
+              <div class="col-md-12 mb-3">
+                <label for="validationTooltip01"><h6>Item Name</h6></label>
+                <input type="text" class="form-control" id="validationTooltip01" placeholder="Item name" required>
+                <div class="invalid-tooltip">Please provide a name</div>
+              </div>
+            </div><br>
+            
+            <div class="form-row">
+
+              <!-- User inputs category of item -- doesnt show up on ItemListing but would be used to define where the item information should be stored -->
+              <div class="col-md-4 col-sm-6 mb-3">
+                <label for="validationTooltip02"><h6>Category</h6></label>
+                <select class="custom-select" required>
+                  <option value="">None</option>
+                  <option value="1">CPU</option>
+                  <option value="2">GPU</option>
+                  <option value="4">Motherboard</option> 
+                  <option value="5">RAM</option>
+                  <option value="6">Power Supply Unit</option>
+                  <option value="7">Cooling Fan</option>
+                </select>
+                <div class="invalid-tooltip">Please select a category</div>
+              </div>
+
+              <!-- Manufacturer of product - options depend on the category selected -->
+              <div class="col-md-4 col-sm-6 mb-3">
+                <label for="validationTooltip02"><h6>Manufacturer</h6></label>
+                <select class="custom-select" required>
+                  <option value="">None</option>
+                  <option value="1">Manufacturer1</option>
+                  <option value="2">Manufacturer2</option>
+                  <option value="4">Manufacturer3</option> 
+                  <option value="5">Manufacturer4</option>
+                  <option value="6">Manufacturer5</option>
+                  <option value="7">Manufacturer6</option>
+                </select>
+                <div class="invalid-tooltip">Please select a category</div>
+              </div>
+
+              <!-- User selects condition of item -->
+              <div class="col-md-4 mb-3">
+                <label for="validationTooltip03"><h6>Condition</h6></label>
+                <select class="custom-select" required>
+                  <option value="">None</option>
+                  <option value="1">Brand New</option>
+                  <option value="2">Used</option>
+                </select>
+                <div class="invalid-tooltip">Please select a condition</div>
+              </div>
+            </div><br>
+
+            <div class="form-row">
+
+              <!-- Upload Images Button -->
+              <div class="col-xl-6 col-md-4 mb-3">
+                <h6>Upload Images</h6>
+                <label for="file" button type="file" name="image" class="btn btn-dark">Upload</button></label>
+                <input type="file" id="file" name="image" style="visibility:hidden;" multiple>
+              </div>
+
+              <!-- Auction finish date/delivery time selector -->
+              <div class="col-xl-3 col-md-4 col-sm-6 mb-3">
+                <label for="validationTooltip08"><h6>Auction Finish Date:</h6></label><br>
+                <input type="date" id="AucFin" name="AucFinish" required>
+                <div class="invalid-tooltip">Please select a valid date</div>
+              </div>
+              <div class="col-xl-3 col-md-4 col-sm-6 mb-3">
+                <label for="validationTooltip09"><h6>Estimated Delivery Time:</h6></label><br>
+                <input type="date" id="Deliv1" name="Deliv1" required>
+                <div class="invalid-tooltip">Please select a valid time period</div>
+                
+                <input type="date" id="Deliv2" name="Deliv2" required>
+                <div class="invalid-tooltip">Please select a valid time period</div>
+              </div>
+            </div><br>
+            <div class="form-row">
+              <div class="col-md-4 col-sm-6 mb-4">
+
+                <!-- Starting Price selector -->
+                <label for="validationTooltip05"><h6>Starting Price</h6></label>
+                <input type="number" min="0" step="any" class="form-control" id="validationTooltip04" placeholder="0" required>
+                <div class="invalid-tooltip">Please select a valid price</div>
+              </div>
+
+              <!-- Postage Price selector -->
+              <div class="col-md-4 col-sm-6 mb-4">
+                <label for="validationTooltip06"><h6>Postage Price</h6></label>
+                <input type="number" min="0" step="any" class="form-control" id="validationTooltip05" placeholder="0" required>
+                <div class="invalid-tooltip">Please select a valid price</div>
+              </div>
+
+               <!-- Currency selector-->
+              <div class="col-md-4 mb-4">
+                <label for="validationTooltip07"><h6>Currency</h6></label>
+                <select class="custom-select" required>
+                  <option selected value="">Select currency</option>
+                  <option value="USD">United States Dollars</option>
+                  <option value="EUR">Euro</option>
+                  <option value="GBP">United Kingdom Pounds</option>
+                  <option value="DZD">Algeria Dinars</option>
+                  <option value="ARP">Argentina Pesos</option>
+                  <option value="AUD">Australia Dollars</option>
+                  <option value="ATS">Austria Schillings</option>
+                  <option value="BSD">Bahamas Dollars</option>
+                  <option value="BBD">Barbados Dollars</option>
+                  <option value="BEF">Belgium Francs</option>
+                  <option value="BMD">Bermuda Dollars</option>
+                  <option value="BRR">Brazil Real</option>
+                  <option value="BGL">Bulgaria Lev</option>
+                  <option value="CAD">Canada Dollars</option>
+                  <option value="CLP">Chile Pesos</option>
+                  <option value="CNY">China Yuan Renmimbi</option>
+                  <option value="CYP">Cyprus Pounds</option>
+                  <option value="CSK">Czech Republic Koruna</option>
+                  <option value="DKK">Denmark Kroner</option>
+                  <option value="NLG">Dutch Guilders</option>
+                  <option value="XCD">Eastern Caribbean Dollars</option>
+                  <option value="EGP">Egypt Pounds</option>
+                  <option value="FJD">Fiji Dollars</option>
+                  <option value="FIM">Finland Markka</option>
+                  <option value="FRF">France Francs</option>
+                  <option value="DEM">Germany Deutsche Marks</option>
+                  <option value="XAU">Gold Ounces</option>
+                  <option value="GRD">Greece Drachmas</option>
+                  <option value="HKD">Hong Kong Dollars</option>
+                  <option value="HUF">Hungary Forint</option>
+                  <option value="ISK">Iceland Krona</option>
+                  <option value="INR">India Rupees</option>
+                  <option value="IDR">Indonesia Rupiah</option>
+                  <option value="IEP">Ireland Punt</option>
+                  <option value="ILS">Israel New Shekels</option>
+                  <option value="ITL">Italy Lira</option>
+                  <option value="JMD">Jamaica Dollars</option>
+                  <option value="JPY">Japan Yen</option>
+                  <option value="JOD">Jordan Dinar</option>
+                  <option value="KRW">Korea (South) Won</option>
+                  <option value="LBP">Lebanon Pounds</option>
+                  <option value="LUF">Luxembourg Francs</option>
+                  <option value="MYR">Malaysia Ringgit</option>
+                  <option value="MXP">Mexico Pesos</option>
+                  <option value="NLG">Netherlands Guilders</option>
+                  <option value="NZD">New Zealand Dollars</option>
+                  <option value="NOK">Norway Kroner</option>
+                  <option value="PKR">Pakistan Rupees</option>
+                  <option value="XPD">Palladium Ounces</option>
+                  <option value="PHP">Philippines Pesos</option>
+                  <option value="XPT">Platinum Ounces</option>
+                  <option value="PLZ">Poland Zloty</option>
+                  <option value="PTE">Portugal Escudo</option>
+                  <option value="ROL">Romania Leu</option>
+                  <option value="RUR">Russia Rubles</option>
+                  <option value="SAR">Saudi Arabia Riyal</option>
+                  <option value="XAG">Silver Ounces</option>
+                  <option value="SGD">Singapore Dollars</option>
+                  <option value="SKK">Slovakia Koruna</option>
+                  <option value="ZAR">South Africa Rand</option>
+                  <option value="KRW">South Korea Won</option>
+                  <option value="ESP">Spain Pesetas</option>
+                  <option value="XDR">Special Drawing Right (IMF)</option>
+                  <option value="SDD">Sudan Dinar</option>
+                  <option value="SEK">Sweden Krona</option>
+                  <option value="CHF">Switzerland Francs</option>
+                  <option value="TWD">Taiwan Dollars</option>
+                  <option value="THB">Thailand Baht</option>
+                  <option value="TTD">Trinidad and Tobago Dollars</option>
+                  <option value="TRL">Turkey Lira</option>
+                  <option value="VEB">Venezuela Bolivar</option>
+                  <option value="ZMK">Zambia Kwacha</option>
+                  <option value="EUR">Euro</option>
+                  <option value="XCD">Eastern Caribbean Dollars</option>
+                  <option value="XDR">Special Drawing Right (IMF)</option>
+                  <option value="XAG">Silver Ounces</option>
+                  <option value="XAU">Gold Ounces</option>
+                  <option value="XPD">Palladium Ounces</option>
+                  <option value="XPT">Platinum Ounces</option>
+                </select>            
+                <div class="invalid-tooltip">Please select a valid currency</div>
+              </div>
+            </div>
+
+            <!-- Where user inputs additional information (if necessary) -->
+            <div class="form-row">
+              <div class="col-md-12 mb-3">
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1"><h6>Additional Information</h6></label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- T&Cs Agreement -->
+            <div class="form-row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="invalidCheck2" data-toggle="modal" data-target="#exampleModalCenter" required>
+                    <div class="invalid-tooltip">Please agree to Terms and Conditions</div>
+                    <label class="form-check-label" for="invalidCheck2">
+                      <p>I agree to <a href="#exampleModalCenter" data-toggle="modal" data-target="#exampleModalCenter">Terms and Conditions</a></p>                      
+                    </label>
+
+                    <!-- Modal (for T&Cs)  -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-body">
+                              <div class="form-group">
+                                <label for="TermsAndConditions">
+                                  Cai's Favourite Double Chocolate Chip Cookie Recipe<br><br>
+
+                                  Ingredients:<br>
+                                  -2 cups all-purpose flour<br>
+                                  -1/2 cup cocoa powder<br>
+                                  -1 tsp. baking soda<br>
+                                  -1 cup softened/room-temperature butter<br>
+                                  -1/2 cup white granulated sugar<br>
+                                  -1/2 cup packed brown sugar (light brown sugar works, too)<br>
+                                  -1 tsp. salt<br>
+                                  -2 eggs<br>
+                                  -2 tsp. instant coffee granules, mixed in 2 tsp. of water (used in place of 2 tsp. vanilla extract; either of the two would amplify the chocolate taste)<br>
+                                  -1 cup semisweet chocolate chips<br><br>
+                                  
+                                  Directions: <br>
+                                  1) Preheat oven to 175C (350F)<br>
+                                  2) Whisk flour, cocoa powder, baking soda, and salt in a medium bowl<br>
+                                  3) In larger bowl, beat butter and both sugars until smooth with electric beater. Beat in one egg until completely incorporated. Beat in second egg along with coffee mix (or vanilla) until blended.<br>
+                                  4) Mix in dry ingredients until just incorporated.<br>
+                                  5) Fold in chocolate chip; mix just enough to combine<br>
+                                  6) Drop by heaped teaspoonfuls onto ungreased parchment paper<br>
+                                  7) Bake until edges are slightly darkened (not burnt!); ~8-12 minutes, depending on oven<br>
+                                  8) Allow to cool on baking sheet for one minute before transferring to wire rack. <br>
+                                  9) Enjoy :)
+                                </label>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><br>
+
+            <!-- Button to list item -->
+            <button class="btn btn-dark" type="submit">List Item</button>
+          </form>
+        </div>
+      </div>
+    </div>   
+
+    <!-- JavaScript for the validation checker -->
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
+
+  </main>
+  {% endblock %}
