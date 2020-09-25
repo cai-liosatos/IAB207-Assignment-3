@@ -1,0 +1,457 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<div class="container-fluid">
+
+    <!-- Code for the top header and carousel -->
+
+    <!-- Background image over the gradient-->
+    <div style="background:transparent url('https://cdn.discordapp.com/attachments/399944598924951553/753209632549240872/background-stock-image-1.png') no-repeat center center /cover">
+        <div class="row">
+            <div class="col-xl-2"></div>
+            <div class="col-xl-8"><br>
+                <h1><b>THIS WEEK'S TOP 5 HOTTEST ITEMS</b></h1>
+            </div>
+            <div class="col-xl-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-xl-2"></div>
+
+            <!-- Automatic carousel for items that have the top 5 number of bids -->
+            <div class="col-xl-8">
+                <div id="carouselExampleIndicators" class="carousel slide carouselgrow" class="carousel" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <a href="ItemDetails.html"><img src="img/Nvidia-2080-ti.jpg" class="carouselImg d-block w-100" alt="..."></a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="ItemDetails.html"><img src="img/corsair-vengeance-rgb-pro.jpg" class="carouselImg d-block w-100" alt="..."></a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="ItemDetails.html"><img src="img/amd-3900x.jpg" class="carouselImg d-block w-100" alt="..."></a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="ItemDetails.html"><img src="img/be-quiet!-cooling-fan.jpg" class="carouselImg d-block w-100" alt="..."></a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="ItemDetails.html"><img src="img/radeon-gpu.jpg" class="carouselImg d-block w-100" alt="..."></a>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-xl-2"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h2>Recently Viewed Items:</h2>
+        </div>
+    </div>
+
+    <!-- Cards that display the recent items the user has viewed -->
+    <div class="row">
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                    <a href="ItemDetails.html"><img src="img/noctua-heatsync.jpg" alt="..." class="cardImg"></a>
+                </div>
+                <div class="card-body">
+                    <a href="ItemDetails.html"><h5 class="card-title">Noctua NH-D15 Chromax CPU Cooler Black</h5></a><br>
+                    <p>AU $200</p>
+                </div>
+                <div class="dimmer"></div>
+            </div> 
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                    <a href="ItemDetails.html"><img src="img/corsair-ll.jpg" alt="..." class="cardImg"></a>
+                </div>
+                <div class="card-body">
+                    <a href="ItemDetails.html"><h5 class="card-title">Corsair LL120 RGB 120mm Dual Light Loop PWM Fan White with Lighting Node Pro - 3 Pack</h5></a><br>
+                    <p>AU $170</p>
+                </div>
+                <div class="dimmer"></div>
+            </div> 
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                    <a href="ItemDetails.html"><img src="img/msi-b450.jpg" alt="..." class="cardImg"></a>
+                </div>
+                <div class="card-body">
+                    <a href="ItemDetails.html"><h5 class="card-title">MSI B450 Tomahawk Max Motherboard</h5></a><br>
+                    <p>AU $300</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                    <a href="ItemDetails.html"><img src="img/psu.jpg" alt="..." class="cardImg"></a>
+                </div>
+                <div class="card-body">
+                    <a href="ItemDetails.html"><h5 class="card-title">Corsair RM850X(2018) 850W 80+ Gold Certified Fully Modular PSU Black</h5></a><br>
+                    <p>AU $180</p>
+                </div>
+            </div>
+        </div>
+    </div><br><br><br>
+
+    <!-- List of some items in the CPU category -->
+
+    <div class="row">
+        <div class="col-12">
+            <h2>CPUs:</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                        <a href="ItemDetails.html"><img src="img/i9-9900k.jpg" alt="..." class="cardImg"></a>
+                    </div>
+                    <div class="card-body">
+                        <a href="ItemDetails.html"><h5 class="card-title">Intel i9 9900k Unlocked</h5></a><br>
+                    <p>AU $1200</p>
+                    </div>
+                </div> 
+            </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                    <a href="ItemDetails.html"><img src="img/thredripper.jpg" alt="..." class="cardImg"></a>
+                </div>
+                <div class="card-body">
+                    <a href="ItemDetails.html"><h5 class="card-title">Amd Ryzen Threadripper 3990X</h5></a><br>
+                    <p>AU $800</p>
+                </div>
+            </div> 
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                    <a href="ItemDetails.html"><img src="img/ryzen-5-3600.jpg" alt="..." class="cardImg"></a>
+                </div>
+                <div class="card-body">
+                    <a href="ItemDetails.html"><h5 class="card-title">Ryzen 5 3600</h5></a><br>
+                    <p>AU $600</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                    <a href="ItemDetails.html"><img src="img/ryzen-5-3600.jpg" alt="..." class="cardImg"></a>
+                </div>
+                <div class="card-body">
+                    <a href="ItemDetails.html"><h5 class="card-title">Ryzen 5 3600</h5></a><br>
+                    <p>AU $600</p>
+                </div>
+            </div>
+        </div>
+        <!-- Button that links to a page displaying more items -->
+        <button type="button" class="btn btn-link"><a href="#"><p>See More -></p></p></a></button></span>
+    </div><br>
+
+    
+
+    <!-- List of some items in the GPU category -->
+    <div class="row">
+        <div class="col-12">
+            <h2>GPUs:</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                        <a href="ItemDetails.html"><img src="img/amd-sapphire.jpg" alt="..." class="cardImg"></a>
+                    </div>
+                    <div class="card-body">
+                        <a href="ItemDetails.html"><h5 class="card-title">Sapphire Radeon RX 5700 XT NITRO+ 8GB</h5></a><br>
+                    <p>AU $400</p>
+                    </div>
+                </div> 
+            </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                    <a href="ItemDetails.html"><img src="img/Nvidia-Geforce-1080.jpg" alt="..." class="cardImg"></a>
+                </div>
+                <div class="card-body">
+                    <a href="ItemDetails.html"><h5 class="card-title"> Geforce GTX 1080 Aero 8G</h5></a><br>
+                    <p>AU $800</p>
+                </div>
+            </div> 
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                    <a href="ItemDetails.html"><img src="img/amd-7990.jpg" alt="..." class="cardImg"></a>
+                </div>
+                <div class="card-body">
+                    <a href="ItemDetails.html"><h5 class="card-title">AMD Radeon HD 7990 Dual-GPU Videocard</h5></a><br>
+                    <p>AU $900</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                    <a href="ItemDetails.html"><img src="img/amd-7990.jpg" alt="..." class="cardImg"></a>
+                </div>
+                <div class="card-body">
+                    <a href="ItemDetails.html"><h5 class="card-title">AMD Radeon HD 7990 Dual-GPU Videocard</h5></a><br>
+                    <p>AU $900</p>
+                </div>
+            </div>
+        </div>
+        <!-- Button that links to a page displaying more items -->
+        <button type="button" class="btn btn-link"><a href="#"><p>See More -></p></p></a></button></span>
+    </div><br><br>
+
+    <!-- Note: images for the following categories are just reused from CPU/GPU. In the final version, these will be updated (along with the prices/names) but are just placeholders for the time being -->
+
+    <!-- List of some items in the Motherboard category -->
+
+    <div class="row">
+        <div class="col-12">
+            <h2>Motherboards:</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                        <a href="ItemDetails.html"><img src="img/i9-9900k.jpg" alt="..." class="cardImg"></a>
+                    </div>
+                    <div class="card-body">
+                        <a href="ItemDetails.html"><h5 class="card-title">Intel i9 9900k Unlocked</h5></a><br>
+                    <p>AU $1200</p>
+                    </div>
+                </div> 
+            </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                    <a href="ItemDetails.html"><img src="img/thredripper.jpg" alt="..." class="cardImg"></a>
+                </div>
+                <div class="card-body">
+                    <a href="ItemDetails.html"><h5 class="card-title">Amd Ryzen Threadripper 3990X</h5></a><br>
+                    <p>AU $800</p>
+                </div>
+            </div> 
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                    <a href="ItemDetails.html"><img src="img/ryzen-5-3600.jpg" alt="..." class="cardImg"></a>
+                </div>
+                <div class="card-body">
+                    <a href="ItemDetails.html"><h5 class="card-title">Ryzen 5 3600</h5></a><br>
+                    <p>AU $600</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                    <a href="ItemDetails.html"><img src="img/ryzen-5-3600.jpg" alt="..." class="cardImg"></a>
+                </div>
+                <div class="card-body">
+                    <a href="ItemDetails.html"><h5 class="card-title">Ryzen 5 3600</h5></a><br>
+                    <p>AU $600</p>
+                </div>
+            </div>
+        </div>
+        <!-- Button that links to a page displaying more items -->
+        <button type="button" class="btn btn-link"><a href="#"><p>See More -></p></p></a></button></span>
+    </div><br>
+
+    
+
+    <!-- List of some items in the RAM category -->
+    <div class="row">
+        <div class="col-12">
+            <h2>RAM:</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                        <a href="ItemDetails.html"><img src="img/amd-sapphire.jpg" alt="..." class="cardImg"></a>
+                    </div>
+                    <div class="card-body">
+                        <a href="ItemDetails.html"><h5 class="card-title">Sapphire Radeon RX 5700 XT NITRO+ 8GB</h5></a><br>
+                    <p>AU $400</p>
+                    </div>
+                </div> 
+            </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                    <a href="ItemDetails.html"><img src="img/Nvidia-Geforce-1080.jpg" alt="..." class="cardImg"></a>
+                </div>
+                <div class="card-body">
+                    <a href="ItemDetails.html"><h5 class="card-title"> Geforce GTX 1080 Aero 8G</h5></a><br>
+                    <p>AU $800</p>
+                </div>
+            </div> 
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                    <a href="ItemDetails.html"><img src="img/amd-7990.jpg" alt="..." class="cardImg"></a>
+                </div>
+                <div class="card-body">
+                    <a href="ItemDetails.html"><h5 class="card-title">AMD Radeon HD 7990 Dual-GPU Videocard</h5></a><br>
+                    <p>AU $900</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                    <a href="ItemDetails.html"><img src="img/amd-7990.jpg" alt="..." class="cardImg"></a>
+                </div>
+                <div class="card-body">
+                    <a href="ItemDetails.html"><h5 class="card-title">AMD Radeon HD 7990 Dual-GPU Videocard</h5></a><br>
+                    <p>AU $900</p>
+                </div>
+            </div>
+        </div>
+        <!-- Button that links to a page displaying more items -->
+        <button type="button" class="btn btn-link"><a href="#"><p>See More -></p></p></a></button></span>
+    </div><br><br>
+    <!-- List of some items in the PSU category -->
+
+    <div class="row">
+        <div class="col-12">
+            <h2>Power Supply Units:</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                        <a href="ItemDetails.html"><img src="img/i9-9900k.jpg" alt="..." class="cardImg"></a>
+                    </div>
+                    <div class="card-body">
+                        <a href="ItemDetails.html"><h5 class="card-title">Intel i9 9900k Unlocked</h5></a><br>
+                    <p>AU $1200</p>
+                    </div>
+                </div> 
+            </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                    <a href="ItemDetails.html"><img src="img/thredripper.jpg" alt="..." class="cardImg"></a>
+                </div>
+                <div class="card-body">
+                    <a href="ItemDetails.html"><h5 class="card-title">Amd Ryzen Threadripper 3990X</h5></a><br>
+                    <p>AU $800</p>
+                </div>
+            </div> 
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                    <a href="ItemDetails.html"><img src="img/ryzen-5-3600.jpg" alt="..." class="cardImg"></a>
+                </div>
+                <div class="card-body">
+                    <a href="ItemDetails.html"><h5 class="card-title">Ryzen 5 3600</h5></a><br>
+                    <p>AU $600</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                    <a href="ItemDetails.html"><img src="img/ryzen-5-3600.jpg" alt="..." class="cardImg"></a>
+                </div>
+                <div class="card-body">
+                    <a href="ItemDetails.html"><h5 class="card-title">Ryzen 5 3600</h5></a><br>
+                    <p>AU $600</p>
+                </div>
+            </div>
+        </div>
+        <!-- Button that links to a page displaying more items -->
+        <button type="button" class="btn btn-link"><a href="#"><p>See More -></p></p></a></button></span>
+    </div><br>
+
+    
+
+    <!-- List of some items in the Cooling Fans category -->
+    <div class="row">
+        <div class="col-12">
+            <h2>Cooling Fans:</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                        <a href="ItemDetails.html"><img src="img/amd-sapphire.jpg" alt="..." class="cardImg"></a>
+                    </div>
+                    <div class="card-body">
+                        <a href="ItemDetails.html"><h5 class="card-title">Sapphire Radeon RX 5700 XT NITRO+ 8GB</h5></a><br>
+                    <p>AU $400</p>
+                    </div>
+                </div> 
+            </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                    <a href="ItemDetails.html"><img src="img/Nvidia-Geforce-1080.jpg" alt="..." class="cardImg"></a>
+                </div>
+                <div class="card-body">
+                    <a href="ItemDetails.html"><h5 class="card-title"> Geforce GTX 1080 Aero 8G</h5></a><br>
+                    <p>AU $800</p>
+                </div>
+            </div> 
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                    <a href="ItemDetails.html"><img src="img/amd-7990.jpg" alt="..." class="cardImg"></a>
+                </div>
+                <div class="card-body">
+                    <a href="ItemDetails.html"><h5 class="card-title">AMD Radeon HD 7990 Dual-GPU Videocard</h5></a><br>
+                    <p>AU $900</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                    <a href="ItemDetails.html"><img src="img/amd-7990.jpg" alt="..." class="cardImg"></a>
+                </div>
+                <div class="card-body">
+                    <a href="ItemDetails.html"><h5 class="card-title">AMD Radeon HD 7990 Dual-GPU Videocard</h5></a><br>
+                    <p>AU $900</p>
+                </div>
+            </div>
+        </div>
+        <!-- Button that links to a page displaying more items -->
+        <button type="button" class="btn btn-link"><a href="#"><p>See More -></p></p></a></button></span>
+    </div><br><br>
+</div>
+{% endblock %}
