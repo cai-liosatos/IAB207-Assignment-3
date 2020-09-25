@@ -159,6 +159,55 @@
     z-index: 500;
   }
 
+/* CSS for the Watchlist Table */
+label, input {
+  flex-basis:20px;
+}
+
+#filtersubmit {
+  color: white;
+  line-height: 39px;
+  }
+
+#watchlistInput {
+max-width: 100%;   /* Full-width */
+font-size: 16px; /* Increase font-size */
+border: 1px solid #ddd; /* Add a grey border */
+margin-bottom: 12px; /* Add some space below the input */
+border-radius: 5px
+}
+
+#watchlistTable {
+border-collapse: collapse; /* Collapse borders */
+width: 100%; /* Full-width */
+border: 1px solid #ddd; /* Add a grey border */
+font-size: 18px; /* Increase font-size */
+}
+
+#watchlistTable th, #watchlistTable td {
+text-align: left; /* Left-align text */
+padding: 12px; /* Add padding */
+}
+
+#watchlistTable tr {
+/* Add a bottom border to all table rows */
+border-bottom: 1px solid #ddd;
+}
+
+#watchlistTable {
+background-color: white
+}
+
+#watchlistTable tr:hover {
+/* Add a grey background color to the table header, table cell */
+background-color: #cccccc;
+}
+
+#watchlistTable tr.header:hover {
+/* Add a permanent white background to the table header */
+background-color: white;
+}
+
 /* CSS for the Footer */
   .site-footer
   {
