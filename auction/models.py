@@ -3,7 +3,7 @@ from flask_login import UserMixin
 from datetime import datetime
 
 class User(db.Model, UserMixin): 
-	__tablename__='users'
+	__tablename__= 'users'
 	id = db.Column(db.Integer, primary_key=True)
 	username = db.Column(db.String(100), index=True, unique=True, nullable=False)
 	email = db.Column(db.String(100), index=True, unique=True, nullable=False)
@@ -16,7 +16,7 @@ class User(db.Model, UserMixin):
 
 
 class Item(db.Model):
-	__tablename__='items'
+	__tablename__= 'items'
 	id = db.Column(db.Integer, primary_key=True)
 	Name = db.Column(db.String(100), unique=False, nullable=False, backref='watchlist')
 	category = db.Column(db.String(100), index=True, unique=False, nullable=False)
@@ -39,7 +39,7 @@ class Item(db.Model):
 
 
 class Bid(db.Model):
-	__tablename__='bid'
+	__tablename__= 'bid'
 	id = db.Column(db.Integer, primary_key=True)
 	userID = db.Column(db.Integer, db.Foreign('users.id'))
 	itemId = db.Column(db.Integer, db.Foreign('items.itemId'))
@@ -50,7 +50,7 @@ class Bid(db.Model):
 		return "<Bid: {}>".format(self.amount)
 
 class Watchlist(db.Model):
-	__tablename__='watchlist'
+	__tablename__= 'watchlist'
 	id = db.Column(db.Integer, primary_key=True)
 	userID = db.Column(db.Integer, db.ForeignKey('users.id'))
 	itemName = db.Column(db.String(100), db.ForeignKey('items.itemName'), unique=False)
