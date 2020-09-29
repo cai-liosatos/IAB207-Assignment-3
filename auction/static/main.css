@@ -340,7 +340,8 @@ background-color: white;
     }
     .site-footer .copyright-text,.site-footer .social-icons
     {
-      text-align:center
+      text-align:center;
+      vertical-align: center;
     }
   }
   .social-icons
