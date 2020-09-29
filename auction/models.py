@@ -16,7 +16,7 @@ class Item(db.Model):
 	category = db.Column(db.String(100), index=True, unique=False, nullable=False)
 	manufacturer = db.Column(db.String(100), index=True, unique=False, nullable=True)
 	condition = db.Column(db.String(100), index=True, unique=False, nullable=True)
-	image = db.Column(db.String(400))
+	image = db.Column(db.String(400), nullable=False)
 	finishDate = db.Column(db.DateTime, default=datetime.now(), index=True, unique=False, nullable=False)
 	deliveryTime = db.Column(db.DateTime, index=True, unique=False, nullable=False)
 	currentPrice = db.Column(db.Integer, index=True, unique=False, nullable=False)
