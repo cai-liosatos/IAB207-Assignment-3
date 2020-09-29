@@ -11,11 +11,14 @@ class User(db.Model, UserMixin):
 	watchlist = db.relationship('Watchlist', backref='user')
 	bid = db.relationship('Bid', backref='user')
 
+	def __repr__(self):
+		return "<Name: {}>".format(self.username)
+
 
 class Item(db.Model):
 	__tablename__='items'
 	id = db.Column(db.Integer, primary_key=True)
-	itemName = db.Column(db.String(100), unique=False, nullable=False, backref='watchlist')
+	Name = db.Column(db.String(100), unique=False, nullable=False, backref='watchlist')
 	category = db.Column(db.String(100), index=True, unique=False, nullable=False)
 	manufacturer = db.Column(db.String(100), unique=False, nullable=True)
 	condition = db.Column(db.String(100), unique=False, nullable=True)
@@ -30,6 +33,9 @@ class Item(db.Model):
 	watchlist = db.relationship('Watchlist', backref='item')
 	bid = db.relationship('Bid', backref='item')
 
+	def __repr__(self): #string print method
+		return "<Name: {}>".format(self.name)
+
 
 
 class Bid(db.Model):
@@ -37,7 +43,11 @@ class Bid(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	userID = db.Column(db.Integer, db.Foreign('users.id'))
 	itemId = db.Column(db.Integer, db.Foreign('items.itemId'))
+	amount = db.Column(db.Integer, unique=False, nullable=False)
 	time = db.Column(db.DateTime, default=datetime.now())
+
+	def __repr__(self):
+		return "<Bid: {}>".format(self.amount)
 
 class Watchlist(db.Model):
 	__tablename__='watchlist'
