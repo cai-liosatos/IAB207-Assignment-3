@@ -181,6 +181,7 @@
 
   .cardImg {
     border-radius: 10%;
+    height: 250px;
   }
 
   .border-dark {
