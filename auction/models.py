@@ -2,17 +2,30 @@ from . import db
 from flask_login import UserMixin 
 from datetime import datetime
 
-class User(db.Model, UserMixin): 
-	__tablename__= 'users'
-	id = db.Column(db.Integer, primary_key=True)
-	username = db.Column(db.String(100), index=True, unique=True, nullable=False)
-	email = db.Column(db.String(100), index=True, unique=True, nullable=False)
-	password_hash = db.Column(db.String(255), nullable=True)
-	watchlist = db.relationship('Watchlist', backref='user')
-	bid = db.relationship('Bid', backref='user')
 
-	def __repr__(self):
-		return "<Name: {}>".format(self.username)
+
+class User(db.Model, UserMixin):
+    __tablename__='users' # good practice to specify table name
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), index=True, unique=True, nullable=False)
+    emailid = db.Column(db.String(100), index=True, nullable=False)
+	#password is never stored in the DB, an encrypted password is stored
+	# the storage should be at least 255 chars long
+    password_hash = db.Column(db.String(255), nullable=False)
+
+    # relation to call user.comments and comment.created_by
+    comments = db.relationship('Comment', backref='user')
+# class User(db.Model, UserMixin): 
+# 	__tablename__= 'users'
+# 	id = db.Column(db.Integer, primary_key=True)
+# 	username = db.Column(db.String(100), index=True, unique=True, nullable=False)
+# 	email = db.Column(db.String(100), index=True, unique=True, nullable=False)
+# 	password_hash = db.Column(db.String(255), nullable=True)
+# 	watchlist = db.relationship('Watchlist', backref='user')
+# 	bid = db.relationship('Bid', backref='user')
+
+# 	def __repr__(self):
+# 		return "<Name: {}>".format(self.username)
 
 
 class Item(db.Model):
