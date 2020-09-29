@@ -11,7 +11,7 @@ class User(db.Model, UserMixin):
 
 class Item(db.Model):
 	__tablename__='items'
-	itemId = db.Column(db.Integer, primary_key=True)
+	id = db.Column(db.Integer, primary_key=True)
 	itemName = db.Column(db.String(100), index=True, unique=False, nullable=False, backref='watchlist')
 	category = db.Column(db.String(100), index=True, unique=False, nullable=False)
 	manufacturer = db.Column(db.String(100), index=True, unique=False, nullable=True)
