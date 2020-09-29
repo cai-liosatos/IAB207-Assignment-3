@@ -341,7 +341,6 @@ background-color: white;
     .site-footer .copyright-text,.site-footer .social-icons
     {
       text-align:center;
-      vertical-align: center;
     }
   }
   .social-icons
@@ -372,6 +371,7 @@ background-color: white;
     width:44px;
     height:44px;
     text-align:center;
+    vertical-align: center;
     margin-right:8px;
     border-radius:100%;
     -webkit-transition:all .2s linear;
