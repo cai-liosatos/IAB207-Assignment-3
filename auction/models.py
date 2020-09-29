@@ -16,7 +16,7 @@ class Item(db.Model):
 	__tablename__='items'
 	id = db.Column(db.Integer, primary_key=True)
 	itemName = db.Column(db.String(100), unique=False, nullable=False, backref='watchlist')
-	category = db.Column(db.String(100), unique=False, nullable=False)
+	category = db.Column(db.String(100), index=True, unique=False, nullable=False)
 	manufacturer = db.Column(db.String(100), unique=False, nullable=True)
 	condition = db.Column(db.String(100), unique=False, nullable=True)
 	image = db.Column(db.String(400), nullable=False)
