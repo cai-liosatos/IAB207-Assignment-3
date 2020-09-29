@@ -7,7 +7,7 @@ class User(db.Model, UserMixin):
 	id = db.Column(db.Integer, primary_key=True)
 	username = db.Column(db.String(100), index=True, unique=True, nullable=False)
 	email = db.Column(db.String(100), index=True, unique=True, nullable=False)
-	password_hash = db.Column(db.String(255), nullable=False)
+	password_hash = db.Column(db.String(255), nullable=True)
 	watchlist = db.relationship('Watchlist', backref='user')
 	bid = db.relationship('Bid', backref='user')
 
