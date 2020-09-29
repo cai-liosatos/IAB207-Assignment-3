@@ -3,7 +3,6 @@ from flask import Flask
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-import os
 
 db=SQLAlchemy()
 
@@ -15,7 +14,7 @@ def create_app():
     app.debug=True
     app.secret_key='utroutoru'
     #set the app configuration data 
-    app.config['SQLALCHEMY_DATABASE_URI']=os.environ['sqlite:///marketplace.sqlite']
+    app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///marketplace.sqlite'
     #initialize db with flask app
     db.init_app(app)
 
