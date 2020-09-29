@@ -12,18 +12,18 @@ class User(db.Model, UserMixin):
 class Item(db.Model):
 	__tablename__='items'
 	id = db.Column(db.Integer, primary_key=True)
-	itemName = db.Column(db.String(100), index=True, unique=False, nullable=False, backref='watchlist')
-	category = db.Column(db.String(100), index=True, unique=False, nullable=False)
-	manufacturer = db.Column(db.String(100), index=True, unique=False, nullable=True)
-	condition = db.Column(db.String(100), index=True, unique=False, nullable=True)
+	itemName = db.Column(db.String(100), unique=False, nullable=False, backref='watchlist')
+	category = db.Column(db.String(100), unique=False, nullable=False)
+	manufacturer = db.Column(db.String(100), unique=False, nullable=True)
+	condition = db.Column(db.String(100), unique=False, nullable=True)
 	image = db.Column(db.String(400), nullable=False)
-	finishDate = db.Column(db.DateTime, default=datetime.now(), index=True, unique=False, nullable=False)
-	deliveryTime = db.Column(db.DateTime, index=True, unique=False, nullable=False)
-	currentPrice = db.Column(db.Integer, index=True, unique=False, nullable=False)
-	postagePrice = db.Column(db.Integer, index=True, unique=False, nullable=False)
-	currency = db.Column(db.String(3), index=True, unique=False, nullable=False)
-	moreInfo = db.Column(db.String(100), index=True, unique=False, nullable=True)
-	status = db.Column(db.String(100), index=True, unique=False, nullable=False)
+	finishDate = db.Column(db.DateTime, default=datetime.now(), unique=False, nullable=False)
+	deliveryTime = db.Column(db.DateTime, unique=False, nullable=False)
+	currentPrice = db.Column(db.Integer, unique=False, nullable=False)
+	postagePrice = db.Column(db.Integer, unique=False, nullable=False)
+	currency = db.Column(db.String(3), unique=False, nullable=False)
+	moreInfo = db.Column(db.String(100), unique=False, nullable=True)
+	status = db.Column(db.String(100), unique=False, nullable=False)
 
 class Bid(db.Model):
 	__tablename__='bid'
@@ -36,6 +36,6 @@ class Watchlist(db.Model):
 	__tablename__='watchlist'
 	id = db.Column(db.Integer, primary_key=True)
 	userID = db.Column(db.Integer, db.ForeignKey('users.id'))
-	itemName = db.Column(db.String(100), db.ForeignKey('items.itemName'), index=True, unique=False)
+	itemName = db.Column(db.String(100), db.ForeignKey('items.itemName'), unique=False)
 	addedDate = db.Column(db.DateTime, default=datetime.now())
 
