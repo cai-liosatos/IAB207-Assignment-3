@@ -9,7 +9,7 @@ def index():
     items = Item.query.all()
     return render_template('index.html', items = items)
 
-@bp.rout('/search')
+@bp.route('/search')
 def search():
     if request.args['search']:
         ite = "%" + request.args['search'] + "%"
