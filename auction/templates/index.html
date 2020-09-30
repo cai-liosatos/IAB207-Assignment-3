@@ -17,6 +17,10 @@
         </div>
         <div class="row">
             <div class="col-xl-2"></div>
+            <form class="form-inline d-flex flex-nowrap" action="{{url_for('main.search')}}">
+                <input type="text" name="search" class="form-control flex-grow-1 my-1 mr-sm-2"
+                <button type="submit" class="flex-shrink-1 btn btn-primary my-1">Submit</button>
+                </form>
 
             <!-- Automatic carousel for items that have the top 5 number of bids -->
             <div class="col-xl-8">
