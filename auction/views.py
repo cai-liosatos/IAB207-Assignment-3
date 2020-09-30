@@ -13,7 +13,7 @@ def index():
 def search():
     if request.args['search']:
         ite = "%" + request.args['search'] + "%"
-        items = Item.query.filter(Item.name.like(ite)),all()
-        return render_template('index.html')
+        items = Item.query.filter(Item.name.like(ite)).all()
+        return render_template('index.html', items=items)
     else:
         return redirect(url_for('main.index'))
