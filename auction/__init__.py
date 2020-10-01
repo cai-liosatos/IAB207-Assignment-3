@@ -41,11 +41,14 @@ def create_app():
     #importing views module here to avoid circular references
     # a commonly used practice.
     from . import views
-    app.register_blueprint(views.bp)
+    app.register_blueprint(views.mainbp)
 
     from . import auth
     app.register_blueprint(auth.bp)
-    
+
+    from . import watchlist
+    app.register_blueprint(watchlist.bp)
+   
     return app
 
 
