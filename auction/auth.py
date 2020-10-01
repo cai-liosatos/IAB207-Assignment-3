@@ -9,10 +9,10 @@ from . import db
 
 
 #create a blueprint
-bp = Blueprint('auth', __name__)
+ bp = Blueprint('auth', __name__)
 
 
- this is the hint for a login function
+#this is the hint for a login function
  @bp.route('/login', methods=['GET', 'POST'])
  def authenticate(): #view function
      print('In Login View function')
