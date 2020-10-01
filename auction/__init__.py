@@ -43,8 +43,8 @@ def create_app():
     from . import views
     app.register_blueprint(views.mainbp)
 
-    from . import auth
-    app.register_blueprint(auth.bp)
+    # from . import auth
+    # app.register_blueprint(auth.bp)
 
     # from . import watchlist
     # app.register_blueprint(watchlist.bp)
