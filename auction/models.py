@@ -2,8 +2,6 @@ from . import db
 from flask_login import UserMixin 
 from datetime import datetime
 
-
-
 class User(db.Model, UserMixin): 
 	__tablename__= 'users'
 	id = db.Column(db.Integer, primary_key=True)
@@ -12,7 +10,6 @@ class User(db.Model, UserMixin):
 	password_hash = db.Column(db.String(255), nullable=True)
 	watchlist = db.relationship('Watchlist', backref='user')
 	bid = db.relationship('Bid', backref='user')
-
 
 class Item(db.Model):
 	__tablename__= 'items'
@@ -31,7 +28,6 @@ class Item(db.Model):
 	status = db.Column(db.String(100), unique=False, nullable=False)
 	watchlist = db.relationship('Watchlist', backref='item')
 	bid = db.relationship('Bid', backref='item')
-
 
 class Bid(db.Model):
 	__tablename__= 'bid'
