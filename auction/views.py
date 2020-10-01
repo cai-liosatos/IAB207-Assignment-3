@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for
 from .models import Item
 
-bp = Blueprint('main', __name__)
+mainbp = Blueprint('main', __name__)
 
 
 @bp.route('/')

@@ -46,15 +46,9 @@ def create_app():
     from . import auth
     app.register_blueprint(auth.bp)
 
-<<<<<<< HEAD
     from . import watchlist
     app.register_blueprint(watchlist.bp)
    
-=======
-    from . import items
-    app.register_blueprint(items.bp)
-
->>>>>>> 8d5f06d688a8a39a9679884134a3d682b885eeba
     return app
 
 
