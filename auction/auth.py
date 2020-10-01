@@ -9,10 +9,10 @@ from . import db
 
 
 #create a blueprint
-bp = Blueprint('auth', __name__)
+#bp = Blueprint('auth', __name__)
 
 
-# this is the hint for a login function
+#this is the hint for a login function
 # @bp.route('/login', methods=['GET', 'POST'])
 # def authenticate(): #view function
 #     print('In Login View function')
@@ -26,7 +26,7 @@ bp = Blueprint('auth', __name__)
 #             error='Incorrect user name'
 #         elif not check_password_hash(u1.password_hash, password): # takes the hash and password
 #             error='Incorrect password'
-#         if error is None:
+#         if error is None:             
 #             login_user(u1)
 #             nextp = request.args.get('next') #this gives the url from where the login page was accessed
 #             print(nextp)
