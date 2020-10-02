@@ -147,10 +147,16 @@
     transition: all .5s ease-in-out
   }
 
-  .jumbotron:hover {
+  .jumbotron {
     border: solid #343a40;
+    border-width: thick;
+  }
+
+  .jumbotron:hover {
     box-shadow: 0px 0px 5px 5px rgba(255, 255, 255, 0.5);
     z-index: 500;
+    border-color: #343a40!important;
+
   }
 
 /* CSS for the Cards */

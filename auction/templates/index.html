@@ -7,16 +7,16 @@
 
     <!-- Background image over the gradient-->
     <div style="background:transparent url('https://cdn.discordapp.com/attachments/399944598924951553/753209632549240872/background-stock-image-1.png') no-repeat center center /cover">
-        <div class="row justify-content-center mt-5 pb-4">
+        <br><div class="row">
              <!--Search Jumbotron-->
             <div class="col-xl-2"></div>
             <div class="col-md-8">
                 <!-- shadow py-4 mb-5  -->
-                <div class="jumbotron border-dark">
+                <div class="jumbotron grow">
                     <h1 class="text-center h1">Find our best items</h1>
                     <form class="form-inline d-flex flex-nowrap" action="{{url_for('main.search')}}" >
                         <input type="text" name="search" class="form-control flex-grow-1 my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                        <button type="submit" class="btn my-2 my-sm-0 searchButton">Submit</button>
+                        <button type="submit" class="btn my-2 my-sm-0 searchButton">Search</button>
                     </form>
                 </div>
             </div>
