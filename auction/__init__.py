@@ -15,7 +15,8 @@ def create_app():
     app.debug=True
     app.secret_key='utroutoru'
     #set the app configuration data 
-    app.config['SQLALCHEMY_DATABASE_URI']=os.environ['sqlite:///marketplace.sqlite']
+    app.config['SQLALCHEMY_DATABASE_URI']=os.environ['postgres://moqiwqhqnhmpdd:d43523f5f2d3723fa5e239fab5f3e723c1e11952e4a49782308d00a4047ed9d9@ec2-54-157-234-29.compute-1.amazonaws.com:5432/deg9pt20fm37pl']
+   #  app.config['SQLALCHEMY_DATABASE_URI']=os.environ['sqlite:///marketplace.sqlite']
     #initialize db with flask app
     db.init_app(app)
 
