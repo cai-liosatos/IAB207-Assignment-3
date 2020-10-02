@@ -41,6 +41,6 @@ class Watchlist(db.Model):
 	__tablename__= 'watchlist'
 	id = db.Column(db.Integer, primary_key=True)
 	userID = db.Column(db.Integer, db.ForeignKey('users.id'))
-	itemName = db.Column(db.String(100), db.ForeignKey('items.name'), unique=False)
+	# Name = db.Column(db.String(100), db.ForeignKey('items.name'), unique=False)
 	addedDate = db.Column(db.DateTime, default=datetime.now())
 
