@@ -26,7 +26,7 @@ class Item(db.Model):
 	currency = db.Column(db.String(3), unique=False, nullable=False)
 	moreInfo = db.Column(db.String(100), unique=False, nullable=True)
 	status = db.Column(db.String(100), unique=False, nullable=False)
-	watchlist = db.relationship('Watchlist', backref='item')
+	# watchlist = db.relationship('Watchlist', backref='item')
 	bid = db.relationship('Bid', backref='item')
 
 class Bid(db.Model):
