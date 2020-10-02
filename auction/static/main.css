@@ -16,11 +16,15 @@
     display: flex;
   }
 
-  h1 {
+  h1, .h1 {
     color: white;
     font-family: 'Titillium Web', sans-serif;
     font-size: 40px;
     text-align: center;
+  }
+
+  .h1 {
+    color: black;
   }
   
   h2, .h2 {
@@ -141,6 +145,12 @@
 
   .carouselgrow {
     transition: all .5s ease-in-out
+  }
+
+  .jumbotron:hover {
+    border: solid #343a40;
+    box-shadow: 0px 0px 5px 5px rgba(255, 255, 255, 0.5);
+    z-index: 500;
   }
 
 /* CSS for the Cards */
