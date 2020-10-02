@@ -22,10 +22,6 @@
     font-size: 40px;
     text-align: center;
   }
-
-  .h1 {
-    color: black;
-  }
   
   h2, .h2 {
     text-align: Left;
@@ -148,6 +144,7 @@
   }
 
   .jumbotron {
+    background-color: #181818;
     border: solid #343a40;
     border-width: thick;
   }
@@ -219,53 +216,53 @@
   }
 
 /* CSS for the Watchlist Table */
-label, input {
-  flex-basis:20px;
-}
-
-#filtersubmit {
-  color: white;
-  line-height: 39px;
+  label, input {
+    flex-basis:20px;
   }
 
-#watchlistInput {
-max-width: 100%;   /* Full-width */
-font-size: 16px; /* Increase font-size */
-border: 1px solid #ddd; /* Add a grey border */
-margin-bottom: 12px; /* Add some space below the input */
-border-radius: 5px
-}
+  #filtersubmit {
+    color: white;
+    line-height: 39px;
+    }
 
-#watchlistTable {
-border-collapse: collapse; /* Collapse borders */
-width: 100%; /* Full-width */
-border: 1px solid #ddd; /* Add a grey border */
-font-size: 18px; /* Increase font-size */
-}
+  #watchlistInput {
+  max-width: 100%;   /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+  border-radius: 5px
+  }
 
-#watchlistTable th, #watchlistTable td {
-text-align: left; /* Left-align text */
-padding: 12px; /* Add padding */
-}
+  #watchlistTable {
+  border-collapse: collapse; /* Collapse borders */
+  width: 100%; /* Full-width */
+  border: 1px solid #ddd; /* Add a grey border */
+  font-size: 18px; /* Increase font-size */
+  }
 
-#watchlistTable tr {
-/* Add a bottom border to all table rows */
-border-bottom: 1px solid #ddd;
-}
+  #watchlistTable th, #watchlistTable td {
+  text-align: left; /* Left-align text */
+  padding: 12px; /* Add padding */
+  }
 
-#watchlistTable {
-background-color: white
-}
+  #watchlistTable tr {
+  /* Add a bottom border to all table rows */
+  border-bottom: 1px solid #ddd;
+  }
 
-#watchlistTable tr:hover {
-/* Add a grey background color to the table header, table cell */
-background-color: #cccccc;
-}
+  #watchlistTable {
+  background-color: white
+  }
 
-#watchlistTable tr.header:hover {
-/* Add a permanent white background to the table header */
-background-color: white;
-}
+  #watchlistTable tr:hover {
+  /* Add a grey background color to the table header, table cell */
+  background-color: #cccccc;
+  }
+
+  #watchlistTable tr.header:hover {
+  /* Add a permanent white background to the table header */
+  background-color: white;
+  }
 
 /* CSS for the Footer */
   .site-footer
