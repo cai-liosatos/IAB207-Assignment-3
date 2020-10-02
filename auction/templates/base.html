@@ -1,0 +1,231 @@
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static',filename='main.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
+
+    <!-- Tab picture -->
+    <link rel="icon" href="../static/image/tab-icon.png">
+    <!-- Tab name -->
+    <title>Computer Component Auction</title>
+  </head>
+  <body>
+    <header>
+        <!-- The Navbar -->
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Links to other pages -->
+            <div class="collapse navbar-collapse" id="navbarNav" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="watchlist.html">Watchlist</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Items/create.html">List Item</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Account Settings</a>
+                    </li>
+                    <div class="vl"></div>    
+                    
+                    <!-- Dropdown menus of categories -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            CPUs
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Intel</a>
+                            <a class="dropdown-item" href="#">AMD</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        GPUs
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">AMD</a>
+                            <a class="dropdown-item" href="#">Nvidia</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Motherboard
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Asus</a>
+                            <a class="dropdown-item" href="#">MSI</a>
+                            <a class="dropdown-item" href="#">Intel</a>
+                            <a class="dropdown-item" href="#">EVGA</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        RAM
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Asus</a>
+                            <a class="dropdown-item" href="#">Lenovo</a>
+                            <a class="dropdown-item" href="#">Corsair</a>
+                            <a class="dropdown-item" href="#">G.Skill</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Power Supply Units
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Corsair</a>
+                            <a class="dropdown-item" href="#">Cooler Master</a>
+                            <a class="dropdown-item" href="#">Seasonic</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Cooling Fans 
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">AMD</a>
+                            <a class="dropdown-item" href="#">Cooler Master</a>
+                            <a class="dropdown-item" href="#">Deepcool</a>
+                        </div>
+                    </li>
+                  </ul>
+                  {% if current_user.is_authenticated %} 
+                  <a class="nav-item nav-link disabled text-muted" href="#"><span>Welcome, {{ current_user.username }}</span></a> 
+                  <a class="nav-item nav-link" href="{{ url_for('auth.logout') }}">Log Out</a> 
+                  {% else %} 
+                    <a class="nav-item nav-link" href="{{ url_for('auth.register') }}">Register</a> 
+                    <a class="nav-item nav-link" href="{{ url_for('auth.login') }}">Log In</a> 
+                  {% endif %} 
+                </ul>
+            </div>
+        </nav>
+
+    {% block header %}
+    {% endblock %}
+  </header>
+
+
+
+{% block content %}
+
+{% endblock %}
+
+<!-- Site footer -->
+<footer class="site-footer">
+    <hr>
+
+    <!-- Container for the footer -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <h6>About</h6>
+          <p class="text-justify">Learning curve release niche market customer seed round termsheet business-to-consumer. Non-disclosure agreement long tail supply chain equity interaction design termsheet iPhone buyer handshake niche market angel investor. Assets MVP business plan. Seed round early adopters creative business-to-consumer conversion agile development prototype metrics. </p>
+        </div>
+
+        <!-- Links to the different categories -->
+        <div class="col-xs-6 col-md-3">
+          <h6>Categories</h6>
+          <ul class="footer-links">
+            <li><a href="#">CPUs</a></li>
+            <li><a href="#">GPUs</a></li>
+            <li><a href="#">Motherboards</a></li>
+            <li><a href="#">RAM</a></li>
+            <li><a href="#">Power Supply Units</a></li>
+            <li><a href="#">Cooling Fans</a></li>
+          </ul>
+        </div>
+
+        <!-- Stock links to potentially different pages -->
+        <div class="col-xs-6 col-md-3">
+          <h6>Quick Links</h6>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Contribute</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Sitemap</a></li>
+            
+            <!-- Modal (to view "cookies") -->
+            <li><a href="#exampleModalCenter" data-toggle="modal" data-target="#exampleModalCenter">Cookies</a></li>                      
+              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">
+                            Cai's Favourite Double Chocolate Chip Cookie Recipe<br><br>
+
+                            Ingredients:<br>
+                            -2 cups all-purpose flour<br>
+                            -1/2 cup cocoa powder<br>
+                            -1 tsp. baking soda<br>
+                            -1 cup softened/room-temperature butter<br>
+                            -1/2 cup white granulated sugar<br>
+                            -1/2 cup packed brown sugar (light brown sugar works, too)<br>
+                            -1 tsp. salt<br>
+                            -2 eggs<br>
+                            -2 tsp. instant coffee granules, mixed in 2 tsp. of water (used in place of 2 tsp. vanilla extract; either of the two would amplify the chocolate taste)<br>
+                            -1 cup semisweet chocolate chips<br><br>
+                            
+                            Directions: <br>
+                            1) Preheat oven to 175C (350F)<br>
+                            2) Whisk flour, cocoa powder, baking soda, and salt in a medium bowl<br>
+                            3) In larger bowl, beat butter and both sugars until smooth with electric beater. Beat in one egg until completely incorporated. Beat in second egg along with coffee mix (or vanilla) until blended.<br>
+                            4) Mix in dry ingredients until just incorporated.<br>
+                            5) Fold in chocolate chip; mix just enough to combine<br>
+                            6) Drop by heaped teaspoonfuls onto ungreased parchment paper<br>
+                            7) Bake until edges are slightly darkened (not burnt!); ~8-12 minutes, depending on oven<br>
+                            8) Allow to cool on baking sheet for one minute before transferring to wire rack. <br>
+                            9) Enjoy :)
+                          </label>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </ul>
+        </div>
+      </div>
+      <hr>
+    </div>
+
+    <!-- Container for the Copyright/Social Media Links -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-6 col-xs-12">
+          <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by 
+            <a href="#">Cai Liosatos</a>.
+          </p>
+        </div>
+
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <ul class="social-icons">
+            <li><a class="facebook" href="https://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+            <li><a class="twitter" href="https://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
+            <li><a class="dribbble" href="https://www.instagram.com"><i class="fa fa-instagram"></i></a></li>
+            <li><a class="linkedin" href="https://www.linkedin.com"><i class="fa fa-linkedin"></i></a></li>   
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</footer>            
+</body>
+</html>
