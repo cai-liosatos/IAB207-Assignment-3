@@ -7,20 +7,33 @@
 
     <!-- Background image over the gradient-->
     <div style="background:transparent url('https://cdn.discordapp.com/attachments/399944598924951553/753209632549240872/background-stock-image-1.png') no-repeat center center /cover">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %} <!-- check if there are any messages -->
+        <div class="container-fluid">
+            <div class="row mt-3 mb-3">
+                <div class="col-md-12">
+                {% for category, message in messages %} <!--loop through the messages-->
+                    <div class="alert alert-{{category}}">{{ message }}</div> <!--display as alert-->
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endwith %}
         <br><div class="row">
              <!--Search Jumbotron-->
-            <div class="col-xl-2"></div>
-            <div class="col-md-8">
+            <div class="col-xl-2 col-md-1"></div>
+            <div class="col-xl-8 col-md-10">
                 <!-- shadow py-4 mb-5  -->
                 <div class="jumbotron grow">
                     <h1 class="text-center">Find our best items</h1>
                     <form class="form-inline d-flex flex-nowrap" action="{{url_for('main.search')}}" >
-                        <input type="text" name="search" class="form-control flex-grow-1 my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                        <input type="text" name="search" class="form-control flex-grow-1 my-1 mr-sm-2" id="inlineFormCustomSelectPref" placeholder="Search...">
                         <button type="submit" class="btn my-2 my-sm-0 searchButton">Search</button>
                     </form>
                 </div>
             </div>
-            <div class="col-xl-2"></div>
+            <div class="col-xl-2 col-md-1"></div>
         </div>
 
         <div class="row">
@@ -77,15 +90,32 @@
 
     {% block content %}
 <main>
-    <div class="row">
+    <br><br><br><div class="row">
         <div class="col-12">
             <h2>Recently Viewed Items:</h2>
         </div>
     </div>
 
     <!-- Cards that display the recent items the user has viewed -->
+    {% if items %}
     <div class="row">
+    {% for item in range(4) %}
         <div class="col-xl-3 col-md-6">
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                <div class="card-head">
+                    <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
+                </div>
+                <div class="card-body">
+                    <a href="{{url_for('item.show', id=item.id)}}"><h5 class="card-title">{{item.name}}</h5></a><br>
+                    <p>{{item.currency}} {{item.currentPrice}}</p>
+                </div>
+                <div class="dimmer"></div>
+            </div> 
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}<br><br><br>
+        <!-- <div class="col-xl-3 col-md-6">
             <div class="card cardDisplay p-3 mb-5 border-dark grow">
                 <div class="card-head">
                     <a href="items/show.html"><img src="../static/image/noctua-heatsync.jpg" alt="..." class="cardImg"></a>
@@ -96,42 +126,7 @@
                 </div>
                 <div class="dimmer"></div>
             </div> 
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                <div class="card-head">
-                    <a href="items/show.html"><img src="../static/image/corsair-ll.jpg" alt="..." class="cardImg"></a>
-                </div>
-                <div class="card-body">
-                    <a href="items/show.html"><h5 class="card-title">Corsair LL120 RGB 120mm Dual Light Loop PWM Fan White with Lighting Node Pro - 3 Pack</h5></a><br>
-                    <p>AU $170</p>
-                </div>
-                <div class="dimmer"></div>
-            </div> 
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                <div class="card-head">
-                    <a href="items/show.html"><img src="../static/image/msi-b450.jpg" alt="..." class="cardImg"></a>
-                </div>
-                <div class="card-body">
-                    <a href="items/show.html"><h5 class="card-title">MSI B450 Tomahawk Max Motherboard</h5></a><br>
-                    <p>AU $300</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                <div class="card-head">
-                    <a href="items/show.html"><img src="../static/image/psu.jpg" alt="..." class="cardImg"></a>
-                </div>
-                <div class="card-body">
-                    <a href="items/show.html"><h5 class="card-title">Corsair RM850X(2018) 850W 80+ Gold Certified Fully Modular PSU Black</h5></a><br>
-                    <p>AU $180</p>
-                </div>
-            </div>
-        </div>
-    </div><br><br><br>
+        </div> -->
 
     <!-- List of some items in the CPU category -->
 

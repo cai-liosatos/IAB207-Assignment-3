@@ -64,4 +64,4 @@ def logout():
     login_form = LoginForm()
     logout_user()
     flash('You have been logged out', 'warning') 
-    return render_template('user.html', form=login_form, heading='Login')
+    return render_template('index.html')
