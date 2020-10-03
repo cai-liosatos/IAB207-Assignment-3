@@ -34,8 +34,8 @@ def create():
         db.session.add(item)
         db.session.commit()
         # items = Item.query.all()
-        # return render_template('items/create.html', form=form)
-    return render_template('index.html', form=form)
+        return redirect('destinations.create')
+    return render_template('Items/create.html', form=form)
     
 
 
