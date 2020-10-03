@@ -8,7 +8,7 @@ from werkzeug.utils import secure_filename
 from flask_login import login_required, current_user
 
 #create a blueprint
-bp = Blueprint('item', __name__, url_prefix='/Items')
+bp = Blueprint('item', __name__, url_prefix='/items')
 
 def check_upload_file(form):
     fp=form.image.data
@@ -33,7 +33,7 @@ def create():
         db.session.add(item)
         db.session.commit()
         return redirect(url_for('item.create'))
-    return render_template('Items/create.html', form=form)
+    return render_template('items/create.html', form=form)
     
 
 
