@@ -43,4 +43,4 @@ class ItemForm(FlaskForm):
   postageprice = StringField('Postage Price:', validators=[InputRequired()])
   currency = StringField('Currency', validators=[InputRequired()])
   description = TextAreaField('Description', validators=[InputRequired()])
-#   submit = SubmitField("Create")
+  submit = SubmitField("Create")

@@ -23,29 +23,17 @@ def check_upload_file(form):
 @bp.route('/create', methods = ['GET', 'POST'])
 @login_required #decorator between route and view function
 def create():
-    form = ItemForm(request.form)
-    return render_template('items/create.html')
-    if request.form.get('submit') == 'submit':
+    items = Item.query.all()
+    print('Method type: ', request.method)
+    form = ItemForm()
+    if(form.validate_on_submit()):
         db_file_path=check_upload_file(form)
-        # name=request.form.get('name')
-        # category=request.form.get('category')
-        # manufacturer=request.form.get('manufacturer')
-        # condition=request.form.get('condition')
-        # image=request.form.get('image')
-        # finishdate=request.form.get('finishdate')
-        # postagedate=request.form.get('postagedate')
-        # startingprice=request.form.get('startingprice')
-        # postageprice=request.form.get('postageprice')
-        # currency=request.form.get('currency')
-        # description=request.form.get('description')
-        # TCs=request.form.get('TCs')
-        # db_file_path=check_upload_file()
         item=Item(name=form.name.data, category=form.category.data, manufacturer=form.manufacturer.data, condition=form.condition.data, image=db_file_path, finishDate=form.finishdate.data, deliveryTime=form.postagedate.data, currentPrice=form.startingprice.data, postagePrice=form.postageprice.data, currency=form.currency.data, moreInfo=form.description.data)
         db.session.add(item)
         db.session.commit()
-        flash('Item successfully listed', 'success') 
-        return redirect('index.html')
+        return render_template('index.html', items=items)
     return render_template('items/create.html', form=form)
+    
 
 
 # @bp.route('/create', methods = ['GET', 'POST'])
