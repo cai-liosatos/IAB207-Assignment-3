@@ -43,18 +43,4 @@ class ItemForm(FlaskForm):
     postageprice = StringField('Postage Price:', validators=[InputRequired()])
     currency = StringField('Currency ($)', validators=[InputRequired()])
     description = TextAreaField('Description', validators=[InputRequired()])
-    submit = SubmitField("Create")
-
-
-
-    # name = StringField('Country', validators=[InputRequired()])
-    # # adding two validators, one to ensure input is entered and other to check if the 
-    # #description meets the length requirements
-    # description = TextAreaField('Description', 
-    #             validators=[InputRequired()])
-    # #create a filefield that takes two validators - File required and File Allowed
-    # image = FileField('Destination Image', validators=[FileRequired(message='Image can not be empty'),
-    #                                         FileAllowed(ALLOWED_FILE, message='Only support png, jpg, JPG, PNG, bmp')])
-    
-    # currency = StringField('Currency', validators=[InputRequired()])
-    # submit = SubmitField("Create")
+    submit = SubmitField("Submit")
