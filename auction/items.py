@@ -26,15 +26,15 @@ def create():
     # print('Method type: ', request.method)
     form = ItemForm()
     if(form.validate_on_submit()):
-        print('good job', 'success')
+        # print('good job', 'success')
         db_file_path=check_upload_file(form)
         item=Item(name=form.name.data, category=form.category.data, manufacturer=form.manufacturer.data, condition=form.condition.data, image=db_file_path, 
         finishDate=form.finishdate.data, deliveryTime=form.postagedate.data, currentPrice=form.startingprice.data, postagePrice=form.postageprice.data, 
         currency=form.currency.data, moreInfo=form.description.data)
         db.session.add(item)
         db.session.commit()
-        items = Item.query.all()
-        return redirect(url_for('index.html', items=items))
+        # items = Item.query.all()
+        return render_template('items/create.html', form=form)
     else:
         return render_template('items/create.html', form=form)
     
