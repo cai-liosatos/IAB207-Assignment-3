@@ -23,7 +23,6 @@ def check_upload_file(form):
 @bp.route('/create', methods = ['GET', 'POST'])
 @login_required #decorator between route and view function
 def create():
-    # print('Method type: ', request.method)
     form = ItemForm()
     if(form.validate_on_submit()):
         # print('good job', 'success')
@@ -33,8 +32,7 @@ def create():
         currency=form.currency.data, moreInfo=form.description.data)
         db.session.add(item)
         db.session.commit()
-        # items = Item.query.all()
-        return redirect('item.create')
+        return redirect(url_for('item.create'))
     return render_template('Items/create.html', form=form)
     
 
