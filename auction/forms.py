@@ -31,7 +31,7 @@ class ItemForm(FlaskForm):
     # adding two validators, one to ensure input is entered and other to check if the 
     #description meets the length requirements
 
-    category = SelectField('Category:', choices=[('CPU', 'CPU'), ('GPU','GPU'), ('Motherboard','Motherboard'), ('RAM','RAM'), ('Power','Power Supply Unit'), ('Cooling','Cooling Fan')], validators=[InputRequired()])
+    category = SelectField('Category:', choices=[('CPU', 'CPU'), ('GPU','GPU'), ('Motherboard','Motherboard'), ('RAM','RAM'), ('Power Supply Unit','Power Supply Unit'), ('Cooling Fan','Cooling Fan')], validators=[InputRequired()])
     manufacturer = StringField('Manufacturer', validators=[InputRequired()])
     condition = SelectField('Condition:', choices=[('Brand New', 'Brand New'), ('Used', 'Used')], validators=[InputRequired()])
     #create a filefield that takes two validators - File required and File Allowed
