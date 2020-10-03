@@ -1,6 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, SelectField
-from wtforms.fields.html5 import DateField
+from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, SelectField, DateField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 from flask_wtf.file import FileRequired, FileField, FileAllowed
 
@@ -37,7 +36,7 @@ class ItemForm(FlaskForm):
     #create a filefield that takes two validators - File required and File Allowed
     image = FileField('Image:', validators=[FileRequired(message='Image can not be empty'),
                                             FileAllowed(ALLOWED_FILE, message='Only support png, jpg, JPG, PNG, bmp')])
-    finishdate =  DateField('Finish Date: (dd-mm-yyyy)', format='%Y-%m-%d', validators=[InputRequired()])
+    finishdate =  DateField('Finish Date (dd-mm-yyyy):', format='%d-%m-%y', validators=[InputRequired()])
     postagedate = SelectField('Estimated Delivery Time (weeks):', choices=[('0-1', '0-1'), ('1-2', '1-2'), ('2-3', '2-3'), ('3-4', '3-4'), ('4+', '4+')], validators=[InputRequired()])
     startingprice = StringField('Starting Price:', validators=[InputRequired()])
     postageprice = StringField('Postage Price:', validators=[InputRequired()])
