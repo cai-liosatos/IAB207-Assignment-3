@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms.fields import TextAreaField,SubmitField, StringField, PasswordField, SelectField
+from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, SelectField
 from wtforms.fields.html5 import DateField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 from flask_wtf.file import FileRequired, FileField, FileAllowed
@@ -41,7 +41,7 @@ class ItemForm(FlaskForm):
     postagedate = SelectField('Estimated Delivery Time (weeks):', choices=[('0-1', '0-1'), ('1-2', '1-2'), ('2-3', '2-3'), ('3-4', '3-4'), ('4+', '4+')], validators=[InputRequired()])
     startingprice = StringField('Starting Price:', validators=[InputRequired()])
     postageprice = StringField('Postage Price:', validators=[InputRequired()])
-    currency = StringField('Currency', validators=[InputRequired()])
+    currency = StringField('Currency ($)', validators=[InputRequired()])
     description = TextAreaField('Description', validators=[InputRequired()])
     submit = SubmitField("Create")
 
