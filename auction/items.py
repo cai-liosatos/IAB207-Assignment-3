@@ -28,10 +28,12 @@ def create():
     form = ItemForm()
     if(form.validate_on_submit()):
         db_file_path=check_upload_file(form)
-        item=Item(name=form.name.data, category=form.category.data, manufacturer=form.manufacturer.data, condition=form.condition.data, image=db_file_path, finishDate=form.finishdate.data, deliveryTime=form.postagedate.data, currentPrice=form.startingprice.data, postagePrice=form.postageprice.data, currency=form.currency.data, moreInfo=form.description.data)
+        item=Item(name=form.name.data, category=form.category.data, manufacturer=form.manufacturer.data, condition=form.condition.data, image=db_file_path, 
+                finishDate=form.finishdate.data, deliveryTime=form.postagedate.data, currentPrice=form.startingprice.data, postagePrice=form.postageprice.data, 
+                currency=form.currency.data, moreInfo=form.description.data)
         db.session.add(item)
         db.session.commit()
-        return redirect('index.html', items=items)
+        return redirect(url_for('index.html', items=items))
     return render_template('items/create.html', form=form)
     
 
