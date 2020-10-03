@@ -20,7 +20,7 @@ class Item(db.Model):
 	condition = db.Column(db.String(100), unique=False, nullable=True)
 	image = db.Column(db.String(400), nullable=False)
 	finishDate = db.Column(db.DateTime, default=datetime.now(), unique=False, nullable=False)
-	deliveryTime = db.Column(db.String, unique=False, nullable=False)
+	deliveryTime = db.Column(db.DateTime, unique=False, nullable=False)
 	currentPrice = db.Column(db.Integer, unique=False, nullable=False)
 	postagePrice = db.Column(db.Integer, unique=False, nullable=False)
 	currency = db.Column(db.String(3), unique=False, nullable=False)
