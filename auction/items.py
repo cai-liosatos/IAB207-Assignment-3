@@ -50,7 +50,7 @@ def create():
         db.session.commit()
         items = Item.query.all()
         return redirect(url_for('index.html', items=items))
-    return render_template(url_for('items/create.html', form=form))
+    return render_template('items/create.html', form=form)
     
 
 
