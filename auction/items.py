@@ -32,7 +32,7 @@ def create():
         currency=form.currency.data, moreInfo=form.description.data)
         db.session.add(item)
         db.session.commit()
-        return redirect(url_for('main.index'))
+        return redirect(url_for('item.create'))
     return render_template('items/create.html', form=form)
     
 
