@@ -24,9 +24,8 @@ def check_upload_file(form):
 @login_required #decorator between route and view function
 def create():
     # print('Method type: ', request.method)
-    form = ItemForm()
+    form = request.form.get(ItemForm())
     return render_template('items/create.html', form=form)
-
     if(form.validate_on_submit()):
         print('good job', 'success')
         db_file_path=check_upload_file(form)
