@@ -25,32 +25,18 @@ def check_upload_file(form):
 def create():
     # print('Method type: ', request.method)
     form = ItemForm()
-    # return render_template('items/create.html', form=form)
-    if(form.validate_on_submit() == True):
+    if(form.validate_on_submit()):
+        print('good job', 'success')
         db_file_path=check_upload_file(form)
-        # print('good job', 'success')
-        #get values from form
-        name=form.name.data
-        category=form.category.data
-        manufacturer=form.manufacturer.data
-        condition=form.condition.data
-        image=form.db_file_path.data
-        finishdate=form.finishdate.data
-        postagedate=form.postagedate.data
-        startingprice=form.startingprice.data
-        postageprice=form.postageprice.data
-        currency=form.currency.data
-        description=form.description.data
-        
-        #insert fields into DB
-        item=Item(name=name, category=category, manufacturer=manufacturer, condition=condition, image=db_file_path, 
-        finishDate=finishdate, deliveryTime=postagedate, currentPrice=startingprice, postagePrice=postageprice, 
-        currency=currency, moreInfo=description)
+        item=Item(name=form.name.data, category=form.category.data, manufacturer=form.manufacturer.data, condition=form.condition.data, image=db_file_path, 
+        finishDate=form.finishdate.data, deliveryTime=form.postagedate.data, currentPrice=form.startingprice.data, postagePrice=form.postageprice.data, 
+        currency=form.currency.data, moreInfo=form.description.data)
         db.session.add(item)
         db.session.commit()
         items = Item.query.all()
         return redirect(url_for('index.html', items=items))
-    return render_template('items/create.html', form=form)
+    else:
+        return render_template('items/create.html', form=form)
     
 
 
