@@ -35,7 +35,7 @@ def create():
         db.session.commit()
         # items = Item.query.all()
         # return render_template('items/create.html', form=form)
-    return render_template('items/create.html', form=form)
+    return render_template('index.html', form=form)
     
 
 
