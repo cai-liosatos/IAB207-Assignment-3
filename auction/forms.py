@@ -31,14 +31,14 @@ class ItemForm(FlaskForm):
     # adding two validators, one to ensure input is entered and other to check if the 
     #description meets the length requirements
 
-    # category = SelectField('Category:', choices=[('CPU'), ('GPU'), ('Motherboard'), ('RAM'), ('Power Supply Unit'), ('Cooling Fan')], validators=[InputRequired()])
+    category = SelectField('Category:', choices=[('CPU', 'CPU'), ('GPU','GPU'), ('Motherboard','Motherboard'), ('RAM','RAM'), ('Power','Power Supply Unit'), ('Cooling','Cooling Fan')], validators=[InputRequired()])
     manufacturer = StringField('Manufacturer', validators=[InputRequired()])
-    # condition = SelectField('Condition:', choices=[('Brand New'), ('Used')], validators=[InputRequired()])
+    condition = SelectField('Condition:', choices=[('Brand New', 'Brand New'), ('Used', 'Used')], validators=[InputRequired()])
     #create a filefield that takes two validators - File required and File Allowed
     image = FileField('Image:', validators=[FileRequired(message='Image can not be empty'),
                                             FileAllowed(ALLOWED_FILE, message='Only support png, jpg, JPG, PNG, bmp')])
     finishdate =  DateField('Finish Date: (dd-mm-yyyy)', format='%Y-%m-%d', validators=[InputRequired()])
-    # postagedate = SelectField('Estimated Delivery Time (weeks):', choices=[('0-1'), ('1-2'), ('2-3'), ('3-4'), ('4+')], validators=[InputRequired()])
+    postagedate = SelectField('Estimated Delivery Time (weeks):', choices=[('0-1', '0-1'), ('1-2', '1-2'), ('2-3', '2-3'), ('3-4', '3-4'), ('4+', '4+')], validators=[InputRequired()])
     startingprice = StringField('Starting Price:', validators=[InputRequired()])
     postageprice = StringField('Postage Price:', validators=[InputRequired()])
     currency = StringField('Currency', validators=[InputRequired()])
