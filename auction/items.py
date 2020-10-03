@@ -29,7 +29,7 @@ def create():
         db_file_path=check_upload_file(form)
         item=Item(name=form.name.data, category=form.category.data, manufacturer=form.manufacturer.data, condition=form.condition.data, image=db_file_path, 
         finishDate=form.finishdate.data, deliveryTime=form.postagedate.data, currentPrice=form.startingprice.data, postagePrice=form.postageprice.data, 
-        currency=form.currency.data, moreInfo=form.description.data)
+        currency=form.currency.data, moreInfo=form.description.data, status="open")
         db.session.add(item)
         db.session.commit()
         return redirect(url_for('item.create'))
