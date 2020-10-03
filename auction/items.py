@@ -24,7 +24,7 @@ def check_upload_file(form):
 @login_required #decorator between route and view function
 def create():
     form = ItemForm()
-    if(form.validate_on_submit()==True):
+    if form.validate_on_submit():
         # print('good job', 'success')
         db_file_path=check_upload_file(form)
         item=Item(name=form.name.data, category=form.category.data, manufacturer=form.manufacturer.data, condition=form.condition.data, image=db_file_path, 
