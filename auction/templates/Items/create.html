@@ -13,7 +13,7 @@
             <div class="form-row">
               <div class="col-md-12 mb-3">
                 <label for="validationTooltip01"><h6>Item Name</h6></label>
-                <input type="text" class="form-control" id="validationTooltip01" placeholder="Item name" required>
+                <input type="text" class="form-control" id="validationTooltip01" name="name" placeholder="Item name" required>
                 <div class="invalid-tooltip">Please provide a name</div>
               </div>
             </div><br>
@@ -23,7 +23,7 @@
               <!-- User inputs category of item -- doesnt show up on ItemListing but would be used to define where the item information should be stored -->
               <div class="col-md-4 col-sm-6 mb-3">
                 <label for="validationTooltip02"><h6>Category</h6></label>
-                <select class="custom-select" required>
+                <select class="custom-select" name="category" required>
                   <option value="">None</option>
                   <option value="1">CPU</option>
                   <option value="2">GPU</option>
@@ -38,7 +38,7 @@
               <!-- Manufacturer of product - options depend on the category selected -->
               <div class="col-md-4 col-sm-6 mb-3">
                 <label for="validationTooltip02"><h6>Manufacturer</h6></label>
-                <select class="custom-select" required>
+                <select class="custom-select" name="manufacturer" required>
                   <option value="">None</option>
                   <option value="1">Manufacturer1</option>
                   <option value="2">Manufacturer2</option>
@@ -53,7 +53,7 @@
               <!-- User selects condition of item -->
               <div class="col-md-4 mb-3">
                 <label for="validationTooltip03"><h6>Condition</h6></label>
-                <select class="custom-select" required>
+                <select class="custom-select" name="condition" required>
                   <option value="">None</option>
                   <option value="1">Brand New</option>
                   <option value="2">Used</option>
@@ -74,38 +74,42 @@
               <!-- Auction finish date/delivery time selector -->
               <div class="col-xl-3 col-md-4 col-sm-6 mb-3">
                 <label for="validationTooltip08"><h6>Auction Finish Date:</h6></label><br>
-                <input type="date" id="AucFin" name="AucFinish" required>
+                <input type="date" id="AucFin" name="finishdate" required>
                 <div class="invalid-tooltip">Please select a valid date</div>
               </div>
               <div class="col-xl-3 col-md-4 col-sm-6 mb-3">
-                <label for="validationTooltip09"><h6>Estimated Delivery Time:</h6></label><br>
-                <input type="date" id="Deliv1" name="Deliv1" required>
-                <div class="invalid-tooltip">Please select a valid time period</div>
-                
-                <input type="date" id="Deliv2" name="Deliv2" required>
-                <div class="invalid-tooltip">Please select a valid time period</div>
+                <label for="validationTooltip08"><h6>Postage Date:</h6></label><br>
+                <select class="custom-select" name="postagedate" required>
+                  <option value="">None</option>
+                  <option value="1">1-2</option>
+                  <option value="2">2-3</option>
+                  <option value="3">3-4</option>
+                  <option value="4">4+</option>
+
+                </select>
+                <div class="invalid-tooltip">Please select a valid date</div>
               </div>
             </div><br>
             <div class="form-row">
+                <!-- Starting Price selector -->
               <div class="col-md-4 col-sm-6 mb-4">
 
-                <!-- Starting Price selector -->
                 <label for="validationTooltip05"><h6>Starting Price</h6></label>
-                <input type="number" min="0" step="any" class="form-control" id="validationTooltip04" placeholder="0" required>
+                <input type="number" min="0" step="any" name="startingprice" class="form-control" id="validationTooltip04" placeholder="0" required>
                 <div class="invalid-tooltip">Please select a valid price</div>
               </div>
 
               <!-- Postage Price selector -->
               <div class="col-md-4 col-sm-6 mb-4">
                 <label for="validationTooltip06"><h6>Postage Price</h6></label>
-                <input type="number" min="0" step="any" class="form-control" id="validationTooltip05" placeholder="0" required>
+                <input type="number" min="0" step="any" name="postageprice" class="form-control" id="validationTooltip05" placeholder="0" required>
                 <div class="invalid-tooltip">Please select a valid price</div>
               </div>
 
                <!-- Currency selector-->
               <div class="col-md-4 mb-4">
                 <label for="validationTooltip07"><h6>Currency</h6></label>
-                <select class="custom-select" required>
+                <select class="custom-select" name="currency" required>
                   <option selected value="">Select currency</option>
                   <option value="USD">United States Dollars</option>
                   <option value="EUR">Euro</option>
@@ -196,7 +200,7 @@
               <div class="col-md-12 mb-3">
                 <div class="form-group">
                   <label for="exampleFormControlTextarea1"><h6>Additional Information</h6></label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
               </div>
             </div>
@@ -206,7 +210,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="invalidCheck2" data-toggle="modal" data-target="#exampleModalCenter" required>
+                    <input class="form-check-input" type="checkbox" id="invalidCheck2" data-toggle="modal" name="TCs" data-target="#exampleModalCenter" required>
                     <div class="invalid-tooltip">Please agree to Terms and Conditions</div>
                     <label class="form-check-label" for="invalidCheck2">
                       <p>I agree to <a href="#exampleModalCenter" data-toggle="modal" data-target="#exampleModalCenter">Terms and Conditions</a></p>                      
@@ -256,6 +260,7 @@
 
             <!-- Button to list item -->
             <button class="btn btn-dark" type="submit">List Item</button>
+            <!-- action="{{url_for('item.create')}}" -->
           </form>
         </div>
       </div>
