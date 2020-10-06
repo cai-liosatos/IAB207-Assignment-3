@@ -4,7 +4,7 @@ from datetime import datetime
 
 class User(db.Model, UserMixin): 
 	__tablename__= 'users'
-	id = db.Column(db.Integer, primary_key=True)
+	id = db.Column(db.Integer, primary_key=True, backref='item')
 	username = db.Column(db.String(100), index=True, unique=True, nullable=False)
 	email = db.Column(db.String(100), index=True, unique=True, nullable=False)
 	password_hash = db.Column(db.String(255), nullable=False)
@@ -14,6 +14,7 @@ class User(db.Model, UserMixin):
 class Item(db.Model):
 	__tablename__= 'items'
 	id = db.Column(db.Integer, primary_key=True)
+	userID = db.Column(db.Integer, db.ForeignKey('users.id'), unique=True, nullable=False)
 	name = db.Column(db.String(100), unique=False, nullable=False)
 	category = db.Column(db.String(100), index=True, unique=False, nullable=False)
 	manufacturer = db.Column(db.String(100), unique=False, nullable=True)
