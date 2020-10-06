@@ -20,10 +20,10 @@ def check_upload_file(form):
     fp.save(upload_path)
     return db_upload_path
 
-@bp.route('/<id>') 
-def show(id): 
-  destination = Destination.query.filter_by(id=id).first() 
-  return render_template('items/show.html', destination=destination, form=cform)
+#@bp.route('/<id>') 
+#def show(id): 
+  #destination = Destination.query.filter_by(id=id).first() 
+  #return render_template('items/show.html', destination=destination, form=cform)
 
 @bp.route('/create', methods = ['GET', 'POST'])
 @login_required #decorator between route and view function
