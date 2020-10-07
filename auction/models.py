@@ -41,7 +41,7 @@ class Bid(db.Model):
 class Watchlist(db.Model):
 	__tablename__= 'watchlist'
 	id = db.Column(db.Integer, primary_key=True)
-	userID = db.Column(db.Integer, db.ForeignKey('user.id'))
+	userID = db.Column(db.Integer, db.ForeignKey('users.id'))
 	# Name = db.Column(db.String(100), db.ForeignKey('items.name'), unique=False)
 	addedDate = db.Column(db.DateTime, default=datetime.now())
 
