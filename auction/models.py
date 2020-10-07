@@ -5,12 +5,13 @@ from datetime import datetime
 class User(db.Model, UserMixin): 
 	__tablename__= 'users'
 	id = db.Column(db.Integer, primary_key=True)
-	item = db.relationship('Item', backref='user')
 	username = db.Column(db.String(100), index=True, unique=True, nullable=False)
 	email = db.Column(db.String(100), index=True, unique=True, nullable=False)
 	password_hash = db.Column(db.String(255), nullable=False)
 	watchlist = db.relationship('Watchlist', backref='user')
 	bid = db.relationship('Bid', backref='user')
+	item = db.relationship('Item', backref='user')
+
 
 class Item(db.Model):
 	__tablename__= 'items'
@@ -28,7 +29,7 @@ class Item(db.Model):
 	currency = db.Column(db.String(3), unique=False, nullable=False)
 	moreInfo = db.Column(db.String(100), unique=False, nullable=True)
 	status = db.Column(db.String(100), unique=False, nullable=False)
-	# watchlist = db.relationship('Watchlist', backref='item')
+	watchlist = db.relationship('Watchlist', backref='item')
 	bid = db.relationship('Bid', backref='item')
 
 class Bid(db.Model):
@@ -43,6 +44,6 @@ class Watchlist(db.Model):
 	__tablename__= 'watchlist'
 	id = db.Column(db.Integer, primary_key=True)
 	userID = db.Column(db.Integer, db.ForeignKey('users.id'))
-	# Name = db.Column(db.String(100), db.ForeignKey('items.name'), unique=False)
+	itemId = db.Column(db.Integer, db.ForeignKey('items.id'))
 	addedDate = db.Column(db.DateTime, default=datetime.now())
 
