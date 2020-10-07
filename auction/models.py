@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
 class Item(db.Model):
 	__tablename__= 'items'
 	id = db.Column(db.Integer, primary_key=True)
-	userID = db.Column(db.Integer, db.ForeignKey('user.id'))
+	userID = db.Column(db.Integer, db.ForeignKey('users.id'))
 	name = db.Column(db.String(100), unique=False, nullable=False)
 	category = db.Column(db.String(100), index=True, unique=False, nullable=False)
 	manufacturer = db.Column(db.String(100), unique=False, nullable=True)
@@ -33,7 +33,7 @@ class Item(db.Model):
 class Bid(db.Model):
 	__tablename__= 'bid'
 	id = db.Column(db.Integer, primary_key=True)
-	userID = db.Column(db.Integer, db.ForeignKey('user.id'))
+	userID = db.Column(db.Integer, db.ForeignKey('users.id'))
 	itemId = db.Column(db.Integer, db.ForeignKey('items.id'))
 	amount = db.Column(db.Integer, unique=False, nullable=False)
 	time = db.Column(db.DateTime, default=datetime.now())
