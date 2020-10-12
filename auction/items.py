@@ -20,6 +20,13 @@ def check_upload_file(form):
     fp.save(upload_path)
     return db_upload_path
 
+#create a page that will show the details fo the destination
+@bp.route('/<id>') 
+def show(id): 
+  item = Item.query.filter_by(id=id).first()  
+  cform = CommentForm()
+  return render_template('items/show.html', item=item)
+
 @bp.route('/create', methods = ['GET', 'POST'])
 @login_required #decorator between route and view function
 def create():
