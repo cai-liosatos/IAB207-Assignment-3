@@ -23,8 +23,7 @@ def check_upload_file(form):
 #create a page that will show the details fo the destination
 @bp.route('/<id>') 
 def show(id): 
-  item = Item.query.filter_by(id=id).first()  
-  cform = CommentForm()
+  item = Item.query.filter_by(id=id).first()
   return render_template('items/show.html', item=item)
 
 @bp.route('/create', methods = ['GET', 'POST'])
