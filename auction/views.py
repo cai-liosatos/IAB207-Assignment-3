@@ -25,3 +25,4 @@ def add_to_watchlist():
     db.session.add(watchlist_item)
     db.session.commit()
     return redirect(url_for('main.index'))
+    
