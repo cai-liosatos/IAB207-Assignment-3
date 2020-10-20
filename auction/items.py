@@ -20,6 +20,14 @@ def check_upload_file(form):
     fp.save(upload_path)
     return db_upload_path
 
+@bp.route('/watchlist', methods=['GET', 'POST'])
+def watchlist():
+    watchlist = Watchlist.query.filter_by(id=id).first()
+    5
+    db.session.add(item)
+    db.session.commit()
+    return render_template('watchlist.html', watchlist=watchlist)
+
 @bp.route('/create', methods = ['GET', 'POST'])
 @login_required #decorator between route and view function
 def create():
