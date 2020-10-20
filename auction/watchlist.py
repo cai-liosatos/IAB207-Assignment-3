@@ -8,7 +8,7 @@ from flask_login import login_required, current_user
 bp = Blueprint('watchlist', __name__)
 from flask import session
 
-@bp.route('/fetch', methods=['GET', 'POST'])
+@bp.route('/watchlist', methods=['GET', 'POST'])
 def watchlist():
     watchlist = Watchlist.query.filter_by(id=id).first()
     return render_template('watchlist.html', watchlist=watchlist)
