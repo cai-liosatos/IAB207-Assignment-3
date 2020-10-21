@@ -97,7 +97,6 @@
     </div>
 
     <!-- Cards that display the recent items the user has viewed -->
-    {% if items %}
     <div class="row">
         {% for item in featured_items %}
         <div class="col-xl-3 col-md-6">
@@ -112,11 +111,10 @@
                 <div class="dimmer"></div>
             </div> 
         </div>
-        {% endfor %}
-    </div>
-    {% else %}
+        {% else %}
         <h1>No recently viewed items</h1>
-    {% endif %}<br><br><br>
+        {% endfor %}
+    </div><br><br><br>
         <!-- <div class="col-xl-3 col-md-6">
             <div class="card cardDisplay p-3 mb-5 border-dark grow">
                 <div class="card-head">
@@ -129,6 +127,7 @@
                 <div class="dimmer"></div>
             </div> 
         </div> -->
+                    <!-- <a href="#"><h5 class="card-title">Add to Wishlist</h5></a><br> -->
 
     <!-- List of some items in the CPU category -->
 
@@ -138,55 +137,22 @@
         </div>
     </div>
     <div class="row">
+        {% for item in CPUCategory %}
         <div class="col-xl-3 col-md-6">
             <div class="card cardDisplay p-3 mb-5 border-dark grow">
                 <div class="card-head">
-                        <a href="items/show.html"><img src="../static/image/i9-9900k.jpg" alt="..." class="cardImg"></a>
-                    </div>
-                    <div class="card-body">
-                        <a href="items/show.html"><h5 class="card-title">Intel i9 9900k Unlocked</h5></a><br>
-                    <p>AU $1200</p>
-                    <!-- <a href="#"><h5 class="card-title">Add to Wishlist</h5></a><br> -->
-                    </div>
-                </div> 
-            </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                <div class="card-head">
-                    <a href="items/show.html"><img src="../static/image/thredripper.jpg" alt="..." class="cardImg"></a>
+                    <img src="{{item.image}}" alt="{{item.name}}" class="cardImg">
                 </div>
                 <div class="card-body">
-                    <a href="items/show.html"><h5 class="card-title">Amd Ryzen Threadripper 3990X</h5></a><br>
-                    <p>AU $800</p>
-                    <button action="{{ url_for('main.add') }}" method="post" type="submit">WishList</button>
-
-                     
-                    
+                    <h5 class="card-title">{{item.name}}</h5><br>
+                    <p>{{item.currency}} {{item.currentPrice}}</p>
                 </div>
+                <div class="dimmer"></div>
             </div> 
         </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                <div class="card-head">
-                    <a href="items/show.html"><img src="../static/image/ryzen-5-3600.jpg" alt="..." class="cardImg"></a>
-                </div>
-                <div class="card-body">
-                    <a href="items/show.html"><h5 class="card-title">Ryzen 5 3600</h5></a><br>
-                    <p>AU $600</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                <div class="card-head">
-                    <a href="items/show.html"><img src="../static/image/ryzen-5-3600.jpg" alt="..." class="cardImg"></a>
-                </div>
-                <div class="card-body">
-                    <a href="items/show.html"><h5 class="card-title">Ryzen 5 3600</h5></a><br>
-                    <p>AU $600</p>
-                </div>
-            </div>
-        </div>
+        {% else %}
+        <h1>No recently viewed items</h1>
+        {% endfor %}
         <!-- Button that links to a page displaying more items -->
         <button type="button" class="btn btn-link"><a href="#"><p>See More -></p></p></a></button></span>
     </div><br>
@@ -200,50 +166,22 @@
         </div>
     </div>
     <div class="row">
+        {% for item in GPUCategory %}
         <div class="col-xl-3 col-md-6">
             <div class="card cardDisplay p-3 mb-5 border-dark grow">
                 <div class="card-head">
-                        <a href="items/show.html"><img src="../static/image/amd-sapphire.jpg" alt="..." class="cardImg"></a>
-                    </div>
-                    <div class="card-body">
-                        <a href="items/show.html"><h5 class="card-title">Sapphire Radeon RX 5700 XT NITRO+ 8GB</h5></a><br>
-                    <p>AU $400</p>
-                    </div>
-                </div> 
-            </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                <div class="card-head">
-                    <a href="items/show.html"><img src="../static/image/Nvidia-Geforce-1080.jpg" alt="..." class="cardImg"></a>
+                    <img src="{{item.image}}" alt="{{item.name}}" class="cardImg">
                 </div>
                 <div class="card-body">
-                    <a href="items/show.html"><h5 class="card-title"> Geforce GTX 1080 Aero 8G</h5></a><br>
-                    <p>AU $800</p>
+                    <h5 class="card-title">{{item.name}}</h5><br>
+                    <p>{{item.currency}} {{item.currentPrice}}</p>
                 </div>
+                <div class="dimmer"></div>
             </div> 
         </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                <div class="card-head">
-                    <a href="items/show.html"><img src="../static/image/amd-7990.jpg" alt="..." class="cardImg"></a>
-                </div>
-                <div class="card-body">
-                    <a href="items/show.html"><h5 class="card-title">AMD Radeon HD 7990 Dual-GPU Videocard</h5></a><br>
-                    <p>AU $900</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                <div class="card-head">
-                    <a href="items/show.html"><img src="../static/image/amd-7990.jpg" alt="..." class="cardImg"></a>
-                </div>
-                <div class="card-body">
-                    <a href="items/show.html"><h5 class="card-title">AMD Radeon HD 7990 Dual-GPU Videocard</h5></a><br>
-                    <p>AU $900</p>
-                </div>
-            </div>
-        </div>
+        {% else %}
+        <h1>No recently viewed items</h1>
+        {% endfor %}
         <!-- Button that links to a page displaying more items -->
         <button type="button" class="btn btn-link"><a href="#"><p>See More -></p></p></a></button></span>
     </div><br><br>
@@ -258,50 +196,22 @@
         </div>
     </div>
     <div class="row">
+        {% for item in MoboCategory %}
         <div class="col-xl-3 col-md-6">
             <div class="card cardDisplay p-3 mb-5 border-dark grow">
                 <div class="card-head">
-                        <a href="items/show.html"><img src="../static/image/i9-9900k.jpg" alt="..." class="cardImg"></a>
-                    </div>
-                    <div class="card-body">
-                        <a href="items/show.html"><h5 class="card-title">Intel i9 9900k Unlocked</h5></a><br>
-                    <p>AU $1200</p>
-                    </div>
-                </div> 
-            </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                <div class="card-head">
-                    <a href="items/show.html"><img src="../static/image/thredripper.jpg" alt="..." class="cardImg"></a>
+                    <img src="{{item.image}}" alt="{{item.name}}" class="cardImg">
                 </div>
                 <div class="card-body">
-                    <a href="items/show.html"><h5 class="card-title">Amd Ryzen Threadripper 3990X</h5></a><br>
-                    <p>AU $800</p>
+                    <h5 class="card-title">{{item.name}}</h5><br>
+                    <p>{{item.currency}} {{item.currentPrice}}</p>
                 </div>
+                <div class="dimmer"></div>
             </div> 
         </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                <div class="card-head">
-                    <a href="items/show.html"><img src="../static/image/ryzen-5-3600.jpg" alt="..." class="cardImg"></a>
-                </div>
-                <div class="card-body">
-                    <a href="items/show.html"><h5 class="card-title">Ryzen 5 3600</h5></a><br>
-                    <p>AU $600</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                <div class="card-head">
-                    <a href="items/show.html"><img src="../static/image/ryzen-5-3600.jpg" alt="..." class="cardImg"></a>
-                </div>
-                <div class="card-body">
-                    <a href="items/show.html"><h5 class="card-title">Ryzen 5 3600</h5></a><br>
-                    <p>AU $600</p>
-                </div>
-            </div>
-        </div>
+        {% else %}
+        <h1>No recently viewed items</h1>
+        {% endfor %}
         <!-- Button that links to a page displaying more items -->
         <button type="button" class="btn btn-link"><a href="#"><p>See More -></p></p></a></button></span>
     </div><br>
@@ -315,50 +225,22 @@
         </div>
     </div>
     <div class="row">
+        {% for item in RAMCategory %}
         <div class="col-xl-3 col-md-6">
             <div class="card cardDisplay p-3 mb-5 border-dark grow">
                 <div class="card-head">
-                        <a href="items/show.html"><img src="../static/image/amd-sapphire.jpg" alt="..." class="cardImg"></a>
-                    </div>
-                    <div class="card-body">
-                        <a href="items/show.html"><h5 class="card-title">Sapphire Radeon RX 5700 XT NITRO+ 8GB</h5></a><br>
-                    <p>AU $400</p>
-                    </div>
-                </div> 
-            </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                <div class="card-head">
-                    <a href="items/show.html"><img src="../static/image/Nvidia-Geforce-1080.jpg" alt="..." class="cardImg"></a>
+                    <img src="{{item.image}}" alt="{{item.name}}" class="cardImg">
                 </div>
                 <div class="card-body">
-                    <a href="items/show.html"><h5 class="card-title"> Geforce GTX 1080 Aero 8G</h5></a><br>
-                    <p>AU $800</p>
+                    <h5 class="card-title">{{item.name}}</h5><br>
+                    <p>{{item.currency}} {{item.currentPrice}}</p>
                 </div>
+                <div class="dimmer"></div>
             </div> 
         </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                <div class="card-head">
-                    <a href="items/show.html"><img src="../static/image/amd-7990.jpg" alt="..." class="cardImg"></a>
-                </div>
-                <div class="card-body">
-                    <a href="items/show.html"><h5 class="card-title">AMD Radeon HD 7990 Dual-GPU Videocard</h5></a><br>
-                    <p>AU $900</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                <div class="card-head">
-                    <a href="items/show.html"><img src="../static/image/amd-7990.jpg" alt="..." class="cardImg"></a>
-                </div>
-                <div class="card-body">
-                    <a href="items/show.html"><h5 class="card-title">AMD Radeon HD 7990 Dual-GPU Videocard</h5></a><br>
-                    <p>AU $900</p>
-                </div>
-            </div>
-        </div>
+        {% else %}
+        <h1>No recently viewed items</h1>
+        {% endfor %}
         <!-- Button that links to a page displaying more items -->
         <button type="button" class="btn btn-link"><a href="#"><p>See More -></p></p></a></button></span>
     </div><br><br>
@@ -370,50 +252,22 @@
         </div>
     </div>
     <div class="row">
+        {% for item in PSUCategory %}
         <div class="col-xl-3 col-md-6">
             <div class="card cardDisplay p-3 mb-5 border-dark grow">
                 <div class="card-head">
-                        <a href="items/show.html"><img src="../static/image/i9-9900k.jpg" alt="..." class="cardImg"></a>
-                    </div>
-                    <div class="card-body">
-                        <a href="items/show.html"><h5 class="card-title">Intel i9 9900k Unlocked</h5></a><br>
-                    <p>AU $1200</p>
-                    </div>
-                </div> 
-            </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                <div class="card-head">
-                    <a href="items/show.html"><img src="../static/image/thredripper.jpg" alt="..." class="cardImg"></a>
+                    <img src="{{item.image}}" alt="{{item.name}}" class="cardImg">
                 </div>
                 <div class="card-body">
-                    <a href="items/show.html"><h5 class="card-title">Amd Ryzen Threadripper 3990X</h5></a><br>
-                    <p>AU $800</p>
+                    <h5 class="card-title">{{item.name}}</h5><br>
+                    <p>{{item.currency}} {{item.currentPrice}}</p>
                 </div>
+                <div class="dimmer"></div>
             </div> 
         </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                <div class="card-head">
-                    <a href="items/show.html"><img src="../static/image/ryzen-5-3600.jpg" alt="..." class="cardImg"></a>
-                </div>
-                <div class="card-body">
-                    <a href="items/show.html"><h5 class="card-title">Ryzen 5 3600</h5></a><br>
-                    <p>AU $600</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                <div class="card-head">
-                    <a href="items/show.html"><img src="../static/image/ryzen-5-3600.jpg" alt="..." class="cardImg"></a>
-                </div>
-                <div class="card-body">
-                    <a href="items/show.html"><h5 class="card-title">Ryzen 5 3600</h5></a><br>
-                    <p>AU $600</p>
-                </div>
-            </div>
-        </div>
+        {% else %}
+        <h1>No recently viewed items</h1>
+        {% endfor %}
         <!-- Button that links to a page displaying more items -->
         <button type="button" class="btn btn-link"><a href="#"><p>See More -></p></p></a></button></span>
     </div><br>
@@ -427,50 +281,22 @@
         </div>
     </div>
     <div class="row">
+        {% for item in FanCategory %}
         <div class="col-xl-3 col-md-6">
             <div class="card cardDisplay p-3 mb-5 border-dark grow">
                 <div class="card-head">
-                        <a href="items/show.html"><img src="../static/image/amd-sapphire.jpg" alt="..." class="cardImg"></a>
-                    </div>
-                    <div class="card-body">
-                        <a href="items/show.html"><h5 class="card-title">Sapphire Radeon RX 5700 XT NITRO+ 8GB</h5></a><br>
-                    <p>AU $400</p>
-                    </div>
-                </div> 
-            </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                <div class="card-head">
-                    <a href="items/show.html"><img src="../static/image/Nvidia-Geforce-1080.jpg" alt="..." class="cardImg"></a>
+                    <img src="{{item.image}}" alt="{{item.name}}" class="cardImg">
                 </div>
                 <div class="card-body">
-                    <a href="items/show.html"><h5 class="card-title"> Geforce GTX 1080 Aero 8G</h5></a><br>
-                    <p>AU $800</p>
+                    <h5 class="card-title">{{item.name}}</h5><br>
+                    <p>{{item.currency}} {{item.currentPrice}}</p>
                 </div>
+                <div class="dimmer"></div>
             </div> 
         </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                <div class="card-head">
-                    <a href="items/show.html"><img src="../static/image/amd-7990.jpg" alt="..." class="cardImg"></a>
-                </div>
-                <div class="card-body">
-                    <a href="items/show.html"><h5 class="card-title">AMD Radeon HD 7990 Dual-GPU Videocard</h5></a><br>
-                    <p>AU $900</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                <div class="card-head">
-                    <a href="items/show.html"><img src="../static/image/amd-7990.jpg" alt="..." class="cardImg"></a>
-                </div>
-                <div class="card-body">
-                    <a href="items/show.html"><h5 class="card-title">AMD Radeon HD 7990 Dual-GPU Videocard</h5></a><br>
-                    <p>AU $900</p>
-                </div>
-            </div>
-        </div>
+        {% else %}
+        <h1>No recently viewed items</h1>
+        {% endfor %}
         <!-- Button that links to a page displaying more items -->
         <button type="button" class="btn btn-link"><a href="#"><p>See More -></p></p></a></button></span>
     </div><br><br>
