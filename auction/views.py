@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for
 from .models import Item, Watchlist
 from . import db
+from sqlalchemy.sql.expression import func
 
 bp = Blueprint('main', __name__)
 
@@ -8,7 +9,8 @@ bp = Blueprint('main', __name__)
 @bp.route('/')
 def index():
     items = Item.query.all()
-    return render_template('index.html', items=items)
+    featured_items =  Destination.query.order_by(func.random()).limit(4).all()
+    return render_template('index.html', items=items, featured_items=featured_items)
 
 @bp.route('/search')
 def search():
