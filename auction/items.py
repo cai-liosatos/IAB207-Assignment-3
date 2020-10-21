@@ -36,6 +36,7 @@ def create():
         return redirect(url_for('item.create'))
     return render_template('items/create.html', form=form)
     
+    
 
 
 # @bp.route('/create', methods = ['GET', 'POST'])
