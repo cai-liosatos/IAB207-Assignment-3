@@ -39,12 +39,12 @@
 
           <!-- Name of item -->
           <div class="col-xl-7 col-lg-12">
-            <h1>Nvidia Geforce GTX 2080ti</h1><br>
+            <h1>{{item.name}}</h1><br>
             <div class="row">
 
               <!-- Item condition -->
               <div class="col-sm-4 col-xs-12">
-                <h2>Condition: Brand New</h2><br>
+                <h2>{{item.condition}}</h2><br>
               </div>
               <div class="col-sm-3 col-xs-12"></div>
 
@@ -58,13 +58,13 @@
 
               <!-- Item's current bidding price -->
               <div class="col-sm-4 col-xs-12">
-                <h2>Bidding Price: AU$1000</h2><br>
+                <h2>{{item.currentPrice}}</h2><br>
               </div>
               <div class="col-sm-3 col-xs-12"></div>
 
               <!-- Addition postal cost (added ontop of price user pays once auction closes) -->
               <div class="col-sm-4 col-xs-12">
-                <h2>Postage Price: AU$200</h2>
+                <h2>{{item.postagePrice}}</h2>
               </div>
             </div><br>
 
@@ -115,13 +115,13 @@
 
               <!-- Item's current bidding price -->
               <div class="col-sm-4 col-xs-12"><br>
-                <h2>Bidding Ends:<br>15/09/2020</h2><br>
+                <h2>Bidding Ends:<br>{{item.finishDate}}</h2><br>
               </div>
               <div class="col-sm-3 col-xs-12"></div>
 
               <!-- Addition postal cost (added ontop of price user pays once auction closes) -->
               <div class="col-sm-4 col-xs-12"><br>
-                <h2>Estimated Posting Date:<br>21/09/2020</h2>
+                <h2>Estimated Posting Date:<br>{{item.deliveryTime}}</h2>
               </div>
             </div>
           </div>
@@ -135,7 +135,7 @@
                 <h2 class="h2">Additional Information:</h2>
               </div>
               <blockquote class="blockquote mb-0 card-body">
-                <p class="p1">NVIDIA’s newest flagship graphics card is a revolution in gaming realism and performance. Its powerful NVIDIA Turing™ GPU architecture, breakthrough technologies, and 11 GB of next-gen, ultra-fast GDDR6 memory make it the world’s ultimate gaming GPU. </p>
+                <p class="p1">{{item.moreInfo}}</p>
               </blockquote>
             </div>
           </div> 
@@ -157,8 +157,8 @@
               </div>
               <div class="card-body">
                 <a href="ItemDetails.html">
-                  <h5 class="card-title">Sapphire Radeon RX 5700 XT NITRO+ 8GB</h5>
-                  <p>AU $750</p><br>
+                  <h5 class="card-title">{{item.name}}</h5>
+                  <p>{{item.currency}} {{item.currentPrice}}</p><br>
                   <small class="text-muted">
                     Free Shipping<br><br>
                     Review: 3/5
@@ -176,8 +176,8 @@
               </div>
               <div class="card-body">
                   <a href="ItemDetails.html">
-                    <h5 class="card-title">GeForce GTX 980ti</h5>
-                    <p>AU $700</p><br>
+                    <h5 class="card-title">{{item.name}}</h5>
+                    <p>{{item.currency}} {{item.currentPrice}}</p><br>
                     <small class="text-muted">
                       Free Shipping<br><br>
                       Review: 4/5
@@ -195,8 +195,8 @@
               </div>
               <div class="card-body">
                 <a href="ItemDetails.html">
-                  <h5 class="card-title"> Geforce GTX 1080 Aero 8G</h5>
-                  <p>AU $910</p><br>
+                  <h5 class="card-title">{{item.name}}</h5>
+                  <p>{{item.currency}} {{item.currentPrice}}</p><br>
                   <small class="text-muted">
                     Free Shipping<br><br>
                     Review: 4.5/5
@@ -214,8 +214,8 @@
               </div>
               <div class="card-body">
                 <a href="ItemDetails.html">
-                  <h5 class="card-title">Nvidia GeForce GTX 1070 Founders Edition</h5>
-                  <p>AU $800</p><br>
+                  <h5 class="card-title">{{item.name}}</h5>
+                  <p>{{item.currency}} {{item.currentPrice}}</p><br>
                   <small class="text-muted">
                     Free Shipping<br><br>
                     Review: 3/5
@@ -233,8 +233,8 @@
               </div>
               <div class="card-body">
                 <a href="ItemDetails.html">
-                  <h5 class="card-title"> Nvidia GTX Titan</h5>
-                  <p>AU $820</p><br>
+                  <h5 class="card-title">{{item.name}}</h5>
+                  <p>{{item.currency}} {{item.currentPrice}}</p><br>
                   <small class="text-muted">
                     Free Shipping<br><br>
                     Review: 3.5/5
@@ -252,8 +252,8 @@
               </div>
               <div class="card-body">
                 <a href="ItemDetails.html">
-                  <h5 class="card-title">AMD Radeon HD 7990 Dual-GPU Videocard</h5>
-                  <p>AU $750</p><br>
+                  <h5 class="card-title">{{item.name}}</h5>
+                  <p>{{item.currency}} {{item.currentPrice}}</p><br>
                   <small class="text-muted">
                     Free Shipping<br><br>
                     Review: 3/5
