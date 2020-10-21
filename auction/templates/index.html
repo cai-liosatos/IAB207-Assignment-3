@@ -99,7 +99,7 @@
     <!-- Cards that display the recent items the user has viewed -->
     {% if items %}
     <div class="row">
-    {% for item in range(4) %}
+        {% for item in featured_items %}
         <div class="col-xl-3 col-md-6">
             <div class="card cardDisplay p-3 mb-5 border-dark grow">
                 <div class="card-head">
@@ -146,6 +146,7 @@
                     <div class="card-body">
                         <a href="items/show.html"><h5 class="card-title">Intel i9 9900k Unlocked</h5></a><br>
                     <p>AU $1200</p>
+                    <!-- <a href="#"><h5 class="card-title">Add to Wishlist</h5></a><br> -->
                     </div>
                 </div> 
             </div>
@@ -157,6 +158,10 @@
                 <div class="card-body">
                     <a href="items/show.html"><h5 class="card-title">Amd Ryzen Threadripper 3990X</h5></a><br>
                     <p>AU $800</p>
+                    <button action="{{ url_for('main.add') }}" method="post" type="submit">WishList</button>
+
+                     
+                    
                 </div>
             </div> 
         </div>

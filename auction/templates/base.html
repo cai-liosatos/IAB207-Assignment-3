@@ -29,7 +29,7 @@
                         <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="watchlist.html">Watchlist</a>
+                        <a class="nav-link" href="{{ url_for('watchlist.fetch') }}">Watchlist</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('item.create') }}">List Item</a>
