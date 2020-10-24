@@ -142,26 +142,20 @@
         </div><br>
 
         <!-- Row displaying items similar to the currently displayed item -->
-        <div class="row">
-          {% for item in variableName %}
-          <div class="col-12">
-            <div class="row justify-content-center">
-              {% for destination in search_items %}
-                  <div class="card mb-5 mr-5 px-0 col-md-3">
-                    <img class="card-img-top" height="200rem" src="{{destination.image}}" alt="{{destination.name}}">
-                    <div class="card-body">
-                      <h5 class="card-title">{{destination.name}}</h5>
-                      <p class="card-text">{{destination.description}}</p>
-                      <p class="card-text"></p>
-                      <a href="{{url_for('destination.show', id=destination.id)}}" class="btn btn-danger">View Details</a>
-                      <p class="card-text"><small class="text-muted">{{destination.comments|length}} comment(s)</small></p>
-                    </div>
-                  </div>
-                  {% endfor %}
-                </div>
+          <div class="row">
+            {% for item in similar_items %}
+            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+              <div class="card-head">
+                  <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
+              </div>
+              <div class="card-body">
+                  <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</h5></a><br>
+                  <p>{{item.currency}} {{item.currentPrice}}</p>
+              </div>
+              <div class="dimmer"></div>
+          </div> 
+            {% endfor %}
           </div>
-          {% endfor %}
-        </div>
 
         <!-- Cards containing images of items, name, price and the average customer review -->
         <div class="row">
