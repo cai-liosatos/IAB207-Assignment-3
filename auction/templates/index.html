@@ -35,57 +35,6 @@
             </div>
             <div class="col-xl-2 col-md-1"></div>
         </div>
-
-        <div class="row">
-            <div class="col-xl-2"></div>
-            <div class="col-xl-8"><br>
-                <h1><b>THIS WEEK'S TOP 5 HOTTEST ITEMS</b></h1>
-            </div>
-            <div class="col-xl-2"></div>
-        </div>
-        <div class="row">
-            <div class="col-xl-2"></div>
-            
-            <!-- Automatic carousel for items that have the top 5 number of bids -->
-            <div class="col-xl-8">
-                <div id="carouselExampleIndicators" class="carousel slide carouselgrow" class="carousel" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <a href="items/show.html"><img src="../static/image/Nvidia-2080-ti.jpg" class="carouselImg d-block w-100" alt="..."></a>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="items/show.html"><img src="../static/image/corsair-vengeance-rgb-pro.jpg" class="carouselImg d-block w-100" alt="..."></a>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="items/show.html"><img src="../static/image/amd-3900x.jpg" class="carouselImg d-block w-100" alt="..."></a>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="items/show.html"><img src="../static/image/be-quiet!-cooling-fan.jpg" class="carouselImg d-block w-100" alt="..."></a>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="items/show.html"><img src="../static/image/radeon-gpu.jpg" class="carouselImg d-block w-100" alt="..."></a>
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-xl-2"></div>
-        </div>
-    </div>
     {% endblock %}
 
     {% block content %}
@@ -96,10 +45,10 @@
         <div class="col-xl-3 col-md-6">
             <div class="card cardDisplay p-3 mb-5 border-dark grow">
                 <div class="card-head">
-                    <img src="{{item.image}}" alt="{{item.name}}" class="cardImg">
+                    <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{item.name}}</h5><br>
+                    <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</a></h5><br>
                     <p>{{item.currency}} {{item.currentPrice}}</p>
                 </div>
                 <div class="dimmer"></div>
@@ -107,6 +56,8 @@
         </div>
             {% endfor %}
           </div>
+        </div>
+
     
     
     <div class="row">
@@ -121,10 +72,10 @@
         <div class="col-xl-3 col-md-6">
             <div class="card cardDisplay p-3 mb-5 border-dark grow">
                 <div class="card-head">
-                    <img src="{{item.image}}" alt="{{item.name}}" class="cardImg">
+                    <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{item.name}}</h5><br>
+                    <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</h5></a><br>
                     <p>{{item.currency}} {{item.currentPrice}}</p>
                 </div>
                 <div class="dimmer"></div>
@@ -161,10 +112,10 @@
         <div class="col-xl-3 col-md-6">
             <div class="card cardDisplay p-3 mb-5 border-dark grow">
                 <div class="card-head">
-                    <img src="{{item.image}}" alt="{{item.name}}" class="cardImg">
+                    <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{item.name}}</h5><br>
+                    <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</a></h5><br>
                     <p>{{item.currency}} {{item.currentPrice}}</p>
                 </div>
                 <div class="dimmer"></div>
@@ -190,10 +141,10 @@
         <div class="col-xl-3 col-md-6">
             <div class="card cardDisplay p-3 mb-5 border-dark grow">
                 <div class="card-head">
-                    <img src="{{item.image}}" alt="{{item.name}}" class="cardImg">
+                    <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{item.name}}</h5><br>
+                    <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</a></h5><br>
                     <p>{{item.currency}} {{item.currentPrice}}</p>
                 </div>
                 <div class="dimmer"></div>
@@ -220,10 +171,10 @@
         <div class="col-xl-3 col-md-6">
             <div class="card cardDisplay p-3 mb-5 border-dark grow">
                 <div class="card-head">
-                    <img src="{{item.image}}" alt="{{item.name}}" class="cardImg">
+                    <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{item.name}}</h5><br>
+                    <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</a></h5><br>
                     <p>{{item.currency}} {{item.currentPrice}}</p>
                 </div>
                 <div class="dimmer"></div>
@@ -249,10 +200,10 @@
         <div class="col-xl-3 col-md-6">
             <div class="card cardDisplay p-3 mb-5 border-dark grow">
                 <div class="card-head">
-                    <img src="{{item.image}}" alt="{{item.name}}" class="cardImg">
+                    <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{item.name}}</h5><br>
+                    <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</a></h5><br>
                     <p>{{item.currency}} {{item.currentPrice}}</p>
                 </div>
                 <div class="dimmer"></div>
@@ -276,10 +227,10 @@
         <div class="col-xl-3 col-md-6">
             <div class="card cardDisplay p-3 mb-5 border-dark grow">
                 <div class="card-head">
-                    <img src="{{item.image}}" alt="{{item.name}}" class="cardImg">
+                    <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{item.name}}</h5><br>
+                    <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</a></h5><br>
                     <p>{{item.currency}} {{item.currentPrice}}</p>
                 </div>
                 <div class="dimmer"></div>
@@ -305,10 +256,10 @@
         <div class="col-xl-3 col-md-6">
             <div class="card cardDisplay p-3 mb-5 border-dark grow">
                 <div class="card-head">
-                    <img src="{{item.image}}" alt="{{item.name}}" class="cardImg">
+                    <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{item.name}}</h5><br>
+                    <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</a></h5><br>
                     <p>{{item.currency}} {{item.currentPrice}}</p>
                 </div>
                 <div class="dimmer"></div>
