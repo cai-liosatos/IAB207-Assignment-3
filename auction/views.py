@@ -1,13 +1,17 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for
-from .models import Item, Watchlist
+from .models import Item, Watchlist, Bid
 from . import db
 from sqlalchemy.sql.expression import func
+from sqlalchemy import desc
 
 bp = Blueprint('main', __name__)
 
 
+
+
 @bp.route('/')
 def index():
+    func.count()
     items = Item.query.all()
     featured_items =  Item.query.order_by(func.random()).limit(4).all()
     CPUCategory = Item.query.order_by(func.random()).filter_by(category='CPU').limit(4)
@@ -23,7 +27,7 @@ def search():
     if request.args['search']:
         ite = "%" + request.args['search'] + "%"
         items = Item.query.filter(Item.name.like(ite)).all()
-        return render_template('index.html', items=items)
+        return render_template('index.html', search_items=items)
     else:
         return redirect(url_for('main.index'))
 
