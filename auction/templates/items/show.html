@@ -143,9 +143,10 @@
 
         <!-- Row displaying items similar to the currently displayed item -->
         <div class="row">
+          {% for item in variableName %}
           <div class="col-12">
-            <h2>Similar Items:</h2>
           </div>
+          {% endfor %}
         </div>
 
         <!-- Cards containing images of items, name, price and the average customer review -->

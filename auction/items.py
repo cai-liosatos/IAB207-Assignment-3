@@ -20,6 +20,12 @@ def check_upload_file(form):
     fp.save(upload_path)
     return db_upload_path
 
+@bp.route('/<id>') 
+def show(id): 
+  item = Item.query.filter_by(id=id).first()
+  return render_template('items/show.html', item=item)
+  variableName = Item.query.filter_by(category='GPU').limit(4)
+
 
 @bp.route('/create', methods = ['GET', 'POST'])
 @login_required #decorator between route and view function
