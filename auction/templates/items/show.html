@@ -10,7 +10,8 @@
 
           <!--Information about item listed -->
 
-          {{{item.image}}
+          <img src="{{item.image}}" alt="{{item.name}}">
+          </div>
 
           <!-- Name of item -->
           <div class="col-xl-7 col-lg-12">
@@ -117,8 +118,15 @@
         </div><br>
 
         <!-- Row displaying items similar to the currently displayed item -->
+        <div class="row">
+          <div class="col-12">
+            <h2>Similar Items:</h2>
+          </div>
+        </div>
+        <!-- Row displaying items similar to the currently displayed item -->
           <div class="row">
             {% for item in similar_items %}
+            <div class="col-xl-2 col-md-6">
             <div class="card cardDisplay p-3 mb-5 border-dark grow">
               <div class="card-head">
                   <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
