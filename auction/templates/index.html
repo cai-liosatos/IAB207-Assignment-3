@@ -136,6 +136,7 @@
             <h2>CPUs:</h2>
         </div>
     </div>
+    {% if CPUCategory %}
     <div class="row">
         {% for item in CPUCategory %}
         <div class="col-xl-3 col-md-6">
@@ -150,12 +151,11 @@
                 <div class="dimmer"></div>
             </div> 
         </div>
-        {% else %}
-        <h1>No recently viewed items</h1>
         {% endfor %}
         <!-- Button that links to a page displaying more items -->
         <button type="button" class="btn btn-link"><a href="#"><p>See More -></p></p></a></button></span>
     </div><br>
+    {% endif %}
 
     
 
@@ -165,6 +165,7 @@
             <h2>GPUs:</h2>
         </div>
     </div>
+    {% if GPUCategory %}
     <div class="row">
         {% for item in GPUCategory %}
         <div class="col-xl-3 col-md-6">
@@ -179,12 +180,11 @@
                 <div class="dimmer"></div>
             </div> 
         </div>
-        {% else %}
-        <h1>No recently viewed items</h1>
         {% endfor %}
         <!-- Button that links to a page displaying more items -->
         <button type="button" class="btn btn-link"><a href="#"><p>See More -></p></p></a></button></span>
-    </div><br><br>
+    </div><br>
+    {% endif %}
 
     <!-- Note: images for the following categories are just reused from CPU/GPU. In the final version, these will be updated (along with the prices/names) but are just placeholders for the time being -->
 
@@ -195,6 +195,7 @@
             <h2>Motherboards:</h2>
         </div>
     </div>
+    {% if MoboCategory %}
     <div class="row">
         {% for item in MoboCategory %}
         <div class="col-xl-3 col-md-6">
@@ -209,12 +210,11 @@
                 <div class="dimmer"></div>
             </div> 
         </div>
-        {% else %}
-        <h1>No recently viewed items</h1>
         {% endfor %}
         <!-- Button that links to a page displaying more items -->
         <button type="button" class="btn btn-link"><a href="#"><p>See More -></p></p></a></button></span>
     </div><br>
+    {% endif %}
 
     
 
@@ -224,6 +224,7 @@
             <h2>RAM:</h2>
         </div>
     </div>
+    {% if RAMCategory %}
     <div class="row">
         {% for item in RAMCategory %}
         <div class="col-xl-3 col-md-6">
@@ -238,12 +239,11 @@
                 <div class="dimmer"></div>
             </div> 
         </div>
-        {% else %}
-        <h1>No recently viewed items</h1>
         {% endfor %}
         <!-- Button that links to a page displaying more items -->
         <button type="button" class="btn btn-link"><a href="#"><p>See More -></p></p></a></button></span>
-    </div><br><br>
+    </div><br>
+    {% endif %}
     <!-- List of some items in the PSU category -->
 
     <div class="row">
@@ -251,6 +251,7 @@
             <h2>Power Supply Units:</h2>
         </div>
     </div>
+    {% if PSUCategory %}
     <div class="row">
         {% for item in PSUCategory %}
         <div class="col-xl-3 col-md-6">
@@ -265,12 +266,11 @@
                 <div class="dimmer"></div>
             </div> 
         </div>
-        {% else %}
-        <h1>No recently viewed items</h1>
         {% endfor %}
         <!-- Button that links to a page displaying more items -->
         <button type="button" class="btn btn-link"><a href="#"><p>See More -></p></p></a></button></span>
     </div><br>
+    {% endif %}
 
     
 
@@ -280,6 +280,7 @@
             <h2>Cooling Fans:</h2>
         </div>
     </div>
+    {% if FanCategory %}
     <div class="row">
         {% for item in FanCategory %}
         <div class="col-xl-3 col-md-6">
@@ -294,12 +295,11 @@
                 <div class="dimmer"></div>
             </div> 
         </div>
-        {% else %}
-        <h1>No recently viewed items</h1>
         {% endfor %}
         <!-- Button that links to a page displaying more items -->
         <button type="button" class="btn btn-link"><a href="#"><p>See More -></p></p></a></button></span>
-    </div><br><br>
+    </div><br>
+    {% endif %}
 </div>
 </main>
 {% endblock %}
