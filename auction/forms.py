@@ -26,7 +26,7 @@ class RegisterForm(FlaskForm):
     submit = SubmitField("Register")
 
 class ItemForm(FlaskForm):
-    name = StringField('Item Name:', validators=[InputRequired()])
+    name = StringField(validators=[InputRequired()])
     # adding two validators, one to ensure input is entered and other to check if the 
     #description meets the length requirements
 
