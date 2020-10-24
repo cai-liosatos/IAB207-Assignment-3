@@ -6,6 +6,8 @@ from .forms import ItemForm
 import os
 from werkzeug.utils import secure_filename
 from flask_login import login_required, current_user
+from sqlalchemy.sql.expression import func
+
 
 #create a blueprint
 bp = Blueprint('item', __name__, url_prefix='/items')
@@ -24,7 +26,7 @@ def check_upload_file(form):
 def show(id): 
   item = Item.query.filter_by(id=id).first()
   similar_items =  Item.query.filter_by(category=item.category).order_by(func.random()).limit(4)
-  return render_template('items/show.html', item=item)
+  return render_template('items/show.html', similar_items=similar_items item=item)
 
 
 @bp.route('/create', methods = ['GET', 'POST'])
