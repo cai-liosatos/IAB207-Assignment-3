@@ -59,10 +59,10 @@
         </div>
 
     
-    
+    {% if featured_items %}
     <div class="row">
         <div class="col-12">
-            <h2>Recently Viewed Items:</h2>
+            <h2>Recently Posted Items:</h2>
         </div>
     </div>
 
@@ -76,15 +76,17 @@
                 </div>
                 <div class="card-body">
                     <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</h5></a><br>
-                    <p>{{item.currency}} {{item.currentPrice}}</p>
+                    <p>{{item.status}} - {{item.currency}} {{item.currentPrice}}</p>
+                    <a href="/" class="btn btn-danger">Add to watchlist</a>
+                    <p class="card-text"><small class="text-muted">{{item.bid|length}} bid(s)</small></p>
                 </div>
                 <div class="dimmer"></div>
             </div> 
         </div>
-        {% else %}
-        <h1>No recently viewed items</h1>
         {% endfor %}
-    </div><br><br><br>
+    </div>
+    {% endif %}
+    <br><br><br>
         <!-- <div class="col-xl-3 col-md-6">
             <div class="card cardDisplay p-3 mb-5 border-dark grow">
                 <div class="card-head">
@@ -101,12 +103,14 @@
 
     <!-- List of some items in the CPU category -->
 
+    
+    {% if CPUCategory %}
     <div class="row">
         <div class="col-12">
             <h2>CPUs:</h2>
         </div>
     </div>
-    {% if CPUCategory %}
+
     <div class="row">
         {% for item in CPUCategory %}
         <div class="col-xl-3 col-md-6">
@@ -130,12 +134,14 @@
     
 
     <!-- List of some items in the GPU category -->
+    
+    {% if GPUCategory %}
     <div class="row">
         <div class="col-12">
             <h2>GPUs:</h2>
         </div>
     </div>
-    {% if GPUCategory %}
+
     <div class="row">
         {% for item in GPUCategory %}
         <div class="col-xl-3 col-md-6">
@@ -160,12 +166,14 @@
 
     <!-- List of some items in the Motherboard category -->
 
+    
+    {% if MoboCategory %}
     <div class="row">
         <div class="col-12">
             <h2>Motherboards:</h2>
         </div>
     </div>
-    {% if MoboCategory %}
+
     <div class="row">
         {% for item in MoboCategory %}
         <div class="col-xl-3 col-md-6">
@@ -189,12 +197,14 @@
     
 
     <!-- List of some items in the RAM category -->
+    
+    {% if RAMCategory %}
     <div class="row">
         <div class="col-12">
             <h2>RAM:</h2>
         </div>
     </div>
-    {% if RAMCategory %}
+
     <div class="row">
         {% for item in RAMCategory %}
         <div class="col-xl-3 col-md-6">
@@ -216,12 +226,14 @@
     {% endif %}
     <!-- List of some items in the PSU category -->
 
+    
+    {% if PSUCategory %}
     <div class="row">
         <div class="col-12">
             <h2>Power Supply Units:</h2>
         </div>
     </div>
-    {% if PSUCategory %}
+
     <div class="row">
         {% for item in PSUCategory %}
         <div class="col-xl-3 col-md-6">
@@ -245,12 +257,14 @@
     
 
     <!-- List of some items in the Cooling Fans category -->
+    
+    {% if FanCategory %}
     <div class="row">
         <div class="col-12">
             <h2>Cooling Fans:</h2>
         </div>
     </div>
-    {% if FanCategory %}
+
     <div class="row">
         {% for item in FanCategory %}
         <div class="col-xl-3 col-md-6">
