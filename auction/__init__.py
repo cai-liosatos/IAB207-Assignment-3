@@ -52,7 +52,7 @@ def create_app():
     app.register_blueprint(items.bp)
 
     from . import watchlist
-    app.register_blueprint(watchlist.watchbp)
+    app.register_blueprint(watchlist.bp)
 
     # from . import watchlist
     # app.register_blueprint(watchlist.bp)
