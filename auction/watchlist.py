@@ -12,7 +12,7 @@ from flask import session
 @bp.route('/watchlist')
 @login_required
 def show():
-    watchlist_items = Watchlist.query.filter_by(user_id=current_user.id)
+    watchlist_items = Watchlist.query.filter_by(userID=current_user.id)
     item_details = Item.query.filter(and_(Item.id == Watchlist.itemId, Watchlist.userID == current_user.id))
     item_info = zip(watchlist_items, item_details)
     return render_template('watchlist.html', item_info=item_info)
