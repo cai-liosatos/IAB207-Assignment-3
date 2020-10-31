@@ -65,7 +65,7 @@
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <form action="{{url_for('destination.bid', id=destination.id)}}" method="post" enctype="multipart/form-data" class="form" role="form">
+                      <form action="{{url_for('item.bid', id=item.id)}}" method="post" enctype="multipart/form-data" class="form" role="form">
                       {{ form.csrf_token() }}
                       <div class="modal-body">
                           <div class="form-group">
