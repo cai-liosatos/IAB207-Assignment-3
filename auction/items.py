@@ -28,21 +28,6 @@ def show(id):
   similar_items =  Item.query.filter_by(category=item.category).order_by(func.random()).limit(4)
   return render_template('items/show.html', similar_items=similar_items, item=item)
 
-@bp.route('/bid/<id>', methods = ['GET', 'POST'])
-@login_required
-def bid(id):
-  if request.method == 'POST':
-    price = request.form.get("price")
-    i1 = Item.query.filter(and_(Item.currentPrice > price, Item.id == id)).first()
-    if i1:
-        flash('Invalid amount', 'warning')
-    else:
-        # Item.query.filter(id=id).update({Item.currentPrice : price})
-        flash('Bid successful', 'success')
-    return redirect(url_for('item.show', request.method == 'POST')
-
-
-
 @bp.route('/create', methods = ['GET', 'POST'])
 @login_required #decorator between route and view function
 def create():
@@ -57,3 +42,16 @@ def create():
         db.session.commit()
         return redirect(url_for('item.show', id=item.id))
     return render_template('items/create.html', form=form)
+    
+@bp.route('/bid/<id>', methods = ['GET', 'POST'])
+@login_required
+def bid(id):
+  if request.method == 'POST':
+    price = request.form.get("price")
+    i1 = Item.query.filter(and_(Item.currentPrice > price, Item.id == id)).first()
+    if i1:
+        flash('Invalid amount', 'warning')
+    else:
+        # Item.query.filter(id=id).update({Item.currentPrice : price})
+        flash('Bid successful', 'success')
+    return redirect(url_for('item.show', request.method == 'POST')
