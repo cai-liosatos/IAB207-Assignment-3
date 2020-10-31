@@ -7,7 +7,7 @@ import os
 from werkzeug.utils import secure_filename
 from flask_login import login_required, current_user
 from sqlalchemy.sql.expression import func
-
+from sqlalchemy import and_
 
 #create a blueprint
 bp = Blueprint('item', __name__, url_prefix='/items')
