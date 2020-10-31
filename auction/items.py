@@ -42,16 +42,19 @@ def create():
         db.session.commit()
         return redirect(url_for('item.show', id=item.id))
     return render_template('items/create.html', form=form)
-    
+
 @bp.route('/bid/<id>', methods = ['GET', 'POST'])
 @login_required
 def bid(id):
-  if request.method == 'POST':
     price = request.form.get("price")
     i1 = Item.query.filter(and_(Item.currentPrice > price, Item.id == id)).first()
     if i1:
         flash('Invalid amount', 'warning')
+        return redirect(url_for('item.show', id=id))
     else:
-        # Item.query.filter(id=id).update({Item.currentPrice : price})
+        Item.query.filter(id=id).update({Item.currentPrice : price})
+        bid=Bid(userID=current_user.id, itemId=id, amount=price)
+        db.session.add(bid)
+        db.session.commit()
         flash('Bid successful', 'success')
-    return redirect(url_for('item.show', request.method == 'POST')
+        return redirect(url_for('item.show', id=id)
