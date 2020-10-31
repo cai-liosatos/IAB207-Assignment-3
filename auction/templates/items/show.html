@@ -66,13 +66,13 @@
                         </button>
                       </div>
                       <form action="{{url_for('item.bid', id=item.id)}}" method="post" enctype="multipart/form-data" class="form" role="form">
-                      {{ form.csrf_token() }}
+                      <!-- {{ form.csrf_token() }} -->
                       <div class="modal-body">
                           <div class="form-group">
                             <label for="exampleInputEmail1">Bidding Amount</label>
-                            <input type="number" min="0" step="any" class="form-control" id="validationTooltip04" placeholder="0" name="price">
+                            <input type="number" min="{{item.currentPrice}}" step="any" class="form-control" id="validationTooltip04" placeholder="{{item.currentPrice}}" name="price">
                             <small id="emailHelp" class="form-text text-muted">
-                              Amount must be greater than 0 and the current bid.
+                              Amount must be greater than 0 and the current bid (${{item.currentPrice}}).
                             </small>
                           </div>
                       </div>
