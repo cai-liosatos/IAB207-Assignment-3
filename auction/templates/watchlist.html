@@ -34,7 +34,7 @@
               </tr>
               {% for watchlist_items, item_details in item_info  %}
               <tr>
-                <td><a href="{{url_for('item.show', id=watchlist_items.itemId)}">{{item_details.name}}</a></td>
+                <td><a href="{{url_for('item.show', id=watchlist_items.itemId)}}">{{item_details.name}}</a></td>
                 <td>{{item_details.status}} - ${{item_details.currentPrice}}</td>
                 <td>{{watchlist.created_at}}</td>
                 <td><a href="{{url_for('watchlist.remove', id=watchlist_items.itemId)}}" class="btn btn-dark">Remove</a></td>
