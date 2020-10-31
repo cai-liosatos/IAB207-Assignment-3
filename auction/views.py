@@ -6,9 +6,6 @@ from sqlalchemy import desc
 
 bp = Blueprint('main', __name__)
 
-
-
-
 @bp.route('/')
 def index():
     func.count()

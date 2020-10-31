@@ -51,6 +51,9 @@ def create_app():
     from . import items
     app.register_blueprint(items.bp)
 
+    from . import watchlist
+    app.register_blueprint(watchlist.watchbp)
+
     # from . import watchlist
     # app.register_blueprint(watchlist.bp)
    

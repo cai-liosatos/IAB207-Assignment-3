@@ -32,46 +32,14 @@
                 <th style="width:28%">Date Added</th>
                 <th style="width:15%">Remove?</th>
               </tr>
+              {% for watchlist_items, item_details in item_info  %}
               <tr>
-                <td>Nvidia 2080ti</td>
-                <td>Open - $1000</td>
-                <td>31/08/2020</td>
-                <td>
-                  <div class="text-center">
-                    <button type="button" class="btn btn-light">X</button>
-                  </div>
-                </td>
+                <td><a href="{{url_for('item.show', id=watchlist_items.itemId)}">{{item_details.name}}</a></td>
+                <td>{{item_details.status}} - ${{item_details.currentPrice}}</td>
+                <td>{{watchlist.created_at}}</td>
+                <td><a href="{{url_for('watchlist.remove', id=watchlist_items.itemId)}}" class="btn btn-dark">Remove</a></td>
               </tr>
-              <tr>
-                <td>MSI B450 Tomohawk</td>
-                <td>Closed - $300</td>
-                <td>3/09/2020</td>
-                <td>
-                  <div class="text-center">
-                    <button type="button" class="btn btn-light">X</button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Corsair LL120 RGB Cooling Fans</td>
-                <td>Closed - $200</td>
-                <td>6/09/2020</td>
-                <td>
-                  <div class="text-center">
-                    <button type="button" class="btn btn-light">X</button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Intel i9 9900k</td>
-                <td>Open - $2000</td>
-                <td>7/09/2020</td>
-                <td>
-                  <div class="text-center">
-                    <button type="button" class="btn btn-light">X</button>
-                  </div>
-                </td>
-              </tr>
+              {% endfor %}
             </table><br>
           </div>
         </div>
