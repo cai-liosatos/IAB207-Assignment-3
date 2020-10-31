@@ -57,4 +57,4 @@ def bid(id):
         db.session.add(bid)
         db.session.commit()
         flash('Bid successful', 'success')
-        return redirect(url_for('item.show', id=id)
+        return redirect(url_for('item.show', id=id))
