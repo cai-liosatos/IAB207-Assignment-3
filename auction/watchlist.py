@@ -28,7 +28,7 @@ def add(id):
     watchlist = Watchlist(itemId=id, userID=current_user.id)
     db.session.add(watchlist)
     db.session.commit()
-    flash('Item has been added to your watchlist!', 'warning')
+    flash('Item has been added to your watchlist!', 'success')
     return redirect(url_for('main.index'))
 
 @bp.route('/remove/<id>', methods=['GET', 'POST'])

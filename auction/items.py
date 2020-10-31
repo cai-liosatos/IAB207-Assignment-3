@@ -35,9 +35,10 @@ def bid(id):
     price = request.form.get("price")
     i1 = Item.query.filter(and_(Item.currentPrice > price, Item.id == id)).first()
     if i1:
-        print('More money please')
+        flash('Invalid amount', 'warning')
     else:
-        Item.query.filter(id=id).update({Item.currentPrice : price})
+        # Item.query.filter(id=id).update({Item.currentPrice : price})
+        flash('Bid successful', 'success')
     return redirect(url_for('item.show', request.method == 'POST')
 
 
@@ -56,23 +57,3 @@ def create():
         db.session.commit()
         return redirect(url_for('item.show', id=item.id))
     return render_template('items/create.html', form=form)
-    
-    
-
-
-# @bp.route('/create', methods = ['GET', 'POST'])
-# @login_required #decorator between route and view function
-# def create():
-#   print('Method type: ', request.method)
-#   form = DestinationForm()
-#   if(form.validate_on_submit()):
-#     db_file_path=check_upload_file(form)
-#     #variables in the "form"
-#     item=Item(name=form.name.data,description=form.description.data, 
-#     image=db_file_path,currency=form.currency.data)
-    
-#     db.session.add(item)
-#     db.session.commit()
-#     return redirect('index.html')
-#     # return redirect(url_for('item.show', id=item.id))
-#   return render_template('items/create.html', form=form)

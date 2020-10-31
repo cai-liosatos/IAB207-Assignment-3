@@ -7,19 +7,6 @@
 
     <!-- Background image over the gradient-->
     <div style="background:transparent url('https://cdn.discordapp.com/attachments/399944598924951553/753209632549240872/background-stock-image-1.png') no-repeat center center /cover">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %} <!-- check if there are any messages -->
-        <div class="container-fluid">
-            <div class="row mt-3 mb-3">
-                <div class="col-md-12">
-                {% for category, message in messages %} <!--loop through the messages-->
-                    <div class="alert alert-{{category}}">{{ message }}</div> <!--display as alert-->
-                {% endfor %}
-                </div>
-            </div>
-        </div>
-        {% endif %}
-        {% endwith %}<br>
         <div class="row">
             <!--Search Jumbotron-->
             <div class="col-xl-2 col-md-1"></div>
