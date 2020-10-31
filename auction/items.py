@@ -52,7 +52,10 @@ def bid(id):
         flash('Invalid amount', 'warning')
         return redirect(url_for('item.show', id=id))
     else:
-        Item.query.filter(id=id).update({Item.currentPrice : price})
+        updatedPrice = Item.query.filter_by(id=id).first()
+        updatedPrice.currentPrice = price
+        db.session.commit()
+        
         bid=Bid(userID=current_user.id, itemId=id, amount=price)
         db.session.add(bid)
         db.session.commit()
