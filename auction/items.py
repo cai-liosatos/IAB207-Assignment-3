@@ -27,15 +27,16 @@ def check_upload_file(form):
 # function to show the item (grabs a bunch of variable, passed through for dynamic information)
 @bp.route('/<id>') 
 def show(id):
-  item = Item.query.filter_by(id=id).first()
-  similar_items = Item.query.filter_by(category=item.category).order_by(func.random()).limit(4)
-  if current_user.id == item.userID:
-    bidList1 = Bid.query.filter_by(itemId=item.id).order_by(desc(Bid.amount))
-    user_details = User.query.filter(and_(User.id == Bid.userID, Bid.itemId == item.id))
-    bidList2 = zip(bidList1, user_details)
-    return render_template('items/show.html', similar_items=similar_items, item=item, bidList=bidList2)
-  else:
-    return render_template('items/show.html', similar_items=similar_items, item=item)
+    item = Item.query.filter_by(id=id).first()
+    similar_items = Item.query.filter_by(category=item.category).order_by(func.random()).limit(4)
+    if current_user.is_authenticated:
+        if current_user.id == item.userID:
+            bidList1 = Bid.query.filter_by(itemId=item.id).order_by(desc(Bid.amount))
+            user_details = User.query.filter(and_(User.id == Bid.userID, Bid.itemId == item.id))
+            bidList2 = zip(bidList1, user_details)
+            return render_template('items/show.html', similar_items=similar_items, item=item, bidList=bidList2)
+    else:
+        return render_template('items/show.html', similar_items=similar_items, item=item)
 
 # function to create an item, pulled info from form and adds a new row to the Items table
 @bp.route('/create', methods = ['GET', 'POST'])
@@ -81,6 +82,7 @@ def bid(id):
 
 # function to "close" an auction
 @bp.route('/close/<id>', methods=['GET', 'POST'])
+@login_required
 def close(id):
     item = Item.query.filter_by(id=id).first()
     if item.status == "open":
