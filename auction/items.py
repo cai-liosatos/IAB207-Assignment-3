@@ -25,17 +25,13 @@ def check_upload_file(form):
 
 @bp.route('/<id>') 
 def show(id):
-    item = Item.query.filter_by(id=id).first()
-    similar_items = Item.query.filter_by(category=item.category).order_by(func.random()).limit(4)
-    user_check = Item.query.filter(and_(Item.userID == current_user.id, Item.id == item.id))
-    if current_user.id == item.userID:
-        bidList1 = Bid.query.filter_by(itemId=item.id).order_by(desc(Bid.amount))
-        user_details = User.query.filter(and_(User.id == Bid.userID, Bid.itemId == item.id))
-        bidList2 = zip(bidList1, user_details)
-        return render_template('items/show.html', similar_items=similar_items, item=item, bidList=bidList2)
-    else:
-        return render_template('items/show.html', similar_items=similar_items, item=item)
-    
+  item = Item.query.filter_by(id=id).first()
+  similar_items = Item.query.filter_by(category=item.category).order_by(func.random()).limit(4)
+  if current_user.id == item.userID:
+    bidList = Bid.query.filter_by(itemId=item.id).order_by(desc(Bid.amount))
+    return render_template('items/show.html', similar_items=similar_items, item=item, bidList=bidList)
+  else:
+    return render_template('items/show.html', similar_items=similar_items, item=item)
 
 @bp.route('/create', methods = ['GET', 'POST'])
 @login_required #decorator between route and view function
@@ -46,7 +42,7 @@ def create():
         db_file_path=check_upload_file(form)
         item=Item(name=form.name.data, category=form.category.data, manufacturer=form.manufacturer.data, condition=form.condition.data, image=db_file_path, 
         finishDate=form.finishdate.data, deliveryTime=form.postagedate.data, currentPrice=form.startingprice.data, postagePrice=form.postageprice.data, 
-        currency=form.currency.data, moreInfo=form.description.data, status="open", userID=current_user.id)
+        currency=form.currency.data, moreInfo=form.description.data, status="open")
         db.session.add(item)
         db.session.commit()
         return redirect(url_for('item.show', id=item.id))
@@ -55,18 +51,37 @@ def create():
 @bp.route('/bid/<id>', methods = ['GET', 'POST'])
 @login_required
 def bid(id):
-    price = request.form.get("price")
-    i1 = Item.query.filter(and_(Item.currentPrice > price, Item.id == id)).first()
-    if i1:
-        flash('Invalid amount', 'warning')
+    statusCheck = Item.query.filter(and_(Item.status == "Open", Item.id == id))
+    if statusCheck:
+        price = request.form.get("price")
+        i1 = Item.query.filter(and_(Item.currentPrice > price, Item.id == id)).first()
+        if i1:
+            flash('Invalid amount', 'warning')
+            return redirect(url_for('item.show', id=id))
+        else:
+            updatedPrice = Item.query.filter_by(id=id).first()
+            updatedPrice.currentPrice = price
+            db.session.commit()
+            
+            bid=Bid(userID=current_user.id, itemId=id, amount=price)
+            db.session.add(bid)
+            db.session.commit()
+            flash('Bid successful', 'success')
+            return redirect(url_for('item.show', id=id))
+    else:
+        flash('Sorry, this item has closed for bidding.', 'warning')
+        return redirect(url_for('main.index'))
+
+@bp.route('/close/<id>', methods=["GET', 'POST']
+def close(id):
+    statusCheck3 = Item.query.filter(and_(Item.status == "Open", Item.id == id))
+    if statusCheck3:
+        updatedStatus = Item.query.filter(id=id).first()
+        updatedStatus.status = "Closed"
+        db.session.commit()
+        flash('This auction is closed', 'success')
         return redirect(url_for('item.show', id=id))
     else:
-        updatedPrice = Item.query.filter_by(id=id).first()
-        updatedPrice.currentPrice = price
-        db.session.commit()
-        
-        bid=Bid(userID=current_user.id, itemId=id, amount=price)
-        db.session.add(bid)
-        db.session.commit()
-        flash('Bid successful', 'success')
+        flash('Sorry, this auction is already closed', 'warning')
         return redirect(url_for('item.show', id=id))
+

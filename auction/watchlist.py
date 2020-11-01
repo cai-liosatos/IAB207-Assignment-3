@@ -20,16 +20,21 @@ def show():
 @bp.route('/add/<id>', methods = ['GET', 'POST'])
 @login_required
 def add(id):
-    item = Item.query.filter_by(id=id).first()  
-    w1 = Watchlist.query.filter(and_(Watchlist.userID == current_user.id, Watchlist.itemId == id)).first()
-    if w1:
-        flash('Item is already in your watchlist', 'warning')
-        return redirect(url_for('main.index'))  
-    watchlist = Watchlist(itemId=id, userID=current_user.id)
-    db.session.add(watchlist)
-    db.session.commit()
-    flash('Item has been added to your watchlist!', 'success')
-    return redirect(url_for('main.index'))
+    statusCheck = Item.query.filter(and_(Item.status == "Open", Item.id == id))
+    if statusCheck:
+        item = Item.query.filter_by(id=id).first()
+        w1 = Watchlist.query.filter(and_(Watchlist.userID == current_user.id, Watchlist.itemId == id)).first()
+        if w1:
+            flash('Item is already in your watchlist', 'warning')
+            return redirect(url_for('main.index'))  
+        watchlist = Watchlist(itemId=id, userID=current_user.id)
+        db.session.add(watchlist)
+        db.session.commit()
+        flash('Item has been added to your watchlist!', 'success')
+        return redirect(url_for('main.index'))
+    else:
+        flash('Sorry, this item has closed for bidding.', 'warning')
+        return redirect(url_for('main.index'))
 
 @bp.route('/remove/<id>', methods=['GET', 'POST'])
 @login_required
