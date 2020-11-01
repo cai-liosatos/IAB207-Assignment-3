@@ -27,7 +27,7 @@ def check_upload_file(form):
 def show(id):
     item = Item.query.filter_by(id=id).first()
     similar_items = Item.query.filter_by(category=item.category).order_by(func.random()).limit(4)
-    user_check = Item.query.filter(and_(Item.userID == current_user.id, Item.id == id))
+    user_check = Item.query.filter(and_(Item.userID == current_user.id, Item.id == item.id))
     if user_check:
         bidList = "yes"
         return render_template('items/show.html', similar_items=similar_items, item=item, bidList=bidList)
