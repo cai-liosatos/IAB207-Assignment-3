@@ -24,16 +24,16 @@ def create_app():
     bootstrap = Bootstrap(app)
 
     #  error handlers
-   #  @app.errorhandler(404)
-   #  def page_not_found(e):
-   #      error_code_404 = "yes"
-   #      return render_template('error.html', error_code_404=error_code_404), 404
+    @app.errorhandler(404)
+    def page_not_found(e):
+        error_code_404 = "yes"
+        return render_template('error.html', error_code_404=error_code_404), 404
 
-   #  @app.errorhandler(Exception)
-   #  def handle_exception(e):
-   #    if isinstance(e, HTTPException):
-   #       return e
-      # return render_template("error.html", e=e), 500
+    @app.errorhandler(Exception)
+    def handle_exception(e):
+      if isinstance(e, HTTPException):
+         return e
+      return render_template("error.html", e=e), 500
 
     #the folder to store images
     UPLOAD_FOLDER = '/static/image'
