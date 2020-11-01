@@ -30,7 +30,7 @@ def show(id):
     list_of_bids = Bid.query.filter_by(Bid.itemId=id)
     user_check = "Yes"
   else:
-    user_check = "No"
+    user_check = ""
   return render_template('items/show.html', similar_items=similar_items, item=item, user_check=user_check, list_of_bids=list_of_bids)
 
 @bp.route('/create', methods = ['GET', 'POST'])
