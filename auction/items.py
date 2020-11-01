@@ -30,6 +30,8 @@ def show(id):
     user_check = Item.query.filter(and_(Item.userID == current_user.id, Item.id == item.id))
     if current_user.id == item.userID:
         bidList = "yes"
+    else:
+        bidList = ""
     return render_template('items/show.html', similar_items=similar_items, item=item, bidList=bidList)
 
 @bp.route('/create', methods = ['GET', 'POST'])
