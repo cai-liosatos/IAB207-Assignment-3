@@ -29,7 +29,8 @@ def show(id):
   similar_items = Item.query.filter_by(category=item.category).order_by(func.random()).limit(4)
   if current_user.id == item.userID:
     bidList = Bid.query.filter_by(itemId=item.id).order_by(desc(Bid.amount))
-    return render_template('items/show.html', similar_items=similar_items, item=item, bidList=bidList)
+    user_check = "yes"
+    return render_template('items/show.html', similar_items=similar_items, item=item, bidList=bidList, user_check=user_check)
   else:
     return render_template('items/show.html', similar_items=similar_items, item=item)
 
