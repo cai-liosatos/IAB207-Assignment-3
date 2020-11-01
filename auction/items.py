@@ -23,10 +23,15 @@ def check_upload_file(form):
     return db_upload_path
 
 @bp.route('/<id>') 
-def show(id): 
+def show(id):
   item = Item.query.filter_by(id=id).first()
   similar_items = Item.query.filter_by(category=item.category).order_by(func.random()).limit(4)
-  return render_template('items/show.html', similar_items=similar_items, item=item)
+  if current_user.id == item.userID:
+    list_of_bids = Bid.query.filter(Bid.itemId=id)
+    user_check = "Yes"
+  else:
+    user_check = "No"
+  return render_template('items/show.html', similar_items=similar_items, item=item, user_check=user_check)
 
 @bp.route('/create', methods = ['GET', 'POST'])
 @login_required #decorator between route and view function

@@ -96,11 +96,45 @@
 
               <!-- Addition postal cost (added ontop of price user pays once auction closes) -->
               <div class="col-sm-4 col-xs-12"><br>
-                <h2>Estimated Posting Date:<br>{{item.deliveryTime}}</h2>
+                <h2>Estimated Posting Date<br>{{item.deliveryTime}}</h2>
               </div>
             </div>
           </div>
         </div>
+
+        {% if user_check == "Yes"}
+        <!-- list of bids -->
+        <div class="row">
+          <div class="col-12">
+            <p>
+              <a class="btn btn-dark" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                List of bids
+              </a>
+            </p>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                <table>
+                  <tr>
+                    <th>Username</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                  </tr>
+                  <tr>
+                    <td>123</td>
+                    <td>100</td>
+                    <td>now</td>
+                  </tr>
+                  <tr>
+                    <td>123</td>
+                    <td>100</td>
+                    <td>now</td>
+                  </tr>
+                </table>
+              </div>
+            </div><br>
+          </div>
+        </div>
+        {% endif %}
 
         <!-- Row displaying additional information about product (user inputs this when listing item) -->
         <div class="row">
