@@ -23,7 +23,7 @@ class RegisterForm(FlaskForm):
     password=PasswordField("Password", validators=[InputRequired(),
                   EqualTo('confirm', message="Passwords should match")])
     confirm = PasswordField("Confirm Password")
-    phone_number=StringField("Phone Number:", validators=[InputRequired()])
+    contact_number=StringField("Phone Number:", validators=[InputRequired()])
     address=StringField("Address:", validators=[InputRequired()])
     #submit button
     submit = SubmitField("Register")
