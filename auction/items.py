@@ -72,7 +72,7 @@ def bid(id):
         flash('Sorry, this item has closed for bidding.', 'warning')
         return redirect(url_for('main.index'))
 
-@bp.route('/close/<id>', methods=['GET', 'POST']
+@bp.route('/close/<id>', methods=['GET', 'POST'])
 def close(id):
     statusCheck3 = Item.query.filter(and_(Item.status == "Open", Item.id == id))
     if statusCheck3:
