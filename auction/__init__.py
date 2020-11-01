@@ -1,9 +1,10 @@
 #import flask - from the package import class
-from flask import Flask 
+from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 import os
+from werkzeug.exceptions import HTTPException
 
 db=SQLAlchemy()
 
@@ -21,6 +22,16 @@ def create_app():
     db.init_app(app)
 
     bootstrap = Bootstrap(app)
+
+    @app.errorhandler(404)
+    def page_not_found(e):
+        return render_template('error.html'), 404
+
+    @app.errorhandler(Exception)
+    def handle_exception(e):
+      if isinstance(e, HTTPException):
+         return e
+      return render_template("error.html", e=e), 500
 
     #the folder to store images
     UPLOAD_FOLDER = '/static/image'

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8 col-sm-12">
+          <h1>Oops!</h1>
+          <p>Something went wrong!</p>
+          {% if error_code_404 %}
+          <p>The page you are looking for might have been removed, had its name changed or is temporarily unavailable.</p>
+          {% else %}
+          <p>Some technical issues occurred in your last operation. Try again later</p>
+          {% endif %}
+          <p><a href="{{ url_for('main.index') }}" class="btn btn-dark">Go back to homepage</a>
+    </div>
+  </div>
+{% endblock %}
