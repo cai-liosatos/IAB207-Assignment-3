@@ -116,9 +116,9 @@
           </div> 
         </div><br>
 
+        {% if bidList %}
         <!-- list of bids -->
         <div class="row">
-          {% if bidList|length %}
           <div class="col-12">
             <p>
               <a class="btn btn-dark" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -145,12 +145,10 @@
                   </tr>
                 </table>
               </div>
-            </div><br>
-            {% else %}
-            u didnt upload this
+            </div>
           </div>
-        {% endif %}
-      </div>
+      </div><br><br>
+      {% endif %}
 
         <!-- Row displaying items similar to the currently displayed item -->
         <div class="row">
