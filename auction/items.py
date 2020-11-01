@@ -27,11 +27,11 @@ def show(id):
   item = Item.query.filter_by(id=id).first()
   similar_items = Item.query.filter_by(category=item.category).order_by(func.random()).limit(4)
   if current_user.id == item.userID:
-    list_of_bids = Bid.query.filter(Bid.itemId=id)
+    list_of_bids = Bid.query.filter_by(Bid.itemId=id)
     user_check = "Yes"
   else:
     user_check = "No"
-  return render_template('items/show.html', similar_items=similar_items, item=item, user_check=user_check)
+  return render_template('items/show.html', similar_items=similar_items, item=item, user_check=user_check, list_of_bids=list_of_bids)
 
 @bp.route('/create', methods = ['GET', 'POST'])
 @login_required #decorator between route and view function
