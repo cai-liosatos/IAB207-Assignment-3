@@ -25,7 +25,8 @@ def create_app():
 
     @app.errorhandler(404)
     def page_not_found(e):
-        return render_template('error.html'), 404
+        error_code_404 = "yes"
+        return render_template('error.html', error_code_404=error_code_404), 404
 
     @app.errorhandler(Exception)
     def handle_exception(e):
