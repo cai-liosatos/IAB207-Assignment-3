@@ -27,6 +27,7 @@ def check_upload_file(form):
 # function to show the item (grabs a bunch of variable, passed through for dynamic information)
 @bp.route('/<id>') 
 @login_required
+def show():
   item = Item.query.filter_by(id=id).first()
   similar_items = Item.query.filter_by(category=item.category).order_by(func.random()).limit(4)
   if current_user.id == item.userID:
