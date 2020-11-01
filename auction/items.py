@@ -78,7 +78,7 @@ def bid(id):
 def close(id):
     statusCheck3 = Item.query.filter(and_(Item.status == "Open", Item.id == id))
     if statusCheck3:
-        updatedStatus = Item.query.filter(id=id).first()
+        updatedStatus = Item.query.filter_by(id=id).first()
         updatedStatus.status = "Closed"
         db.session.commit()
         flash('This auction is closed', 'success')
