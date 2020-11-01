@@ -25,7 +25,7 @@ def check_upload_file(form):
 @bp.route('/<id>') 
 def show(id): 
   item = Item.query.filter_by(id=id).first()
-  similar_items = Item.query.filter(category=item.category).order_by(func.random()).limit(4)
+  similar_items = Item.query.filter_by(category=item.category).order_by(func.random()).limit(4)
   return render_template('items/show.html', similar_items=similar_items, item=item)
 
 @bp.route('/create', methods = ['GET', 'POST'])

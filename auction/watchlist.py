@@ -37,4 +37,5 @@ def remove(id):
   item = Watchlist.query.filter(and_(Watchlist.userID == current_user.id, Watchlist.itemId == id)).first()
   db.session.delete(item)
   db.session.commit()
+  flash('Item has been removed from your watchlist', 'danger')
   return redirect(url_for('watchlist.show'))
