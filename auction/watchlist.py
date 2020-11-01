@@ -20,8 +20,10 @@ def show():
 @bp.route('/add/<id>', methods = ['GET', 'POST'])
 @login_required
 def add(id):
-    statusCheck = Item.query.filter(and_(Item.status == "open", Item.id == id))
-    if statusCheck:
+    item = Item.query.filter_by(id=id).first()
+    if item.status="open":
+    # statusCheck = Item.query.filter(and_(Item.status == "open", Item.id == id))
+    # if statusCheck:
         item = Item.query.filter_by(id=id).first()
         w1 = Watchlist.query.filter(and_(Watchlist.userID == current_user.id, Watchlist.itemId == id)).first()
         if w1:
