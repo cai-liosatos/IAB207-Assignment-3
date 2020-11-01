@@ -53,7 +53,9 @@ def create():
 @bp.route('/bid/<id>', methods = ['GET', 'POST'])
 @login_required
 def bid(id):
-    statusCheck = Item.query.filter(and_(Item.status == "Open", Item.id == id))
+    # item = Item.query.filter(id=id).first()
+    # if item.status
+    statusCheck = Item.query.filter(and_(Item.status == "open", Item.id == id))
     if statusCheck:
         price = request.form.get("price")
         i1 = Item.query.filter(and_(Item.currentPrice > price, Item.id == id)).first()
@@ -76,7 +78,7 @@ def bid(id):
 
 @bp.route('/close/<id>', methods=['GET', 'POST'])
 def close(id):
-    statusCheck3 = Item.query.filter(and_(Item.status == "Open", Item.id == id))
+    statusCheck3 = Item.query.filter(and_(Item.status == "open", Item.id == id))
     if statusCheck3:
         updatedStatus = Item.query.filter_by(id=id).first()
         updatedStatus.status = "Closed"
