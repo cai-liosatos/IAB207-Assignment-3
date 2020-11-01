@@ -264,6 +264,10 @@
   background-color: white;
   }
 
+  #watchlistTable a, #watchlistTable a:hover {
+    color: black;
+  }
+
 /* CSS for the Footer */
   .site-footer
   {

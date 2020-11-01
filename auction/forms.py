@@ -1,7 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, SelectField, DateField
+from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, SelectField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 from flask_wtf.file import FileRequired, FileField, FileAllowed
+from wtforms.fields.html5 import DateField
 
 
 #add the types of files allowed as a set
@@ -22,6 +23,8 @@ class RegisterForm(FlaskForm):
     password=PasswordField("Password", validators=[InputRequired(),
                   EqualTo('confirm', message="Passwords should match")])
     confirm = PasswordField("Confirm Password")
+    phone_number=StringField("Phone Number:", validators=[InputRequired()])
+    address=StringField("Address:", validators=[InputRequired()])
     #submit button
     submit = SubmitField("Register")
 
@@ -36,8 +39,8 @@ class ItemForm(FlaskForm):
     #create a filefield that takes two validators - File required and File Allowed
     image = FileField('Image:', validators=[FileRequired(message='Image can not be empty'),
                                             FileAllowed(ALLOWED_FILE, message='Only support png, jpg, JPG, PNG, bmp')])
-    finishdate =  DateField('Finish Date (yyyy-mm-dd):', format='%Y-%m-%d', validators=[InputRequired()])
-    postagedate = DateField('Estimated Delivery Time (yyyy-mm-dd):', format='%Y-%m-%d', validators=[InputRequired()])
+    finishdate =  DateField('Finish Date:', format='%Y-%m-%d', validators=[InputRequired()])
+    postagedate = DateField('Estimated Delivery Time:', format='%Y-%m-%d', validators=[InputRequired()])
     startingprice = StringField('Starting Price:', validators=[InputRequired()])
     postageprice = StringField('Postage Price:', validators=[InputRequired()])
     currency = StringField('Currency ($)', validators=[InputRequired()])
