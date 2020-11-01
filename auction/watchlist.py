@@ -9,6 +9,7 @@ from sqlalchemy import and_
 bp = Blueprint('watchlist', __name__)
 from flask import session
 
+# function to view your watchlist, containing user-specific items
 @bp.route('/watchlist')
 @login_required
 def show():
@@ -17,13 +18,13 @@ def show():
     item_info = zip(watchlist_items, item_details)
     return render_template('watchlist.html', item_info=item_info)
 
+# function to add an item to your watchlist
 @bp.route('/add/<id>', methods = ['GET', 'POST'])
 @login_required
 def add(id):
     item = Item.query.filter_by(id=id).first()
+    # not allowed to add an item if the auction it "closed"
     if item.status == "open":
-    # statusCheck = Item.query.filter(and_(Item.status == "open", Item.id == id))
-    # if statusCheck:
         item = Item.query.filter_by(id=id).first()
         w1 = Watchlist.query.filter(and_(Watchlist.userID == current_user.id, Watchlist.itemId == id)).first()
         if w1:
@@ -38,6 +39,7 @@ def add(id):
         flash('Sorry, this item has closed for bidding.', 'warning')
         return redirect(url_for('main.index'))
 
+# function to remove an item from your watchlist
 @bp.route('/remove/<id>', methods=['GET', 'POST'])
 @login_required
 def remove(id):

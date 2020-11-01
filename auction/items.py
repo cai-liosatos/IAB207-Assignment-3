@@ -13,6 +13,7 @@ from sqlalchemy import desc
 #create a blueprint
 bp = Blueprint('item', __name__, url_prefix='/items')
 
+# function to upload an image
 def check_upload_file(form):
     fp=form.image.data
     filename=fp.filename
@@ -23,6 +24,7 @@ def check_upload_file(form):
     fp.save(upload_path)
     return db_upload_path
 
+# function to show the item (grabs a bunch of variable, passed through for dynamic information)
 @bp.route('/<id>') 
 def show(id):
   item = Item.query.filter_by(id=id).first()
@@ -35,6 +37,7 @@ def show(id):
   else:
     return render_template('items/show.html', similar_items=similar_items, item=item)
 
+# function to create an item, pulled info from form and adds a new row to the Items table
 @bp.route('/create', methods = ['GET', 'POST'])
 @login_required #decorator between route and view function
 def create():
@@ -50,13 +53,13 @@ def create():
         return redirect(url_for('item.show', id=item.id))
     return render_template('items/create.html', form=form)
 
+# function to allow a user to bid on an item (could be a bit less complicated, but it works perfectly)
 @bp.route('/bid/<id>', methods = ['GET', 'POST'])
 @login_required
 def bid(id):
     item = Item.query.filter_by(id=id).first()
+    # user it only allowed to bid on an "open" auction
     if item.status == "open":
-    # statusCheck = Item.query.filter(and_(Item.status == "open", Item.id == id))
-    # if statusCheck:
         price = request.form.get("price")
         i1 = Item.query.filter(and_(Item.currentPrice > price, Item.id == id)).first()
         if i1:
@@ -76,12 +79,11 @@ def bid(id):
         flash('Sorry, this item has closed for bidding.', 'warning')
         return redirect(url_for('main.index'))
 
+# function to "close" an auction
 @bp.route('/close/<id>', methods=['GET', 'POST'])
 def close(id):
     item = Item.query.filter_by(id=id).first()
     if item.status == "open":
-    # statusCheck3 = Item.query.filter(and_(Item.status == "open", Item.id == id))
-    # if statusCheck3:
         updatedStatus = Item.query.filter_by(id=id).first()
         updatedStatus.status = "Closed"
         db.session.commit()

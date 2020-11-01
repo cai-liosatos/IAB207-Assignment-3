@@ -117,37 +117,34 @@
         </div><br>
         
         {% if bidList %}
-        <!-- Button allowing the user to close bidding -->
+           <!-- Button allowing the user who uploaded the item to close bidding -->
           <div class="row">
             <div class="col-12">
               <a href="{{url_for('item.close', id=item.id)}}" class="btn btn-dark">Close Auction</a>
             </div>
           </div><br>
 
-        <!-- list of bids -->
-            <p>
-              <a class="btn btn-dark" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                List of bids
-              </a>
-            </p>
-            <div class="collapse" id="collapseExample">
-              <div class="card card-body">
-                <table id="collapseCard">
+            <!-- list of bids (and subsequent relevant information) made on the item, in descending order -->
+          <p><a class="btn btn-dark" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">List of bids</a></p>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+              <table id="collapseCard">
+                <tr>
+                  <th>Username</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                </tr>
+                {% for bidList1, user_details in bidList %}
                   <tr>
-                    <th>Username</th>
-                    <th>Amount</th>
-                    <th>Date</th>
+                    <td>{{user_details.username}}</td>
+                    <td>${{bidList1.amount}}</td>
+                    <td>{{bidList1.time}}</td>
                   </tr>
-                  {% for bidList1, user_details in bidList %}
-                    <tr>
-                      <td>{{user_details.username}}</td>
-                      <td>${{bidList1.amount}}</td>
-                      <td>{{bidList1.time}}</td>
-                    </tr>
-                  {% endfor %}
-                </table>
-              </div>
-            </div><br>{% endif %}
+                {% endfor %}
+              </table>
+            </div>
+          </div><br>
+        {% endif %}
             
         
         <!-- Row displaying items similar to the currently displayed item -->
@@ -159,8 +156,8 @@
         <!-- Row displaying items similar to the currently displayed item -->
         <div class="row justify-content-center">
           {% for item in similar_items %}
-          <div class="col-xl-3 col-md-6">
-            <div class="card cardDisplay p-3 mb-5 border-dark grow">
+            <div class="col-xl-3 col-md-6">
+              <div class="card cardDisplay p-3 mb-5 border-dark grow">
                 <div class="card-head">
                     <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
                 </div>
@@ -171,10 +168,10 @@
                     <p class="card-text"><small class="text-muted">{{item.bid|length}} bid(s)</small></p>
                 </div>
                 <div class="dimmer"></div>
-            </div> 
+              </div> 
+             </div>
+          {% endfor %}
         </div>
-            {% endfor %}
-        </div>
-        </div>
+      </div>
     </main>
-    {% endblock %}
+  {% endblock %}
