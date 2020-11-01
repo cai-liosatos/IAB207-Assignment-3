@@ -20,7 +20,7 @@
 
               <!-- Item condition -->
               <div class="col-sm-4 col-xs-12">
-                <h2>{{item.condition}}</h2><br>
+                <h2>Condition: {{item.condition}}</h2><br>
               </div>
               <div class="col-sm-3 col-xs-12"></div>
 
@@ -34,13 +34,13 @@
 
               <!-- Item's current bidding price -->
               <div class="col-sm-4 col-xs-12">
-                <h2>{{item.currentPrice}}</h2><br>
+                <h2>Bidding Price: ${{item.currentPrice}}</h2><br>
               </div>
               <div class="col-sm-3 col-xs-12"></div>
 
               <!-- Addition postal cost (added ontop of price user pays once auction closes) -->
               <div class="col-sm-4 col-xs-12">
-                <h2>{{item.postagePrice}}</h2>
+                <h2>Postage Price: ${{item.postagePrice}}</h2>
               </div>
             </div><br>
 
@@ -107,7 +107,7 @@
           <div class="col-12">
             <div class="card border-additionalInfo">
               <div class="card-header align-center">
-                <h2 class="h2">Ad2ditional Information:</h2>
+                <h2 class="h2">Additional Information:</h2>
               </div>
               <blockquote class="blockquote mb-0 card-body">
                 <p class="p1">{{item.moreInfo}}</p>
