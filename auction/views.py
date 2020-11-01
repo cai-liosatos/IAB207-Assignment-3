@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, request, session, redirect, url_fo
 from .models import Item, Watchlist, Bid
 from . import db
 from sqlalchemy.sql.expression import func
+from sqlalchemy import desc
 
 # blueprint
 bp = Blueprint('main', __name__)

@@ -20,7 +20,6 @@ def login():
         user_name = login_form.user_name.data
         password = login_form.password.data
         u1 = User.query.filter_by(username=user_name).first() # Compare user_name from form with the database
-
         #if there is no user with that name
         if u1 is None:
             error='Incorrect user name or password'
