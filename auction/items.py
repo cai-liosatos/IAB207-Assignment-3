@@ -53,11 +53,8 @@ def create():
 @bp.route('/bid/<id>', methods = ['GET', 'POST'])
 @login_required
 def bid(id):
-    statusCheck = Item.query.filter(and_(Item.status == "Closed", Item.id == id))
+    statusCheck = Item.query.filter(and_(Item.status == "Open", Item.id == id))
     if statusCheck:
-        flash('Sorry, this item has closed for bidding.', 'warning')
-        return redirect(url_for('main.index'))
-    else:
         price = request.form.get("price")
         i1 = Item.query.filter(and_(Item.currentPrice > price, Item.id == id)).first()
         if i1:
@@ -73,6 +70,9 @@ def bid(id):
             db.session.commit()
             flash('Bid successful', 'success')
             return redirect(url_for('item.show', id=id))
+    else:
+        flash('Sorry, this item has closed for bidding.', 'warning')
+        return redirect(url_for('main.index'))
 
 @bp.route('/close/<id>', methods=['GET', 'POST'])
 def close(id):
