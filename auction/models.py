@@ -9,7 +9,7 @@ class User(db.Model, UserMixin):
 	email = db.Column(db.String(100), index=True, unique=True, nullable=False)
 	password_hash = db.Column(db.String(255), nullable=False)
 	contact_number = db.Column(db.Integer, nullable=False)
-	Address = db.Column(db.String(255), nullable=False)
+	address = db.Column(db.String(255), nullable=False)
 	watchlist = db.relationship('Watchlist', backref='user')
 	bid = db.relationship('Bid', backref='user')
 	item = db.relationship('Item', backref='user')
