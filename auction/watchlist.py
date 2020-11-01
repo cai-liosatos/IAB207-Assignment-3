@@ -21,7 +21,7 @@ def show():
 @login_required
 def add(id):
     item = Item.query.filter_by(id=id).first()
-    if item.status="open":
+    if item.status == "open":
     # statusCheck = Item.query.filter(and_(Item.status == "open", Item.id == id))
     # if statusCheck:
         item = Item.query.filter_by(id=id).first()
