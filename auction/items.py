@@ -60,21 +60,25 @@ def bid(id):
     item = Item.query.filter_by(id=id).first()
     # user it only allowed to bid on an "open" auction
     if item.status == "open":
-        price = request.form.get("price")
-        i1 = Item.query.filter(and_(Item.currentPrice > price, Item.id == id)).first()
-        if i1:
-            flash('Invalid amount', 'warning')
-            return redirect(url_for('item.show', id=id))
+        if current_user.id == item.userID:
+            flash('You cannot bid on your own item', 'warning')
+            redirect(url_for('item.show', id=item.id))
         else:
-            updatedPrice = Item.query.filter_by(id=id).first()
-            updatedPrice.currentPrice = price
-            db.session.commit()
-            
-            bid=Bid(userID=current_user.id, itemId=id, amount=price)
-            db.session.add(bid)
-            db.session.commit()
-            flash('Bid successful', 'success')
-            return redirect(url_for('item.show', id=id))
+            price = request.form.get("price")
+            i1 = Item.query.filter(and_(Item.currentPrice > price, Item.id == id)).first()
+            if i1:
+                flash('Invalid amount', 'warning')
+                return redirect(url_for('item.show', id=id))
+            else:
+                updatedPrice = Item.query.filter_by(id=id).first()
+                updatedPrice.currentPrice = price
+                db.session.commit()
+                
+                bid=Bid(userID=current_user.id, itemId=id, amount=price)
+                db.session.add(bid)
+                db.session.commit()
+                flash('Bid successful', 'success')
+                return redirect(url_for('item.show', id=id))
     else:
         flash('Sorry, this item has closed for bidding.', 'warning')
         return redirect(url_for('main.index'))
