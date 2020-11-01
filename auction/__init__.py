@@ -16,13 +16,13 @@ def create_app():
     app.secret_key='utroutoru'
     #set the app configuration data 
     app.config['SQLALCHEMY_DATABASE_URI']=os.environ['DATABASE_URL']
-   #  app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    #  app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     #initialize db with flask app
     db.init_app(app)
 
     bootstrap = Bootstrap(app)
 
-   #  error handlers
+    #  error handlers
     @app.errorhandler(404)
     def page_not_found(e):
         error_code_404 = "yes"
