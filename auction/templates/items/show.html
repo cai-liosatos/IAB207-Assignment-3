@@ -124,8 +124,8 @@
               </a>
             </p>
             <div class="collapse" id="collapseExample">
-              <div class="card card-body collapseCard">
-                <table>
+              <div class="card card-body">
+                <table id="collapseCard">
                   <tr>
                     <th>Username</th>
                     <th>Amount</th>
@@ -133,8 +133,8 @@
                   </tr>
                   {% for bidList1, user_details in bidList %}
                     <tr>
-                      <td>{{user_details.name}}</td>
-                      <td>{{bidList1.amount}}</td>
+                      <td>{{user_details.username}}</td>
+                      <td>${{bidList1.amount}}</td>
                       <td>{{bidList1.time}}</td>
                     </tr>
                   {% endfor %}
