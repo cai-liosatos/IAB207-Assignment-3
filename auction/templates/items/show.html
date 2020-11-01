@@ -141,9 +141,12 @@
                 </table>
               </div>
             </div><br>{% endif %}
-        
             
-
+        <!-- Button allowing the user to close bidding -->
+        {% if bidList %}
+        <a href="{{url_for('item.close', id=id)}}" class="btn btn-dark">Close Auction</a>
+        {$ endif %}
+        
         <!-- Row displaying items similar to the currently displayed item -->
         <div class="row">
           <div class="col-12">
