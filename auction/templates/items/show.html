@@ -118,7 +118,7 @@
 
         <!-- list of bids -->
         <div class="row">
-          {% if bidList %}
+          {% if bidList is defined %}
           <div class="col-12">
             <p>
               <a class="btn btn-dark" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -146,6 +146,8 @@
                 </table>
               </div>
             </div><br>
+            {% else %}
+            u didnt upload this
           </div>
         {% endif %}
       </div>
