@@ -36,8 +36,10 @@ def show(id):
         bidList2 = zip(bidList1, user_details)
         return render_template('items/show.html', similar_items=similar_items, item=item, bidList=bidList2)
     else:
+        bidList1 = Bid.query.filter_by(itemId=item.id).order_by(desc(Bid.amount))
+        user_details = User.query.filter(and_(User.id == Bid.userID, Bid.itemId == item.id))
+        bidList2 = zip(bidList1, user_details)
         return render_template('items/show.html', similar_items=similar_items, item=item)
-    el
 
 # function to create an item, pulled info from form and adds a new row to the Items table
 @bp.route('/create', methods = ['GET', 'POST'])
