@@ -116,34 +116,36 @@
           </div> 
         </div><br>
 
+<!-- list of bids -->
         {% if bidList %}
-        <!-- list of bids -->
+        <div class="row">
+          <div class="col">
             <p>
               <a class="btn btn-dark" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                 List of bids
               </a>
             </p>
             <div class="collapse" id="collapseExample">
-              <div class="card card-body">
+              <div class="card card-body collapseCard">
                 <table>
                   <tr>
                     <th>Username</th>
                     <th>Amount</th>
                     <th>Date</th>
                   </tr>
+                  {% for bidList1, user_details in bidList %}
                   <tr>
-                    <td>123</td>
-                    <td>100</td>
-                    <td>now</td>
-                  </tr>
-                  <tr>
-                    <td>123</td>
-                    <td>100</td>
-                    <td>now</td>
+                    <td>{{user_details.name}}</td>
+                    <td>{{bidList1.amount}}</td>
+                    <td>{{bidList1.time}}</td>
                   </tr>
                 </table>
               </div>
-      </div><br>{% endif %}
+            </div><br>
+          </div>
+        </div>{% endif %}
+        
+            
 
         <!-- Row displaying items similar to the currently displayed item -->
         <div class="row">

@@ -194,6 +194,10 @@
   .cardImg {
     border-radius: 10%;
   }
+  
+  .collapseCard {
+    color: white
+  }
 
   .border-dark {
     border-width: thick;
