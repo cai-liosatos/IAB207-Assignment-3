@@ -32,13 +32,14 @@
                 <th style="width:28%">Number of Bids</th>
                 <th style="width:15%">Remove?</th>
               </tr>
+              <!-- displays a new (and unique) row for each item in the user's watchlist -->
               {% for watchlist_items, item_details in item_info  %}
-              <tr>
-                <td><a href="{{url_for('item.show', id=watchlist_items.itemId)}}">{{item_details.name}}</a></td>
-                <td>{{item_details.status}} - ${{item_details.currentPrice}}</td>
-                <td>{{item_details.bid|length}} bid(s)</td>
-                <td><a href="{{url_for('watchlist.remove', id=watchlist_items.itemId)}}" class="btn btn-dark">Remove</a></td>
-              </tr>
+                <tr>
+                  <td><a href="{{url_for('item.show', id=watchlist_items.itemId)}}">{{item_details.name}}</a></td>
+                  <td>{{item_details.status}} - ${{item_details.currentPrice}}</td>
+                  <td>{{item_details.bid|length}} bid(s)</td>
+                  <td><a href="{{url_for('watchlist.remove', id=watchlist_items.itemId)}}" class="btn btn-dark">Remove</a></td>
+                </tr>
               {% endfor %}
             </table><br>
           </div>

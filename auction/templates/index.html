@@ -2,23 +2,20 @@
 
 {% block header %}
 <div class="container-fluid">
-
-    <!-- Code for the top header and carousel -->
-
     <!-- Background image over the gradient-->
     <div style="background:transparent url('https://cdn.discordapp.com/attachments/399944598924951553/753209632549240872/background-stock-image-1.png') no-repeat center center /cover">
+        
+        <!--Search Jumbotron-->
         <div class="row">
-            <!--Search Jumbotron-->
             <div class="col-xl-2 col-md-1"></div>
             <div class="col-xl-8 col-md-10">
-            <!-- shadow py-4 mb-5  -->
-            <div class="jumbotron grow">
-                <h1 class="text-center">Find our best items</h1>
-                <form class="form-inline d-flex flex-nowrap" action="{{url_for('main.search')}}" >
-                    <input type="text" name="search" class="form-control flex-grow-1 my-1 mr-sm-2" id="inlineFormCustomSelectPref" placeholder="Search...">
-                    <button type="submit" class="btn my-2 my-sm-0 searchButton">Search</button>
-                </form>
-            </div>
+                <div class="jumbotron grow">
+                    <h1 class="text-center">Find our best items</h1>
+                    <form class="form-inline d-flex flex-nowrap" action="{{url_for('main.search')}}" >
+                        <input type="text" name="search" class="form-control flex-grow-1 my-1 mr-sm-2" id="inlineFormCustomSelectPref" placeholder="Search...">
+                        <button type="submit" class="btn my-2 my-sm-0 searchButton">Search</button>
+                    </form>
+                </div>
             </div>
             <div class="col-xl-2 col-md-1"></div>
         </div>
@@ -27,228 +24,226 @@
 
     {% block content %}
     <main><br><br>
-        <div class="row justify-content-center">
-            {% for item in search_items %}
-            <div class="col-xl-3 col-md-6">
-                <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                    <div class="card-head">
-                        <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
+        {% if search_items %}
+            <div class="row justify-content-center">
+                
+                <!-- Only displays the items that came up from the search result -->
+                {% for item in search_items %}
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                            <div class="card-head">
+                                <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</h5></a><br>
+                                <p>{{item.status}} - {{item.currency}} ${{item.currentPrice}}</p>
+                                <a href="{{url_for('watchlist.add', id=item.id)}}" class="btn btn-dark">Add to watchlist</a><br>
+                                <p class="card-text"><small class="text-muted">{{item.bid|length}} bid(s)</small></p>
+                            </div>
+                            <div class="dimmer"></div>
+                        </div> 
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</h5></a><br>
-                        <p>{{item.status}} - {{item.currency}} ${{item.currentPrice}}</p>
-                        <a href="{{url_for('watchlist.add', id=item.id)}}" class="btn btn-dark">Add to watchlist</a><br>
-                        <p class="card-text"><small class="text-muted">{{item.bid|length}} bid(s)</small></p>
-                    </div>
-                    <div class="dimmer"></div>
-                </div> 
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
+        {% endif %}
 
-        
+        <!-- if the featured_items variable has been passed, then the items listed in there will have their info displayed here -->
         {% if featured_items %}
-        <div class="row">
-            <div class="col-12">
-                <h2>Recently Posted Items:</h2>
+            <div class="row">
+                <div class="col-12">
+                    <h2>Recently Posted Items:</h2>
+                </div>
             </div>
-        </div>
 
-        <!-- Cards that display the recent items the user has viewed -->
-        <div class="row">
-            {% for item in featured_items %}
-            <div class="col-xl-3 col-md-6">
-                <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                    <div class="card-head">
-                        <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
+            <!-- Cards that display the recent items the user has viewed -->
+            <div class="row">
+                {% for item in featured_items %}
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                            <div class="card-head">
+                                <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</h5></a><br>
+                                <p>{{item.status}} - {{item.currency}} ${{item.currentPrice}}</p>
+                                <a href="{{url_for('watchlist.add', id=item.id)}}" class="btn btn-dark">Add to watchlist</a><br>
+                                <p class="card-text"><small class="text-muted">{{item.bid|length}} bid(s)</small></p>
+                            </div>
+                            <div class="dimmer"></div>
+                        </div> 
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</h5></a><br>
-                        <p>{{item.status}} - {{item.currency}} ${{item.currentPrice}}</p>
-                        <a href="{{url_for('watchlist.add', id=item.id)}}" class="btn btn-dark">Add to watchlist</a><br>
-                        <p class="card-text"><small class="text-muted">{{item.bid|length}} bid(s)</small></p>
-                    </div>
-                    <div class="dimmer"></div>
-                </div> 
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
         {% endif %}<br><br><br>
         
-        {% if CPUCategory %}
-        <div class="row">
-            <div class="col-12">
-                <h2>CPUs:</h2>
+        <!-- if the CPUCategory variable has been passed (and information in it), then the items listed in there will have their info displayed here -->
+        {% if CPUCategory|length %}
+            <div class="row">
+                <div class="col-12">
+                    <h2>CPUs:</h2>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            {% for item in CPUCategory %}
-            <div class="col-xl-3 col-md-6">
-                <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                    <div class="card-head">
-                        <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
+            <div class="row">
+                {% for item in CPUCategory %}
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                            <div class="card-head">
+                                <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</h5></a><br>
+                                <p>{{item.status}} - {{item.currency}} ${{item.currentPrice}}</p>
+                                <a href="{{url_for('watchlist.add', id=item.id)}}" class="btn btn-dark">Add to watchlist</a><br>
+                                <p class="card-text"><small class="text-muted">{{item.bid|length}} bid(s)</small></p>
+                            </div>
+                            <div class="dimmer"></div>
+                        </div> 
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</h5></a><br>
-                        <p>{{item.status}} - {{item.currency}} ${{item.currentPrice}}</p>
-                        <a href="{{url_for('watchlist.add', id=item.id)}}" class="btn btn-dark">Add to watchlist</a><br>
-                        <p class="card-text"><small class="text-muted">{{item.bid|length}} bid(s)</small></p>
-                    </div>
-                    <div class="dimmer"></div>
-                </div> 
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
         {% endif %}<br>    
 
-        <!-- List of some items in the GPU category -->
-        
-        {% if GPUCategory %}
-        <div class="row">
-            <div class="col-12">
-                <h2>GPUs:</h2>
+        <!-- if the GPUCategory variable has been passed (and information in it), then the items listed in there will have their info displayed here -->
+        {% if GPUCategory|length %}
+            <div class="row">
+                <div class="col-12">
+                    <h2>GPUs:</h2>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            {% for item in GPUCategory %}
-            <div class="col-xl-3 col-md-6">
-                <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                    <div class="card-head">
-                        <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
+            <div class="row">
+                {% for item in GPUCategory %}
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                            <div class="card-head">
+                                <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</h5></a><br>
+                                <p>{{item.status}} - {{item.currency}} ${{item.currentPrice}}</p>
+                                <a href="{{url_for('watchlist.add', id=item.id)}}" class="btn btn-dark">Add to watchlist</a><br>
+                                <p class="card-text"><small class="text-muted">{{item.bid|length}} bid(s)</small></p>
+                            </div>
+                            <div class="dimmer"></div>
+                        </div> 
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</h5></a><br>
-                        <p>{{item.status}} - {{item.currency}} ${{item.currentPrice}}</p>
-                        <a href="{{url_for('watchlist.add', id=item.id)}}" class="btn btn-dark">Add to watchlist</a><br>
-                        <p class="card-text"><small class="text-muted">{{item.bid|length}} bid(s)</small></p>
-                    </div>
-                    <div class="dimmer"></div>
-                </div> 
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
         {% endif %}<br>
 
-        <!-- List of some items in the Motherboard category -->
-        
-        {% if MoboCategory %}
-        <div class="row">
-            <div class="col-12">
-                <h2>Motherboards:</h2>
+        <!-- if the MoboCategory variable has been passed (and information in it), then the items listed in there will have their info displayed here -->        
+        {% if MoboCategory|length %}
+            <div class="row">
+                <div class="col-12">
+                    <h2>Motherboards:</h2>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            {% for item in MoboCategory %}
-            <div class="col-xl-3 col-md-6">
-                <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                    <div class="card-head">
-                        <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
+            <div class="row">
+                {% for item in MoboCategory %}
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                            <div class="card-head">
+                                <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</h5></a><br>
+                                <p>{{item.status}} - {{item.currency}} ${{item.currentPrice}}</p>
+                                <a href="{{url_for('watchlist.add', id=item.id)}}" class="btn btn-dark">Add to watchlist</a><br>
+                                <p class="card-text"><small class="text-muted">{{item.bid|length}} bid(s)</small></p>
+                            </div>
+                            <div class="dimmer"></div>
+                        </div> 
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</h5></a><br>
-                        <p>{{item.status}} - {{item.currency}} ${{item.currentPrice}}</p>
-                        <a href="{{url_for('watchlist.add', id=item.id)}}" class="btn btn-dark">Add to watchlist</a><br>
-                        <p class="card-text"><small class="text-muted">{{item.bid|length}} bid(s)</small></p>
-                    </div>
-                    <div class="dimmer"></div>
-                </div> 
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-        {% endif %}<br>
-
-        
-
-        <!-- List of some items in the RAM category -->
-        
-        {% if RAMCategory %}
-        <div class="row">
-            <div class="col-12">
-                <h2>RAM:</h2>
-            </div>
-        </div>
-
-        <div class="row">
-            {% for item in RAMCategory %}
-            <div class="col-xl-3 col-md-6">
-                <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                    <div class="card-head">
-                        <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</h5></a><br>
-                        <p>{{item.status}} - {{item.currency}} ${{item.currentPrice}}</p>
-                        <a href="{{url_for('watchlist.add', id=item.id)}}" class="btn btn-dark">Add to watchlist</a><br>
-                        <p class="card-text"><small class="text-muted">{{item.bid|length}} bid(s)</small></p>
-                    </div>
-                    <div class="dimmer"></div>
-                </div> 
-            </div>
-            {% endfor %}
-        </div>
-        {% endif %}<br>
-        <!-- List of some items in the PSU category -->
-
-        
-        {% if PSUCategory %}
-        <div class="row">
-            <div class="col-12">
-                <h2>Power Supply Units:</h2>
-            </div>
-        </div>
-
-        <div class="row">
-            {% for item in PSUCategory %}
-            <div class="col-xl-3 col-md-6">
-                <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                    <div class="card-head">
-                        <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</h5></a><br>
-                        <p>{{item.status}} - {{item.currency}} ${{item.currentPrice}}</p>
-                        <a href="{{url_for('watchlist.add', id=item.id)}}" class="btn btn-dark">Add to watchlist</a><br>
-                        <p class="card-text"><small class="text-muted">{{item.bid|length}} bid(s)</small></p>
-                    </div>
-                    <div class="dimmer"></div>
-                </div> 
-            </div>
-            {% endfor %}
-        </div>
         {% endif %}<br>
 
         
 
-        <!-- List of some items in the Cooling Fans category -->
-        
-        {% if FanCategory %}
-        <div class="row">
-            <div class="col-12">
-                <h2>Cooling Fans:</h2>
+        <!-- if the RAMCategory variable has been passed (and information in it), then the items listed in there will have their info displayed here -->        
+        {% if RAMCategory|length %}
+            <div class="row">
+                <div class="col-12">
+                    <h2>RAM:</h2>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            {% for item in FanCategory %}
-            <div class="col-xl-3 col-md-6">
-                <div class="card cardDisplay p-3 mb-5 border-dark grow">
-                    <div class="card-head">
-                        <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
+            <div class="row">
+                {% for item in RAMCategory %}
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                            <div class="card-head">
+                                <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</h5></a><br>
+                                <p>{{item.status}} - {{item.currency}} ${{item.currentPrice}}</p>
+                                <a href="{{url_for('watchlist.add', id=item.id)}}" class="btn btn-dark">Add to watchlist</a><br>
+                                <p class="card-text"><small class="text-muted">{{item.bid|length}} bid(s)</small></p>
+                            </div>
+                            <div class="dimmer"></div>
+                        </div> 
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</h5></a><br>
-                        <p>{{item.status}} - {{item.currency}} ${{item.currentPrice}}</p>
-                        <a href="{{url_for('watchlist.add', id=item.id)}}" class="btn btn-dark">Add to watchlist</a><br>
-                        <p class="card-text"><small class="text-muted">{{item.bid|length}} bid(s)</small></p>
-                    </div>
-                    <div class="dimmer"></div>
-                </div> 
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
+        {% endif %}<br>
+
+        <!-- if the PSUCategory variable has been passed (and information in it), then the items listed in there will have their info displayed here -->        
+        {% if PSUCategory|length %}
+            <div class="row">
+                <div class="col-12">
+                    <h2>Power Supply Units:</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                {% for item in PSUCategory %}
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                            <div class="card-head">
+                                <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</h5></a><br>
+                                <p>{{item.status}} - {{item.currency}} ${{item.currentPrice}}</p>
+                                <a href="{{url_for('watchlist.add', id=item.id)}}" class="btn btn-dark">Add to watchlist</a><br>
+                                <p class="card-text"><small class="text-muted">{{item.bid|length}} bid(s)</small></p>
+                            </div>
+                            <div class="dimmer"></div>
+                        </div> 
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}<br>
+
+        <!-- if the FanCategory variable has been passed (and information in it), then the items listed in there will have their info displayed here -->        
+        {% if FanCategory|length %}
+            <div class="row">
+                <div class="col-12">
+                    <h2>Cooling Fans:</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                {% for item in FanCategory %}
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card cardDisplay p-3 mb-5 border-dark grow">
+                            <div class="card-head">
+                                <a href="{{url_for('item.show', id=item.id)}}"><img src="{{item.image}}" alt="{{item.name}}" class="cardImg"></a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="{{url_for('item.show', id=item.id)}}">{{item.name}}</h5></a><br>
+                                <p>{{item.status}} - {{item.currency}} ${{item.currentPrice}}</p>
+                                <a href="{{url_for('watchlist.add', id=item.id)}}" class="btn btn-dark">Add to watchlist</a><br>
+                                <p class="card-text"><small class="text-muted">{{item.bid|length}} bid(s)</small></p>
+                            </div>
+                            <div class="dimmer"></div>
+                        </div> 
+                    </div>
+                {% endfor %}
+            </div>
         {% endif %}<br>
     </main>
 </div>

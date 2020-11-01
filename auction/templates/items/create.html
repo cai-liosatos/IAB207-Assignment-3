@@ -3,127 +3,127 @@
 {%import "bootstrap/wtf.html" as wtf%}
 
 {% block content %}
-<div class="container">
-  <div class="row mt-5">
-    <div class="col-md-12">
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-md-12">
 
-      <h1>List a New Item</h1>
+        <h1>List a New Item</h1>
+      </div>
     </div>
-  </div>
-  <form action="" method="post" enctype="multipart/form-data" class="form" role="form">
-    {{ form.csrf_token() }}
-  <div class="row">
-    <div class="col-md-12 mb-3">
-      <h5>Item Name:</h5>
-      {{wtf.form_field(form.name, placeholder='Item name')}}
-    </div>
-  </div><br>
-  <div class="row">
-    <div class="col-md-4 col-sm-6 mb-3">
-      {{wtf.form_field(form.category)}}
-    </div>
-    <div class="col-md-4 col-sm-6 mb-3">
-      {{wtf.form_field(form.manufacturer, placeholder='Manufacturer')}}
-    </div>
-    <div class="col-md-4 mb-3">
-      {{wtf.form_field(form.condition)}}
-    </div>
-  </div><br>
-  <div class="form-row">
+    <form action="" method="post" enctype="multipart/form-data" class="form" role="form">
+        {{ form.csrf_token() }}
+      <div class="row">
+        <div class="col-md-12 mb-3">
+          <h5>Item Name:</h5>
+          {{wtf.form_field(form.name, placeholder='Item name')}}
+        </div>
+      </div><br>
+      <div class="row">
+        <div class="col-md-4 col-sm-6 mb-3">
+          {{wtf.form_field(form.category)}}
+        </div>
+        <div class="col-md-4 col-sm-6 mb-3">
+          {{wtf.form_field(form.manufacturer, placeholder='Manufacturer')}}
+        </div>
+        <div class="col-md-4 mb-3">
+          {{wtf.form_field(form.condition)}}
+        </div>
+      </div><br>
+      <div class="form-row">
 
-    <!-- Upload Images Button -->
-    <div class="col-xl-6 col-md-4 mb-3">
-      {{wtf.form_field(form.image)}}
-    </div>
+        <!-- Upload Images Button -->
+        <div class="col-xl-6 col-md-4 mb-3">
+          {{wtf.form_field(form.image)}}
+        </div>
 
-    <!-- Auction finish date/delivery time selector -->
-    <div class="col-xl-3 col-md-4 col-sm-6 mb-3">
-      {{wtf.form_field(form.finishdate)}}
-    </div>
-    <div class="col-xl-3 col-md-4 col-sm-6 mb-3">
-      {{wtf.form_field(form.postagedate)}}
-    </div>
-  </div><br>
-  <div class="form-row">
-    <!-- Starting Price selector -->
-    <div class="col-md-4 col-sm-6 mb-4">
-      {{wtf.form_field(form.startingprice)}}
-    </div>
+        <!-- Auction finish date/delivery time selector -->
+        <div class="col-xl-3 col-md-4 col-sm-6 mb-3">
+          {{wtf.form_field(form.finishdate)}}
+        </div>
+        <div class="col-xl-3 col-md-4 col-sm-6 mb-3">
+          {{wtf.form_field(form.postagedate)}}
+        </div>
+      </div><br>
+      <div class="form-row">
+        <!-- Starting Price selector -->
+        <div class="col-md-4 col-sm-6 mb-4">
+          {{wtf.form_field(form.startingprice)}}
+        </div>
 
-    <!-- Postage Price selector -->
-    <div class="col-md-4 col-sm-6 mb-4">
-      {{wtf.form_field(form.postageprice)}}
-    </div>
+        <!-- Postage Price selector -->
+        <div class="col-md-4 col-sm-6 mb-4">
+          {{wtf.form_field(form.postageprice)}}
+        </div>
 
-    <!-- Currency selector-->
-    <div class="col-md-4 mb-4">
-      {{wtf.form_field(form.currency)}}
-    </div>
-</div><br>
-<div class="form-row">
-  <div class="col-md-12 mb-3">
-    {{wtf.form_field(form.description)}}
-  </div>
-</div>    
-<!-- T&Cs Agreement -->
-<div class="form-row">
-  <div class="col-md-12">
-    <div class="form-group">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="invalidCheck2" data-toggle="modal" name="TCs" data-target="#exampleModalCenter" required>
-        <div class="invalid-tooltip">Please agree to Terms and Conditions</div>
-        <label class="form-check-label" for="invalidCheck2">
-          <p>I agree to <a href="#exampleModalCenter" data-toggle="modal" data-target="#exampleModalCenter">Terms and Conditions</a></p>                      
-        </label>
+        <!-- Currency selector-->
+        <div class="col-md-4 mb-4">
+          {{wtf.form_field(form.currency)}}
+        </div>
+      </div><br>
+      <div class="form-row">
+        <div class="col-md-12 mb-3">
+          {{wtf.form_field(form.description)}}
+        </div>
+      </div>    
+      <!-- T&Cs Agreement -->
+      <div class="form-row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="invalidCheck2" data-toggle="modal" name="TCs" data-target="#exampleModalCenter" required>
+              <div class="invalid-tooltip">Please agree to Terms and Conditions</div>
+              <label class="form-check-label" for="invalidCheck2">
+                <p>I agree to <a href="#exampleModalCenter" data-toggle="modal" data-target="#exampleModalCenter">Terms and Conditions</a></p>                      
+              </label>
 
-        <!-- Modal (for T&Cs)  -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-body">
-                  <div class="form-group">
-                    <label for="TermsAndConditions">
-                      Cai's Favourite Double Chocolate Chip Cookie Recipe<br><br>
+              <!-- Modal (for T&Cs)  -->
+              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="form-group">
+                          <label for="TermsAndConditions">
+                            Cai's Favourite Double Chocolate Chip Cookie Recipe<br><br>
 
-                      Ingredients:<br>
-                      -2 cups all-purpose flour<br>
-                      -1/2 cup cocoa powder<br>
-                      -1 tsp. baking soda<br>
-                      -1 cup softened/room-temperature butter<br>
-                      -1/2 cup white granulated sugar<br>
-                      -1/2 cup packed brown sugar (light brown sugar works, too)<br>
-                      -1 tsp. salt<br>
-                      -2 eggs<br>
-                      -2 tsp. instant coffee granules, mixed in 2 tsp. of water (used in place of 2 tsp. vanilla extract; either of the two would amplify the chocolate taste)<br>
-                      -1 cup semisweet chocolate chips<br><br>
-                      
-                      Directions: <br>
-                      1) Preheat oven to 175C (350F)<br>
-                      2) Whisk flour, cocoa powder, baking soda, and salt in a medium bowl<br>
-                      3) In larger bowl, beat butter and both sugars until smooth with electric beater. Beat in one egg until completely incorporated. Beat in second egg along with coffee mix (or vanilla) until blended.<br>
-                      4) Mix in dry ingredients until just incorporated.<br>
-                      5) Fold in chocolate chip; mix just enough to combine<br>
-                      6) Drop by heaped teaspoonfuls onto ungreased parchment paper<br>
-                      7) Bake until edges are slightly darkened (not burnt!); ~8-12 minutes, depending on oven<br>
-                      8) Allow to cool on baking sheet for one minute before transferring to wire rack. <br>
-                      9) Enjoy :)
-                    </label>
+                            Ingredients:<br>
+                            -2 cups all-purpose flour<br>
+                            -1/2 cup cocoa powder<br>
+                            -1 tsp. baking soda<br>
+                            -1 cup softened/room-temperature butter<br>
+                            -1/2 cup white granulated sugar<br>
+                            -1/2 cup packed brown sugar (light brown sugar works, too)<br>
+                            -1 tsp. salt<br>
+                            -2 eggs<br>
+                            -2 tsp. instant coffee granules, mixed in 2 tsp. of water (used in place of 2 tsp. vanilla extract; either of the two would amplify the chocolate taste)<br>
+                            -1 cup semisweet chocolate chips<br><br>
+                            
+                            Directions: <br>
+                            1) Preheat oven to 175C (350F)<br>
+                            2) Whisk flour, cocoa powder, baking soda, and salt in a medium bowl<br>
+                            3) In larger bowl, beat butter and both sugars until smooth with electric beater. Beat in one egg until completely incorporated. Beat in second egg along with coffee mix (or vanilla) until blended.<br>
+                            4) Mix in dry ingredients until just incorporated.<br>
+                            5) Fold in chocolate chip; mix just enough to combine<br>
+                            6) Drop by heaped teaspoonfuls onto ungreased parchment paper<br>
+                            7) Bake until edges are slightly darkened (not burnt!); ~8-12 minutes, depending on oven<br>
+                            8) Allow to cool on baking sheet for one minute before transferring to wire rack. <br>
+                            9) Enjoy :)
+                          </label>
+                        </div>
+                    </div>
                   </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </div><br>
+      
+      <!-- Button to list item -->
+      <div class="row">
+        <div class="col-12">
+          {{wtf.form_field(form.submit)}}
+        </div>
       </div>
-    </div>
+    </form>
   </div>
-</div><br>
-<div class="row">
-  <div class="col-12">
-    {{wtf.form_field(form.submit)}}
-  </div>
-</div>
-</form>
-<!-- Button to list item -->
-</div>
-
 {% endblock %}

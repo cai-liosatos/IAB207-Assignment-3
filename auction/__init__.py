@@ -1,4 +1,4 @@
-#import flask - from the package import class
+# Importing relevant packages
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
@@ -11,7 +11,6 @@ db=SQLAlchemy()
 #create a function that creates a web application
 # a web server will run this web application
 def create_app():
-  
     app=Flask(__name__)  # this is the name of the module/package that is calling this app
     app.debug=True
     app.secret_key='utroutoru'
@@ -23,6 +22,7 @@ def create_app():
 
     bootstrap = Bootstrap(app)
 
+   #  error handlers
     @app.errorhandler(404)
     def page_not_found(e):
         error_code_404 = "yes"

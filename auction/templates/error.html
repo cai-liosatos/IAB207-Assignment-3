@@ -6,6 +6,7 @@
     <div class="col-lg-6 col-md-8 col-sm-12">
           <h1>Oops!</h1>
           <p>Something went wrong!</p>
+          <!-- Displays a different message depending on the error code (only checks for 404 or 500) -->
           {% if error_code_404 %}
           <p>The page you are looking for might have been removed, had its name changed or is temporarily unavailable.</p>
           {% else %}
